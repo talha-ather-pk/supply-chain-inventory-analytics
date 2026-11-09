@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "6d16786e1791509a8850",
   "position": {
-    "x": 200,
-    "y": 454,
-    "z": 6600,
-    "height": 250,
-    "width": 1064,
-    "tabOrder": 6600
+    "x": 24.0,
+    "y": 468.65,
+    "z": 6200,
+    "height": 235.35,
+    "width": 1232.0,
+    "tabOrder": 6200
   },
   "visual": {
     "visualType": "tableEx",
@@ -266,7 +266,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "144.1D"
+                  "Value": "167.9D"
                 }
               }
             }
@@ -280,7 +280,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "122.0D"
+                  "Value": "142.0D"
                 }
               }
             }
@@ -294,7 +294,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "122.0D"
+                  "Value": "142.0D"
                 }
               }
             }
@@ -308,7 +308,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "122.0D"
+                  "Value": "142.0D"
                 }
               }
             }
@@ -322,7 +322,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "94.2D"
+                  "Value": "109.8D"
                 }
               }
             }
@@ -336,7 +336,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "94.2D"
+                  "Value": "109.8D"
                 }
               }
             }
@@ -350,7 +350,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "94.2D"
+                  "Value": "109.8D"
                 }
               }
             }
@@ -364,7 +364,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "105.3D"
+                  "Value": "122.7D"
                 }
               }
             }
@@ -378,7 +378,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "122.0D"
+                  "Value": "142.0D"
                 }
               }
             }

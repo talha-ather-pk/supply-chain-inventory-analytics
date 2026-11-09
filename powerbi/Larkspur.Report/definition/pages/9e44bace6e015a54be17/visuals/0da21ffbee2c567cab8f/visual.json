@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "0da21ffbee2c567cab8f",
   "position": {
-    "x": 24,
-    "y": 174,
-    "z": 1200,
-    "height": 20,
-    "width": 144,
-    "tabOrder": 1200
+    "x": 498,
+    "y": 18,
+    "z": 1100,
+    "height": 22,
+    "width": 118,
+    "tabOrder": 1100
   },
   "visual": {
     "visualType": "textbox",
@@ -18,7 +18,7 @@
           "properties": {
             "paragraphs": [
               {
-                "horizontalTextAlignment": "left",
+                "horizontalTextAlignment": "center",
                 "textRuns": [
                   {
                     "value": "Inventory Health",

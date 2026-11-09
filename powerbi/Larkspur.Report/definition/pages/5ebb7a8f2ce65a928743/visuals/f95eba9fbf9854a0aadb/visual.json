@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "f95eba9fbf9854a0aadb",
   "position": {
-    "x": 437.2,
-    "y": 88,
-    "z": 4000,
+    "x": 286.8,
+    "y": 124,
+    "z": 3800,
     "height": 18,
-    "width": 173.2,
-    "tabOrder": 4000
+    "width": 212.8,
+    "tabOrder": 3800
   },
   "visual": {
     "visualType": "textbox",
@@ -24,7 +24,7 @@
                     "value": "FILL RATE (UNITS)",
                     "textStyle": {
                       "fontSize": "7.5pt",
-                      "color": "#A4ABCC",
+                      "color": "#5E6B73",
                       "fontFamily": "Segoe UI Semibold",
                       "fontWeight": "bold"
                     }

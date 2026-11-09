@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "e8ec84ada61f560c9f85",
   "position": {
-    "x": 16,
-    "y": 490,
-    "z": 2600,
-    "height": 48,
-    "width": 152,
-    "tabOrder": 2600
+    "x": 996,
+    "y": 62,
+    "z": 2500,
+    "height": 44,
+    "width": 132,
+    "tabOrder": 2500
   },
   "visual": {
     "visualType": "slicer",
@@ -64,7 +64,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#A4ABCC'"
+                      "Value": "'#5E6B73'"
                     }
                   }
                 }
@@ -73,7 +73,7 @@
             "textSize": {
               "expr": {
                 "Literal": {
-                  "Value": "7.5D"
+                  "Value": "7D"
                 }
               }
             },
@@ -95,7 +95,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#A4ABCC'"
+                      "Value": "'#5E6B73'"
                     }
                   }
                 }
@@ -106,7 +106,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#13203A'"
+                      "Value": "'#FFFFFF'"
                     }
                   }
                 }
@@ -123,30 +123,6 @@
               "expr": {
                 "Literal": {
                   "Value": "0D"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "general": [
-        {
-          "properties": {
-            "outlineColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#242C55'"
-                    }
-                  }
-                }
-              }
-            },
-            "outlineWeight": {
-              "expr": {
-                "Literal": {
-                  "Value": "1D"
                 }
               }
             }

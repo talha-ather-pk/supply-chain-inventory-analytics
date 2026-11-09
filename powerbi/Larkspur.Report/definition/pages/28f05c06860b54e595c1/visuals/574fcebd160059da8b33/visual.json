@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "574fcebd160059da8b33",
   "position": {
-    "x": 200,
-    "y": 192,
-    "z": 6500,
-    "height": 512,
-    "width": 480,
-    "tabOrder": 6500
+    "x": 24.0,
+    "y": 222.0,
+    "z": 6100,
+    "height": 482.0,
+    "width": 555.79,
+    "tabOrder": 6100
   },
   "visual": {
     "visualType": "clusteredBarChart",
@@ -218,7 +218,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Red = rows removed · orange = values repaired or flagged'"
+                  "Value": "'Red = rows removed · amber = values repaired or flagged'"
                 }
               }
             }

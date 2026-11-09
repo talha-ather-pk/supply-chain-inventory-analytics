@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "ca7fa84de56758d19903",
   "position": {
-    "x": 24,
-    "y": 138,
-    "z": 800,
-    "height": 20,
-    "width": 144,
-    "tabOrder": 800
+    "x": 380,
+    "y": 18,
+    "z": 900,
+    "height": 22,
+    "width": 118,
+    "tabOrder": 900
   },
   "visual": {
     "visualType": "textbox",
@@ -18,13 +18,13 @@
           "properties": {
             "paragraphs": [
               {
-                "horizontalTextAlignment": "left",
+                "horizontalTextAlignment": "center",
                 "textRuns": [
                   {
                     "value": "Delivery",
                     "textStyle": {
                       "fontSize": "9.5pt",
-                      "color": "#8A9AB4",
+                      "color": "#B8C2C8",
                       "fontFamily": "Segoe UI"
                     }
                   }

@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "759b7cc3bb345a678d6a",
   "position": {
-    "x": 867.6,
-    "y": 88,
-    "z": 5500,
+    "x": 784.4,
+    "y": 124,
+    "z": 5100,
     "height": 18,
-    "width": 173.2,
-    "tabOrder": 5500
+    "width": 212.8,
+    "tabOrder": 5100
   },
   "visual": {
     "visualType": "textbox",
@@ -24,7 +24,7 @@
                     "value": "NET GAIN A YEAR",
                     "textStyle": {
                       "fontSize": "7.5pt",
-                      "color": "#A4ABCC",
+                      "color": "#5E6B73",
                       "fontFamily": "Segoe UI Semibold",
                       "fontWeight": "bold"
                     }

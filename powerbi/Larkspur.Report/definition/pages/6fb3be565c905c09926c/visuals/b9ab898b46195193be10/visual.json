@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "b9ab898b46195193be10",
   "position": {
-    "x": 24,
-    "y": 282,
-    "z": 1800,
-    "height": 20,
-    "width": 144,
-    "tabOrder": 1800
+    "x": 852,
+    "y": 18,
+    "z": 1700,
+    "height": 22,
+    "width": 118,
+    "tabOrder": 1700
   },
   "visual": {
     "visualType": "textbox",
@@ -18,7 +18,7 @@
           "properties": {
             "paragraphs": [
               {
-                "horizontalTextAlignment": "left",
+                "horizontalTextAlignment": "center",
                 "textRuns": [
                   {
                     "value": "Quality & Suppliers",

@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "d3d60954a964518596c5",
   "position": {
-    "x": 1102,
-    "y": 464,
-    "z": 6400,
-    "height": 24,
-    "width": 146,
-    "tabOrder": 6400
+    "x": 1068.42,
+    "y": 478.06,
+    "z": 6500,
+    "height": 22.59,
+    "width": 169.05,
+    "tabOrder": 6500
   },
   "visual": {
     "visualType": "textbox",
@@ -24,7 +24,7 @@
                     "value": "Open SKU detail  ›",
                     "textStyle": {
                       "fontSize": "8pt",
-                      "color": "#5BC8EC",
+                      "color": "#2B5876",
                       "fontFamily": "Segoe UI Semibold",
                       "fontWeight": "bold"
                     }
@@ -52,7 +52,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#121834'"
+                      "Value": "'#FFFFFF'"
                     }
                   }
                 }
@@ -83,7 +83,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#242C55'"
+                      "Value": "'#2B5876'"
                     }
                   }
                 }
@@ -92,7 +92,7 @@
             "radius": {
               "expr": {
                 "Literal": {
-                  "Value": "12.0D"
+                  "Value": "12D"
                 }
               }
             }
@@ -144,7 +144,7 @@
             "top": {
               "expr": {
                 "Literal": {
-                  "Value": "5D"
+                  "Value": "4D"
                 }
               }
             },
@@ -158,14 +158,14 @@
             "left": {
               "expr": {
                 "Literal": {
-                  "Value": "8D"
+                  "Value": "4D"
                 }
               }
             },
             "right": {
               "expr": {
                 "Literal": {
-                  "Value": "8D"
+                  "Value": "4D"
                 }
               }
             }

@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "13fdc44b89c059cbbb33",
   "position": {
-    "x": 692,
-    "y": 192,
-    "z": 6600,
-    "height": 512,
-    "width": 572,
-    "tabOrder": 6600
+    "x": 593.68,
+    "y": 222.0,
+    "z": 6200,
+    "height": 482.0,
+    "width": 662.32,
+    "tabOrder": 6200
   },
   "visual": {
     "visualType": "tableEx",
@@ -193,7 +193,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "86D"
+                  "Value": "96D"
                 }
               }
             }
@@ -207,7 +207,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "168D"
+                  "Value": "206D"
                 }
               }
             }
@@ -221,7 +221,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "54D"
+                  "Value": "60D"
                 }
               }
             }
@@ -235,7 +235,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "58D"
+                  "Value": "64D"
                 }
               }
             }
@@ -249,7 +249,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "50D"
+                  "Value": "52D"
                 }
               }
             }
@@ -263,7 +263,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "112D"
+                  "Value": "150D"
                 }
               }
             }

@@ -35,27 +35,29 @@ V_VISUAL, V_PAGE, V_REPORT = "2.4.0", "2.0.0", "3.0.0"
 # =========================================================================
 # Design system
 # =========================================================================
-# Indigo operations palette (indigo dye, the textile trade's own colour): deep indigo surfaces, periwinkle and
-# sky accents; green / amber / red keep one meaning everywhere (on target / watch / off target)
-NAVY = "#080B18"        # sidebar (darker than the canvas)
-NAVY_2 = "#1A2149"      # active nav item
-INK = "#E8EAF6"         # primary text
-SLATE = "#A4ABCC"       # secondary text
-SLATE_2 = "#6F77A1"     # tertiary text
-MIST = "#C9CDE6"
-LINE = "#242C55"        # hairlines and card borders
-CANVAS = "#0B0F20"      # page background
-SURFACE = "#121834"     # cards, charts, tables
-SURFACE_2 = "#10152D"   # table headers, slicer fields
+# "Mill floor" light industrial palette (proposed for the fictional Larkspur; there is no official brand):
+# greige canvas (undyed cotton), white cards, charcoal-steel navigation band, industrial steel blue for data and a
+# thread-orange accent used ONLY in navigation and markers, so it never competes with the amber "watch" signal.
+NAVY = "#22313A"        # top navigation band (charcoal steel)
+NAVY_2 = "#2E414C"      # band highlights
+INK = "#1E2A30"         # primary text
+SLATE = "#5E6B73"       # secondary text (steel grey)
+SLATE_2 = "#8A949A"     # muted text
+MIST = "#B8C2C8"        # inactive tab text on the band
+LINE = "#E2DDD2"        # hairlines and card borders
+CANVAS = "#F4F1EA"      # page background (greige)
+SURFACE = "#FFFFFF"     # cards, charts, tables
+SURFACE_2 = "#F8F6F1"   # table headers, alternate rows
 WHITE = "#FFFFFF"
-GOLD = "#8C9EFF"        # accent (periwinkle); name kept so shared layout code picks it up
-CYAN = "#5BC8EC"        # second accent (sky)
-PRIMARY = "#6574F5"     # main data series (indigo)
-COMPARE = "#3D4675"     # comparison series
-GOOD, WARN, BAD, NEUTRAL = "#3BB98B", "#F2B84B", "#F2706B", "#6F77A1"
-AMBER = "#F0934F"
-LILAC = "#B39DFF"
-DATA_COLORS = [PRIMARY, CYAN, GOOD, LILAC, WARN, BAD, "#7C86B8", "#5EEAD4"]
+GOLD = "#D9622B"        # accent: thread orange (navigation and markers only)
+CYAN = "#7FA7C2"        # light steel (second series)
+PRIMARY = "#2B5876"     # industrial steel blue (main data series)
+COMPARE = "#B9C3C9"     # comparison series (light grey)
+GOOD, WARN, BAD, NEUTRAL = "#2E8B57", "#C99A06", "#B83A30", "#8A949A"
+AMBER = "#C99A06"
+LILAC = "#9C6B98"
+GREIGE_DARK = "#B7A98B"
+DATA_COLORS = [PRIMARY, CYAN, "#3E8E7E", SLATE, GREIGE_DARK, LILAC, "#D4C6A6", "#4F7C99"]
 SERIF = "Segoe UI Semibold"
 FONT, FONT_SB, FONT_LIGHT = "Segoe UI", "Segoe UI Semibold", "Segoe UI Light"
 
@@ -381,12 +383,12 @@ m("Change Color", f'IF ( [ROP Change %] > 0, "{WARN}", "{CYAN}" )', None, "8 For
 m("What-if Color", f'IF ( SELECTEDVALUE ( delivery_whatif[order] ) = 1, "{COMPARE}", "{PRIMARY}" )', None, "8 Formatting", hidden=True)
 m("Match Color", f'IF ( [DQ Match] = "✓", "{GOOD}", "{BAD}" )', None, "8 Formatting", hidden=True)
 m("Fix Color", f'IF ( SELECTEDVALUE ( dq_log[issue] ) IN {REMOVED}, "{BAD}", "{WARN}" )', None, "8 Formatting", hidden=True)
-m("Heat On-time", f'VAR v = [On-time %] RETURN IF ( ISBLANK ( v ), BLANK (), IF ( v >= 0.9, "#163B33", IF ( v >= 0.8, "#4A3A1A", '
-  f'"#4A2228" ) ) )', None, "8 Formatting", hidden=True)
-m("Heat Fill", f'VAR v = [Fill Rate] RETURN IF ( ISBLANK ( v ), BLANK (), IF ( v >= 0.985, "#163B33", IF ( v >= 0.97, "#4A3A1A", '
-  f'"#4A2228" ) ) )', None, "8 Formatting", hidden=True)
+m("Heat On-time", f'VAR v = [On-time %] RETURN IF ( ISBLANK ( v ), BLANK (), IF ( v >= 0.9, "#DCEFE3", IF ( v >= 0.8, "#F6EBC8", '
+  f'"#F4D9D5" ) ) )', None, "8 Formatting", hidden=True)
+m("Heat Fill", f'VAR v = [Fill Rate] RETURN IF ( ISBLANK ( v ), BLANK (), IF ( v >= 0.985, "#DCEFE3", IF ( v >= 0.97, "#F6EBC8", '
+  f'"#F4D9D5" ) ) )', None, "8 Formatting", hidden=True)
 m("Heat Stock", f'VAR v = DIVIDE ( [Avg Stock Value], CALCULATE ( [Avg Stock Value], ALLSELECTED ( dim_sku ) ) ) RETURN '
-  f'IF ( ISBLANK ( v ), BLANK (), IF ( v >= 0.2, "#3B3F86", IF ( v >= 0.08, "#262B5E", "#171C3F" ) ) )', None, "8 Formatting",
+  f'IF ( ISBLANK ( v ), BLANK (), IF ( v >= 0.2, "#B9CCDB", IF ( v >= 0.08, "#DCE6EE", "#F1F5F8" ) ) )', None, "8 Formatting",
   hidden=True)
 
 
@@ -1245,7 +1247,7 @@ MONTH = (col("dim_week", "month_date"), "Month")
 WEEK = (col("dim_week", "week_start"), "Week")
 SCALAR = [{"properties": {"axisType": lit("Scalar")}}]
 NO_AXIS = {"valueAxis": [{"properties": {"show": lit(False)}}]}
-MODE_COLORS = {"Sea": PRIMARY, "Air": LILAC, "Road": GOOD}
+MODE_COLORS = {"Sea": PRIMARY, "Air": LILAC, "Road": CYAN}
 POLICY_COLORS = {"Current rule": COMPARE, "Recommended": PRIMARY}
 TOOLTIPS = {("inventory", "short"): "tip_sku", ("policy", "rop"): "tip_sku"}
 POLISH = {
@@ -1258,7 +1260,255 @@ POLISH = {
 }
 POLISH[("leaks", "channels")] = {**NO_AXIS, "categoryAxis": [{"properties": {"maxMarginFactor": lit(42)}}]}
 POLISH[("leaks", "reasons")] = {**NO_AXIS, "categoryAxis": [{"properties": {"maxMarginFactor": lit(48), "fontSize": lit(8)}}]}
-POLISH[("quality", "fabric")] = {**NO_AXIS, "categoryAxis": [{"properties": {"innerPadding": lit(6), "fontSize": lit(8)}}]}
+POLISH[("quality", "fabric")] = {**NO_AXIS, "categoryAxis": [{"properties": {"fontSize": lit(8)}}]}
+
+
+# =========================================================================
+# "Mill floor" chrome: top navigation band, title row with filters, white KPI tiles (replaces the shared sidebar)
+# =========================================================================
+BAND_H, KPI_Y, KPI_H, CONTENT_Y = 56, 112, 100, 222
+NX0, NX1 = 24, 1256                      # content area of this design
+OLD = (200, 1264, 192, 704)              # the coordinates the page layouts were drawn in
+NUM_FONT = "DIN, Bahnschrift, 'Segoe UI Semibold', sans-serif"   # engineering-style numerals, safe fallbacks
+GRID_L = "#ECE7DC"
+
+
+def sc(c):
+    return {"solid": {"color": c}}
+
+
+THEME = {
+    "name": "Larkspur Mill Floor",
+    "dataColors": DATA_COLORS,
+    "foreground": INK, "foregroundNeutralSecondary": SLATE, "foregroundNeutralTertiary": SLATE_2,
+    "background": SURFACE, "backgroundLight": SURFACE_2, "backgroundNeutral": LINE,
+    "tableAccent": PRIMARY, "good": GOOD, "neutral": WARN, "bad": BAD,
+    "maximum": PRIMARY, "center": "#9DB7CB", "minimum": "#EEF3F7", "null": SURFACE,
+    "hyperlink": PRIMARY, "visitedHyperlink": PRIMARY,
+    "textClasses": {
+        "callout": {"fontSize": 24, "fontFace": NUM_FONT, "color": INK},
+        "title": {"fontSize": 11, "fontFace": FONT_SB, "color": INK},
+        "header": {"fontSize": 10, "fontFace": FONT_SB, "color": INK},
+        "label": {"fontSize": 9, "fontFace": FONT, "color": SLATE},
+    },
+    "visualStyles": {
+        "*": {"*": {
+            "background": [{"show": True, "color": sc(SURFACE), "transparency": 0}],
+            "border": [{"show": True, "color": sc(LINE), "radius": 6, "width": 1}],
+            "dropShadow": [{"show": False}],
+            "padding": [{"top": 12, "bottom": 10, "left": 14, "right": 14}],
+            "title": [{"show": True, "fontColor": sc(INK), "fontSize": 11, "fontFamily": FONT_SB, "titleWrap": True}],
+            "subTitle": [{"fontColor": sc(SLATE_2), "fontSize": 9, "fontFamily": FONT}],
+            "categoryAxis": [{"showAxisTitle": False, "gridlineStyle": "dotted", "labelColor": sc(SLATE), "fontSize": 9,
+                              "concatenateLabels": False, "axisLineColor": sc(LINE)}],
+            "valueAxis": [{"showAxisTitle": False, "gridlineStyle": "dotted", "gridlineColor": sc(GRID_L),
+                           "labelColor": sc(SLATE), "fontSize": 9}],
+            "legend": [{"show": True, "position": "TopLeft", "labelColor": sc(SLATE), "fontSize": 9, "showTitle": False}],
+            "labels": [{"color": sc(INK), "fontSize": 9}],
+            "lineStyles": [{"strokeWidth": 2.5}],
+            "visualTooltip": [{"titleFontColor": sc(SLATE), "valueFontColor": sc(INK), "background": sc(SURFACE)}],
+            "visualHeader": [{"background": sc(SURFACE), "border": sc(LINE), "foreground": sc(SLATE), "transparency": 0}],
+            "outspacePane": [{"backgroundColor": sc(SURFACE), "foregroundColor": sc(INK), "transparency": 0,
+                              "border": True, "borderColor": sc(LINE)}],
+            "filterCard": [{"$id": "Applied", "backgroundColor": sc(SURFACE_2), "foregroundColor": sc(INK), "transparency": 0},
+                           {"$id": "Available", "backgroundColor": sc(SURFACE), "foregroundColor": sc(INK), "transparency": 0}],
+        }},
+        "page": {"*": {"background": [{"color": sc(CANVAS), "transparency": 0}],
+                       "outspace": [{"color": sc("#E6E1D6"), "transparency": 0}]}},
+        "card": {"*": {"labels": [{"color": sc(INK), "fontSize": 24, "fontFamily": NUM_FONT}],
+                       "categoryLabels": [{"show": False}],
+                       "title": [{"alignment": "center", "fontSize": 9, "fontColor": sc(SLATE), "fontFamily": FONT_SB}]}},
+        "tableEx": {"*": {
+            "grid": [{"gridVertical": False, "gridHorizontal": True, "gridHorizontalColor": sc(GRID_L),
+                      "outlineColor": sc(LINE), "rowPadding": 5}],
+            "columnHeaders": [{"fontColor": sc(SLATE), "backColor": sc(SURFACE_2), "fontFamily": FONT_SB, "fontSize": 9,
+                               "wordWrap": True}],
+            "values": [{"fontColorPrimary": sc(INK), "backColorPrimary": sc(SURFACE), "fontColorSecondary": sc(INK),
+                        "backColorSecondary": sc("#FBFAF7"), "fontSize": 9}],
+            "total": [{"fontFamily": FONT_SB, "backColor": sc(SURFACE_2), "fontColor": sc(INK)}]}},
+        "pivotTable": {"*": {
+            "grid": [{"gridVertical": False, "gridHorizontal": True, "gridHorizontalColor": sc(GRID_L),
+                      "outlineColor": sc(LINE), "rowPadding": 5}],
+            "columnHeaders": [{"fontColor": sc(SLATE), "backColor": sc(SURFACE_2), "fontFamily": FONT_SB, "fontSize": 9}],
+            "rowHeaders": [{"fontColor": sc(INK), "backColor": sc(SURFACE), "fontSize": 9, "showExpandCollapseButtons": False,
+                            "legacyStyleDisabled": True}],
+            "values": [{"fontColorPrimary": sc(INK), "backColorPrimary": sc(SURFACE), "backColorSecondary": sc(SURFACE),
+                        "fontSize": 9}],
+            "subTotals": [{"fontFamily": FONT_SB, "backgroundColor": sc(SURFACE_2)}]}},
+        "slicer": {"*": {
+            "header": [{"show": True, "fontColor": sc(SLATE), "textSize": 7.5, "fontFamily": FONT_SB, "outlineStyle": 0}],
+            "items": [{"fontColor": sc(SLATE), "background": sc(SURFACE), "textSize": 9, "outlineStyle": 0}],
+            "background": [{"show": False}], "border": [{"show": False}], "dropShadow": [{"show": False}],
+            "padding": [{"top": 0, "bottom": 0, "left": 0, "right": 0}]}},
+        "textbox": {"*": {"background": [{"show": False}], "border": [{"show": False}],
+                          "dropShadow": [{"show": False}], "padding": [{"top": 0, "bottom": 0, "left": 0, "right": 0}]}},
+        "actionButton": {"*": {"background": [{"show": False}], "border": [{"show": False}],
+                               "dropShadow": [{"show": False}], "visualHeader": [{"show": False}]}},
+    },
+}
+
+
+def chrome(p):
+    """Mark the visuals just added as chrome (drawn in this design's coordinates, not relaid out)."""
+    for v in p.visuals:
+        v.setdefault("_chrome", True)
+
+
+def fonted(v, font, runs=None):
+    """Set the font family of a textbox's runs (all, or the given run indexes of the first paragraph)."""
+    for para in v["objects"]["general"][0]["properties"]["paragraphs"]:
+        for i, r in enumerate(para["textRuns"]):
+            if runs is None or i in runs:
+                r["textStyle"]["fontFamily"] = font
+    return v
+
+
+NAV_W = 118
+
+
+def sidebar(p, active):            # name kept: every page calls it first; draws the top navigation band
+    p.add("band", 0, 0, W, BAND_H, panel(NAVY))
+    # logo: three warp threads and a weft, an original mark for the fictional company
+    for i in range(3):
+        p.add(f"logo_warp{i}", 24 + i * 6, 15, 3, 26, panel(GOLD))
+    p.add("logo_weft", 20, 26, 22, 3, panel(WHITE))
+    p.add("logo_name", 52, 10, 170, 24, fonted(textbox([[("LARKSPUR", 15, WHITE, True)]]), NUM_FONT))
+    p.add("logo_sub", 52, 32, 190, 16, textbox([[("HOME TEXTILES · OPERATIONS", 6.5, MIST, True)]]))
+    x = 262
+    for key, label in NAV:
+        on = key == active
+        p.add(f"nav_label_{key}", x, 18, NAV_W, 22, textbox([[(label, 9.5, WHITE if on else MIST, on)]], align="center"))
+        if on:
+            p.add(f"nav_mark_{key}", x + 16, BAND_H - 4, NAV_W - 32, 4, panel(GOLD))
+        p.add(f"nav_{key}", x, 6, NAV_W, BAND_H - 10, action("PageNavigation", navigationSection=PAGE_NAMES[key]))
+        x += NAV_W
+    p.add("band_date", W - 196, 18, 172, 22, textbox([[("REPORTING DATE  ", 6.5, MIST, True), ("31 DEC 2025", 9, WHITE, True)]],
+                                                       align="right"))
+    # filters: right of the title row
+    for i, (f, label, g) in enumerate(SLICERS):
+        v = visual("slicer", {"Values": [(f, label)]}, objects={
+            "data": [{"properties": {"mode": lit("Dropdown")}}],
+            "header": [{"properties": {"show": lit(True), "fontColor": solid(SLATE), "textSize": lit(7), "fontFamily": lit(FONT_SB)}}],
+            "items": [{"properties": {"fontColor": solid(SLATE), "background": solid(SURFACE), "textSize": lit(9),
+                                      "outlineStyle": lit(0)}}]},
+            container=plain_container())
+        v["syncGroup"] = {"groupName": g, "fieldChanges": True, "filterChanges": True}
+        p.add(f"slicer_{g}", 716 + i * 140, 62, 132, 44, v)
+    p.add("reset_chip", 1140, 78, 116, 26, textbox([[("↺  Reset filters", 8, INK, True)]], align="center", container=plain_container(
+        background=[{"properties": {"show": lit(True), "color": solid(SURFACE), "transparency": lit(0)}}],
+        border=[{"properties": {"show": lit(True), "color": solid(LINE), "radius": lit(13)}}],
+        padding=[{"properties": {"top": lit(5), "bottom": lit(0), "left": lit(4), "right": lit(4)}}])))
+    p.add("reset", 1140, 78, 116, 26, action("ClearAllSlicers", "Clear the year, category and production-line filters on every page"))
+    chrome(p)
+
+
+def context_line(p, x, y, w):
+    p.add("hdr_context", x, y, w, 20, visual(
+        "card", {"Values": [mea("Blank Text")]},
+        objects={"labels": [{"properties": {"fontSize": lit(1), "color": solid(CANVAS)}}],
+                 "categoryLabels": [{"properties": {"show": lit(False)}}]},
+        container=plain_container(title=[{"properties": {
+            "show": lit(True), "text": {"expr": mea("Filter Context")}, "fontColor": solid(SLATE_2),
+            "fontSize": lit(8.5), "fontFamily": lit(FONT), "alignment": lit("left")}}])))
+
+
+def header(p, title):
+    p.add("hdr_mark", NX0, 68, 4, 22, panel(GOLD))
+    p.add("hdr_title", NX0 + 12, 62, 670, 32, textbox([[(title, 17, INK, True)]]))
+    context_line(p, NX0 + 12, 90, 680)
+    chrome(p)
+
+
+def drill_header(p, title_measure):
+    p.add("back", NX0, 64, 34, 30, {
+        "visualType": "actionButton", "drillFilterOtherVisuals": True,
+        "objects": {"icon": [{"properties": {"shapeType": lit("back"), "lineColor": solid(INK),
+                                             "lineWeight": lit(2)}, "selector": {"id": "default"}}],
+                    "fill": [{"properties": {"show": lit(True), "fillColor": solid(SURFACE)}, "selector": {"id": "default"}}],
+                    "outline": [{"properties": {"show": lit(False)}},
+                                {"properties": {"show": lit(False)}, "selector": {"id": "default"}}]},
+        "visualContainerObjects": {**plain_container(
+            border=[{"properties": {"show": lit(True), "color": solid(GOLD), "radius": lit(6)}}]),
+            "visualLink": [{"properties": {"show": lit(True), "type": lit("Back")}}]}})
+    v = card(title_measure, size=1, container=plain_container(
+        title=[{"properties": {"show": lit(True), "text": {"expr": mea(title_measure)}, "fontColor": solid(INK),
+                               "fontSize": lit(15), "fontFamily": lit(FONT_SB), "alignment": lit("left")}}]))
+    v["objects"]["labels"][0]["properties"]["color"] = solid(CANVAS)
+    p.add("hdr_title", NX0 + 44, 60, 640, 32, v)
+    context_line(p, NX0 + 44, 90, 640)
+    chrome(p)
+
+
+NO_SPARK = ("Leak", "Avoidable", "ROP", "SKUs", "Fill Recommended", "Lost Margin Saved", "Stock Change", "Net Policy Gain",
+            "Lines Received", "Rows Removed", "Field Fixes", "Clean Lines", "Fixes")
+
+
+def kpi_tiles(p, tiles, y=KPI_Y, h=KPI_H):
+    """tiles: (value measure, label, note measure, note colour (hex or measure), number style[, whole_book]).
+    White tile with a status-coloured top edge, DIN value and, for measures that move over time, a monthly trend line."""
+    n = len(tiles)
+    w = (NX1 - NX0 - (n - 1) * GAP) / n
+    for i, t in enumerate(tiles):
+        val, label, sub, sub_color, style = t[:5]
+        whole_book = len(t) > 5 and t[5]
+        x = NX0 + i * (w + GAP)
+        is_hex = sub_color.startswith("#")
+        edge = PRIMARY if is_hex else mea(sub_color)
+        p.add(f"kpi_{i}_frame", x, y, w, h, textbox([[("", 8, INK, False)]], container=plain_container(
+            background=[{"properties": {"show": lit(True), "color": solid(SURFACE), "transparency": lit(0)}}],
+            border=[{"properties": {"show": lit(True), "color": solid(LINE), "radius": lit(6)}}])))
+        p.add(f"kpi_{i}_edge", x + 1, y + 1, w - 2, 3, panel(edge))
+        p.add(f"kpi_{i}_label", x + 14, y + 12, w - 24, 18, textbox([[(label.upper(), 7.5, SLATE, True)]]))
+        spark = not whole_book and not val.startswith(NO_SPARK)
+        vw = w * 0.58 if spark else w - 12
+        p.add(f"kpi_{i}_value", x + 6, y + 30, vw, 40, card(
+            val, size=21, font=NUM_FONT, millions=style == "M", exact=style == "N", container=plain_container()))
+        if spark:
+            p.add(f"kpi_{i}_spark", x + vw, y + 24, w - vw - 8, 52, visual(
+                "lineChart", {"Category": [MONTH], "Y": [(mea(val), label)]},
+                objects={"categoryAxis": [{"properties": {"show": lit(False), "axisType": lit("Scalar")}}],
+                         "valueAxis": [{"properties": {"show": lit(False), "gridlineShow": lit(False)}}],
+                         "legend": [{"properties": {"show": lit(False)}}],
+                         "dataPoint": [{"properties": {"fill": solid(CYAN)}}],
+                         "lineStyles": [{"properties": {"strokeWidth": lit(1.5)}}]},
+                container=plain_container()))
+        sub_card = card(sub, size=7.5, font=FONT_SB, color=sub_color if is_hex else SLATE, container=plain_container())
+        if not is_hex:
+            sub_card["objects"]["labels"][0]["properties"]["color"] = solid(mea(sub_color))
+        p.add(f"kpi_{i}_sub", x + 6, y + 76, w - 12, 18, sub_card)
+        if whole_book:
+            p.add(f"kpi_{i}_tag", x + w - 84, y + 10, 76, 20, textbox([[("WHOLE BOOK", 6, SLATE_2, True)]], align="right"))
+    chrome(p)
+
+
+def drill_button(p, vid, x, y, w, label, page, hint):
+    """'Open ... detail' chip: enabled once one row is selected in a visual on the page."""
+    p.add(f"{vid}_chip", x, y, w, 24, textbox([[(label, 8, PRIMARY, True)]], align="center", container=plain_container(
+        background=[{"properties": {"show": lit(True), "color": solid(SURFACE), "transparency": lit(0)}}],
+        border=[{"properties": {"show": lit(True), "color": solid(PRIMARY), "radius": lit(12)}}],
+        padding=[{"properties": {"top": lit(4), "bottom": lit(0), "left": lit(4), "right": lit(4)}}])))
+    p.add(vid, x, y, w, 24, action("Drillthrough", drillthroughSection=PAGE_NAMES[page],
+                                   disabledTooltip=hint, enabledTooltip=f"{label.rstrip(' ›')} for the selected row"))
+
+
+def relayout(fn):
+    """Map the page body, drawn for the sidebar layout, onto this design's content area; chrome stays put."""
+    def build():
+        p = fn()
+        if p.kind != "Tooltip":
+            ox0, ox1, oy0, oy1 = OLD
+            sx, sy = (NX1 - NX0) / (ox1 - ox0), (704 - CONTENT_Y) / (oy1 - oy0)
+            for v in p.visuals:
+                if v.pop("_chrome", False):
+                    continue
+                pos = v["position"]
+                pos["x"] = round(NX0 + (pos["x"] - ox0) * sx, 2); pos["width"] = round(pos["width"] * sx, 2)
+                pos["y"] = round(CONTENT_Y + (pos["y"] - oy0) * sy, 2); pos["height"] = round(pos["height"] * sy, 2)
+        for v in p.visuals:
+            v.pop("_chrome", None)
+        return p
+    build.__name__ = fn.__name__
+    return build
 
 
 def back_button():
@@ -1330,7 +1580,7 @@ def page_overview():
         title="Scorecard by category", subtitle="Service leaks = chargebacks + expediting + returns · contribution = gross margin − freight − chargebacks − returns · shading = against target",
         sort=[(mea("Revenue"), "Descending")],
         objects={"values": [cf(ref(mea("On-time %")), back="Heat On-time"), cf(ref(mea("Fill Rate")), back="Heat Fill")],
-                 "grid": [{"properties": {"rowPadding": lit(3)}}]}))
+                 "grid": [{"properties": {"rowPadding": lit(2)}}]}))
     return p
 
 
@@ -1387,7 +1637,7 @@ def page_inventory():
     p.add("stock", X0 + 420 + GAP, 192, CW - 420 - GAP, 250, visual(
         "lineChart", {"Category": [WEEK], "Y": [(mea("Avg Stock Value"), "Stock value")]},
         title="Finished-goods stock at cost, by week", subtitle="Flat while demand grew 7% a year: the rule still uses 2022 averages",
-        objects={"categoryAxis": SCALAR, "dataPoint": [{"properties": {"fill": solid(CYAN)}}],
+        objects={"categoryAxis": SCALAR, "dataPoint": [{"properties": {"fill": solid(PRIMARY)}}],
                  "valueAxis": [{"properties": {"labelDisplayUnits": lit(1000000)}}]}))
     p.add("abc", X0, 454, 420, 250, visual(
         "pivotTable", {"Rows": [(col("dim_sku", "abc"), "ABC (revenue)")], "Columns": [(col("dim_sku", "xyz"), "XYZ (variability)")],
@@ -1461,7 +1711,7 @@ def page_leaks():
         title="Gross margin to contribution", subtitle="2025, or the year picked in the filter · whole company",
         sort=[(col("leaks", "item"), "Ascending")],
         objects={"sentimentColors": [{"properties": {"increaseFill": solid(PRIMARY), "decreaseFill": solid(BAD),
-                                                      "totalFill": solid(CYAN)}}],
+                                                      "totalFill": solid(NAVY)}}],
                  "labels": labels(True, labelDisplayUnits=1000000, labelPrecision=lit_int(2)),
                  "categoryAxis": [{"properties": {"fontSize": lit(8)}}],
                  "valueAxis": [{"properties": {"labelDisplayUnits": lit(1000000)}}]}))
@@ -1502,7 +1752,7 @@ def page_quality():
         "Stock record accuracy by warehouse zone", "Cycle counts within ±2%: the mezzanine is the weak spot",
         fill="Accuracy Color", sort=[(col("fact_count", "zone"), "Ascending")], tooltips=[(mea("Counts"), "Counts")]))
     p.add("fabric", X0 + w + GAP, 454, w, 250, bar(
-        "clusteredBarChart", (col("dim_sku", "fabric"), "Fabric"), "Defect Rate", "Defect rate", "Defect returns by fabric",
+        "clusteredColumnChart", (col("dim_sku", "fabric"), "Fabric"), "Defect Rate", "Defect rate", "Defect returns by fabric",
         "Small differences next to line L3's: they follow how much of each fabric L3 makes", precision=2, objects={"categoryAxis": [{"properties": {"fontSize": lit(8)}}]}))
     return p
 
@@ -1521,7 +1771,7 @@ def page_dq():
     ISSUE = (col("dq_log", "issue"), "Issue")
     p.add("fixes", X0, 192, 480, 512, visual(
         "clusteredBarChart", {"Category": [ISSUE], "Y": [(mea("Fixes"), "Rows")], "Tooltips": [(mea("DQ Injected"), "Injected")]},
-        title="What was wrong in the extracts", subtitle="Red = rows removed · orange = values repaired or flagged",
+        title="What was wrong in the extracts", subtitle="Red = rows removed · amber = values repaired or flagged",
         sort=[(mea("Fixes"), "Descending")],
         objects={"dataPoint": measure_fill("Fix Color"), "labels": labels(True, labelDisplayUnits=1),
                  "categoryAxis": [{"properties": {"fontSize": lit(8), "maxMarginFactor": lit(50)}}]}))
@@ -1533,8 +1783,8 @@ def page_dq():
         objects={"values": [cf(ref(mea("DQ Match")), font="Match Color")], **NO_TOTALS,
                  "grid": [{"properties": {"rowPadding": lit(3)}}],
                  "columnWidth": [{"properties": {"value": lit(w_)}, "selector": {"metadata": r}} for r, w_ in [
-                     (ref(col("dq_log", "table_name")), 86), (ref(col("dq_log", "issue")), 168), (ref(mea("DQ Rows")), 54),
-                     (ref(mea("DQ Injected")), 58), (ref(mea("DQ Match")), 50), (ref(col("dq_log", "action")), 112)]]}))
+                     (ref(col("dq_log", "table_name")), 96), (ref(col("dq_log", "issue")), 206), (ref(mea("DQ Rows")), 60),
+                     (ref(mea("DQ Injected")), 64), (ref(mea("DQ Match")), 52), (ref(col("dq_log", "action")), 150)]]}))
     return p
 
 
@@ -1543,13 +1793,7 @@ def page_sku():
     p = Page("sku", "SKU Detail", kind="Drillthrough")
     p.drill_field, p.drill_default = col("dim_sku", "sku"), DEFAULT_SKU
     sidebar(p, None)
-    p.add("back", X0, 16, 36, 30, back_button())
-    p.add("hdr_title", X0 + 48, 14, 1000, 34, title_card("Title SKU", 17, WHITE, hide_on=CANVAS))
-    tmp = Page("tmp", "")
-    header(tmp, "")
-    ctx = next(v for v in tmp.visuals if v["name"] == hid("tmp", "hdr_context"))
-    ctx["name"] = hid("sku", "hdr_context")
-    p.visuals.append(ctx)
+    drill_header(p, "Title SKU")
     kpi_tiles(p, [
         ("Revenue", "Revenue", "Note SKU Rev", SLATE, "M"),
         ("Fill Rate", "Fill rate (units)", "RAG Fill", "RAG Fill Color", ""),
@@ -1559,7 +1803,7 @@ def page_sku():
     p.add("weekly", X0, 192, CW, 262, visual(
         "lineChart", {"Category": [WEEK], "Y": [(mea("On Hand Units"), "On hand"), (mea("Demand Units"), "Weekly demand")]},
         title="Stock on hand vs weekly demand", subtitle="When the line touches zero, orders wait or are cancelled",
-        objects={"categoryAxis": SCALAR, "dataPoint": series_colors([("On Hand Units", CYAN), ("Demand Units", WARN)])}))
+        objects={"categoryAxis": SCALAR, "dataPoint": series_colors([("On Hand Units", PRIMARY), ("Demand Units", GREIGE_DARK)])}))
     p.add("pos", X0, 466, 520, 238, visual(
         "tableEx", {"Values": [(col("fact_po", "po_id"), "Production order"), (col("fact_po", "due_date"), "Due"),
                                (col("fact_po", "received_date"), "Received"), (col("fact_po", "qty"), "Units"),
@@ -1584,7 +1828,7 @@ def page_tip_sku():
     return p
 
 
-PAGES = [with_fit(f) for f in (page_overview, page_delivery, page_inventory, page_policy, page_leaks, page_quality, page_dq,
+PAGES = [with_fit(relayout(f)) for f in (page_overview, page_delivery, page_inventory, page_policy, page_leaks, page_quality, page_dq,
                                 page_sku, page_tip_sku)]
 
 

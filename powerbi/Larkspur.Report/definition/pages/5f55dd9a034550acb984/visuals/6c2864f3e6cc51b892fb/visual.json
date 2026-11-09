@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "6c2864f3e6cc51b892fb",
   "position": {
-    "x": 24,
-    "y": 210,
+    "x": 616,
+    "y": 18,
     "z": 1400,
-    "height": 20,
-    "width": 144,
+    "height": 22,
+    "width": 118,
     "tabOrder": 1400
   },
   "visual": {
@@ -18,13 +18,13 @@
           "properties": {
             "paragraphs": [
               {
-                "horizontalTextAlignment": "left",
+                "horizontalTextAlignment": "center",
                 "textRuns": [
                   {
                     "value": "Reorder Policy",
                     "textStyle": {
                       "fontSize": "9.5pt",
-                      "color": "#8A9AB4",
+                      "color": "#B8C2C8",
                       "fontFamily": "Segoe UI"
                     }
                   }

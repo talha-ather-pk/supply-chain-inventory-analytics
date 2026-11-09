@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "bccd302bdd655bf1bd6d",
   "position": {
-    "x": 200,
-    "y": 12,
-    "z": 3200,
-    "height": 34,
-    "width": 760,
-    "tabOrder": 3200
+    "x": 36,
+    "y": 62,
+    "z": 2900,
+    "height": 32,
+    "width": 670,
+    "tabOrder": 2900
   },
   "visual": {
     "visualType": "textbox",
@@ -23,8 +23,8 @@
                   {
                     "value": "Data Quality  ·  Cleaning Log",
                     "textStyle": {
-                      "fontSize": "19pt",
-                      "color": "#E8EAF6",
+                      "fontSize": "17pt",
+                      "color": "#1E2A30",
                       "fontFamily": "Segoe UI Semibold",
                       "fontWeight": "bold"
                     }

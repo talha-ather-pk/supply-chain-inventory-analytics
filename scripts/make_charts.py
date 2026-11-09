@@ -17,12 +17,12 @@ ROOT = Path(__file__).resolve().parents[1]
 P, C = ROOT / "data_clean" / "powerbi", ROOT / "data_clean"
 IMG, SITE = ROOT / "images", ROOT / "site" / "img"
 IMG.mkdir(exist_ok=True); SITE.mkdir(parents=True, exist_ok=True)
-# light print version of the dashboard's indigo palette
-INDIGO, PRIMARY, COMPARE, GOOD, WARN, BAD, SLATE, SKY = ("#1E2A5A", "#4F5BD5", "#B9BEDA", "#2F8F6B", "#C98A1E", "#C2453F",
-                                                         "#5C6385", "#3AA3C9")
+# the dashboard's "Mill floor" palette: steel blue data, steel grey text, green / amber / red status
+INDIGO, PRIMARY, COMPARE, GOOD, WARN, BAD, SLATE, SKY = ("#22313A", "#2B5876", "#B9C3C9", "#2E8B57", "#C99A06", "#B83A30",
+                                                         "#5E6B73", "#22313A")
 plt.rcParams.update({"font.family": "Segoe UI", "font.size": 10, "axes.spines.top": False, "axes.spines.right": False,
                      "axes.titleweight": "bold", "axes.titlesize": 12, "axes.titlelocation": "left",
-                     "axes.edgecolor": "#CDD1E4"})
+                     "axes.edgecolor": "#E2DDD2"})
 pct = PercentFormatter(1.0, decimals=0)
 
 

@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "f5732ab3529350d8905c",
   "position": {
-    "x": 1082.8,
-    "y": 88,
+    "x": 1033.2,
+    "y": 124,
     "z": 5700,
     "height": 18,
-    "width": 173.2,
+    "width": 212.8,
     "tabOrder": 5700
   },
   "visual": {
@@ -24,7 +24,7 @@
                     "value": "SERVICE LEAKS",
                     "textStyle": {
                       "fontSize": "7.5pt",
-                      "color": "#A4ABCC",
+                      "color": "#5E6B73",
                       "fontFamily": "Segoe UI Semibold",
                       "fontWeight": "bold"
                     }
