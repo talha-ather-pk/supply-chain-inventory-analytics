@@ -1,0 +1,21 @@
+{
+  "skus_in_policy": 140,
+  "class_counts": {
+    "AX": 16,
+    "AY": 27,
+    "AZ": 4,
+    "BX": 10,
+    "BY": 28,
+    "BZ": 10,
+    "CX": 20,
+    "CY": 24,
+    "CZ": 11
+  },
+  "actual_2025_fill_pct": 97.81,
+  "replay_current_fill_pct": 98.07,
+  "recommended_fill_pct": 99.41,
+  "lost_margin_saved_usd": 351235,
+  "stock_value_change_usd": 355490,
+  "carrying_cost_change_usd": 78207,
+  "l4_delay_weeks_mean": 0.67
+}

@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.DS_Store
+.vercel
+.env*
+~$*
+# the SQLite database (19 MB) is rebuilt exactly by scripts/clean.py
+data_clean/larkspur.db

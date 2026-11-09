@@ -1,0 +1,104 @@
+{
+  "transit_days": {
+    "sea_base": {
+      "USA": 26,
+      "UK": 23,
+      "EU": 21,
+      "GCC": 13
+    },
+    "air_base": {
+      "GCC": 3,
+      "other": 5
+    },
+    "road_base": 3,
+    "customs": {
+      "USA": 0.0,
+      "UK": 0.3,
+      "EU": 0.6,
+      "GCC": 1.0,
+      "Domestic": 0.0
+    },
+    "carrier_extra_days": {
+      "Sea": {
+        "Blue Anchor Line": 0.0,
+        "Coral Shipping": 0.5,
+        "Meridian Freight": 3.0
+      },
+      "Air": {
+        "SkyBridge Cargo": 0.0,
+        "Falcon Air Freight": 1.0
+      },
+      "Road": {
+        "Highway Express": 0.0,
+        "Metro Haulers": 0.8
+      }
+    },
+    "peak_sea_oct_dec": 3.5,
+    "noise_mean": {
+      "Sea": 2.4,
+      "Air": 0.8,
+      "Road": 0.8
+    },
+    "quote_buffer": {
+      "Sea": 5,
+      "Air": 2,
+      "Road": 2
+    },
+    "quoted_processing_days": 3
+  },
+  "policy_current": {
+    "reorder_point_weeks": 6,
+    "order_qty_weeks": 8,
+    "plan_rate": "2022 average, not updated",
+    "trend_per_year": 0.07
+  },
+  "production": {
+    "lead_time_weeks": {
+      "L1": 3,
+      "L2": 4,
+      "L3": 5,
+      "L4": 7
+    },
+    "L4_delay_probability": 0.35,
+    "L4_delay_weeks": "1-3"
+  },
+  "returns": {
+    "defect_rate_by_line": {
+      "L1": 0.008,
+      "L2": 0.008,
+      "L3": 0.035,
+      "L4": 0.01
+    },
+    "linen_multiplier": 1.5,
+    "damage_rate_by_mode": {
+      "Sea": 0.004,
+      "Air": 0.002,
+      "Road": 0.006
+    },
+    "wrong_item": 0.002
+  },
+  "cycle_count_error_rate_by_zone": {
+    "A - fast pick": 0.04,
+    "B - bulk rack": 0.07,
+    "C - mezzanine": 0.2
+  },
+  "customer_cancel_if_short": {
+    "Big-box": 0.3,
+    "Department store": 0.35,
+    "Online": 0.6,
+    "Wholesale": 0.2
+  },
+  "injected": {
+    "order_date_ddmmyyyy (GCC EDI feed)": 6120,
+    "ship_mode_variants": 1800,
+    "delivery_date_missing (POD not uploaded)": 900,
+    "customer_id_case_spaces": 600,
+    "zero_price_samples": 200,
+    "negative_qty_credit_notes": 120,
+    "test_lines": 15,
+    "duplicate_lines": 350,
+    "category_spelling_variants": 8,
+    "unit_cost_missing": 3,
+    "cycle_count_not_finished": 40
+  }
+}

@@ -1,0 +1,91 @@
+customer_id,customer_name,market,channel,late_penalty_rate
+C001,Rowanberry Retail Group,USA,Online,0.0
+C002,Yarrowdale Home & Bath,EU,Big-box,0.03
+C003,Marlow Living,USA,Online,0.0
+C004,Kestrel Outlet,USA,Wholesale,0.0
+C005,Fernhill Home,Domestic,Wholesale,0.0
+C006,Harbourside Linen Co,UK,Department store,0.02
+C007,Thornbury Outlet,USA,Online,0.0
+C008,Quayside Linen Co,UK,Wholesale,0.0
+C009,Dunmore Home,USA,Online,0.0
+C010,Dunmore Stores,EU,Big-box,0.03
+C011,Harbourside Living,GCC,Online,0.0
+C012,Fernhill Outlet,EU,Wholesale,0.0
+C013,Fernhill Interiors,UK,Big-box,0.03
+C014,Glenrock Outlet,UK,Big-box,0.03
+C015,Cedarwood Living,EU,Big-box,0.03
+C016,Juniper Linen Co,USA,Big-box,0.03
+C017,Brookline Stores,Domestic,Big-box,0.03
+C018,Juniper Home & Bath,EU,Department store,0.02
+C019,Lindenfield Linen Co,UK,Online,0.0
+C020,Westbrook Interiors,GCC,Online,0.0
+C021,Oakhaven Home,USA,Wholesale,0.0
+C022,Brookline Home,EU,Wholesale,0.0
+C023,Saltmarsh Home,GCC,Online,0.0
+C024,Cedarwood Linen Co,GCC,Online,0.0
+C025,Valemont Outlet,GCC,Wholesale,0.0
+C026,Cedarwood Home,Domestic,Online,0.0
+C027,Northgate Outlet,EU,Online,0.0
+C028,Marlow Home & Bath,GCC,Wholesale,0.0
+C029,Juniper Outlet,EU,Big-box,0.03
+C030,Upton Interiors,USA,Online,0.0
+C031,Elmstead Retail Group,UK,Department store,0.02
+C032,Juniper Home,UK,Wholesale,0.0
+C033,Westbrook Outlet,EU,Wholesale,0.0
+C034,Ivybridge Home,USA,Wholesale,0.0
+C035,Rowanberry Home,UK,Wholesale,0.0
+C036,Oakhaven Retail Group,Domestic,Wholesale,0.0
+C037,Glenrock Living,EU,Big-box,0.03
+C038,Oakhaven Linen Co,UK,Online,0.0
+C039,Elmstead Living,USA,Wholesale,0.0
+C040,Pinecrest Interiors,GCC,Department store,0.02
+C041,Kestrel Stores,EU,Wholesale,0.0
+C042,Northgate Retail Group,USA,Big-box,0.03
+C043,Oakhaven Interiors,GCC,Wholesale,0.0
+C044,Brookline Outlet,USA,Online,0.0
+C045,Harbourside Retail Group,Domestic,Department store,0.02
+C046,Quayside Stores,EU,Department store,0.02
+C047,Oakhaven Stores,EU,Wholesale,0.0
+C048,Lindenfield Home & Bath,GCC,Wholesale,0.0
+C049,Ivybridge Living,EU,Wholesale,0.0
+C050,Alder Linen Co,USA,Department store,0.02
+C051,Northgate Living,GCC,Online,0.0
+C052,Westbrook Home,USA,Department store,0.02
+C053,Ivybridge Home & Bath,USA,Wholesale,0.0
+C054,Yarrowdale Interiors,Domestic,Wholesale,0.0
+C055,Westbrook Home & Bath,USA,Big-box,0.03
+C056,Thornbury Home & Bath,USA,Big-box,0.03
+C057,Alder Living,USA,Wholesale,0.0
+C058,Saltmarsh Stores,USA,Wholesale,0.0
+C059,Rowanberry Stores,USA,Online,0.0
+C060,Kestrel Home & Bath,EU,Big-box,0.03
+C061,Yarrowdale Outlet,GCC,Big-box,0.03
+C062,Quayside Home,Domestic,Wholesale,0.0
+C063,Northgate Home & Bath,USA,Big-box,0.03
+C064,Juniper Stores,EU,Wholesale,0.0
+C065,Cedarwood Home & Bath,Domestic,Wholesale,0.0
+C066,Valemont Living,EU,Department store,0.02
+C067,Fernhill Living,UK,Online,0.0
+C068,Brookline Living,USA,Department store,0.02
+C069,Upton Linen Co,EU,Online,0.0
+C070,Pinecrest Stores,USA,Big-box,0.03
+C071,Pinecrest Living,EU,Department store,0.02
+C072,Cedarwood Interiors,USA,Department store,0.02
+C073,Valemont Home,Domestic,Online,0.0
+C074,Saltmarsh Home & Bath,USA,Wholesale,0.0
+C075,Saltmarsh Living,GCC,Wholesale,0.0
+C076,Kestrel Home,GCC,Department store,0.02
+C077,Dunmore Home & Bath,UK,Wholesale,0.0
+C078,Thornbury Stores,GCC,Big-box,0.03
+C079,Elmstead Interiors,USA,Big-box,0.03
+C080,Harbourside Home,USA,Wholesale,0.0
+C081,Rowanberry Linen Co,UK,Department store,0.02
+C082,Ivybridge Outlet,USA,Department store,0.02
+C083,Quayside Retail Group,EU,Big-box,0.03
+C084,Marlow Stores,USA,Online,0.0
+C085,Oakhaven Living,Domestic,Department store,0.02
+C086,Brookline Linen Co,USA,Wholesale,0.0
+C087,Fernhill Home & Bath,GCC,Department store,0.02
+C088,Alder Home & Bath,USA,Wholesale,0.0
+C089,Juniper Living,UK,Department store,0.02
+C090,Upton Living,EU,Online,0.0

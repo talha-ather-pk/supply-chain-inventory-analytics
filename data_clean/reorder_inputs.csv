@@ -1,0 +1,141 @@
+sku,product_name,category,fabric,size,colour,list_price,unit_cost,unit_weight_kg,production_line,lead_time_wk,zone,status,rop_current,order_qty_current,launch_date,discontinued_date,cost_imputed,abc,xyz,mean_d,sd_d,lead_wk,lt_sd,on_hand_units,on_order_units,backlog_units
+BR-083,"Terry bathrobe, S/M, Sage",Bathrobes,Terry,S/M,Sage,46.72,24.58,1.04,L3,4,A - fast pick,Active,2352.0,3136.0,2023-01-02,,0,A,Z,528.7,384.8,4.0,0.0,110,3136,128
+BR-130,"Waffle bathrobe, S/M, Ivory",Bathrobes,Waffle,S/M,Ivory,28.21,16.35,1.16,L1,4,A - fast pick,Active,11754.0,15672.0,2023-01-02,,0,A,Z,2407.8,1495.3,4.0,0.0,219,15672,2165
+BR-135,"Terry bathrobe, L/XL, Navy",Bathrobes,Terry,L/XL,Navy,37.76,20.94,1.31,L1,3,B - bulk rack,Active,1869.0,2492.0,2023-01-02,,0,A,Y,414.0,195.7,3.0,0.0,2606,0,0
+BS-001,"Cotton percale bed sheet, Queen, Navy",Bed sheets,Cotton percale,Queen,Navy,42.39,23.66,1.5,L4,7,B - bulk rack,Active,1866.0,2488.0,2023-01-02,,0,A,X,384.2,85.5,7.68,1.07,219,2488,0
+BS-007,"Cotton percale bed sheet, Twin, Stone",Bed sheets,Cotton percale,Twin,Stone,52.85,29.56,1.85,L2,5,A - fast pick,Active,2760.0,3680.0,2023-01-02,,0,A,Y,565.3,220.1,5.0,0.0,2446,3680,0
+BS-009,"Cotton sateen bed sheet, Queen, Sage",Bed sheets,Cotton sateen,Queen,Sage,55.51,31.14,1.82,L1,2,A - fast pick,Active,3990.0,5320.0,2023-01-02,,0,A,X,828.0,161.0,2.0,0.0,4236,0,0
+BS-021,"Poly-cotton bed sheet, Full, Stone",Bed sheets,Poly-cotton,Full,Stone,43.52,26.17,1.53,L3,4,B - bulk rack,Active,1638.0,2184.0,2023-01-02,,0,A,X,334.8,98.6,4.0,0.0,2107,0,0
+BS-023,"Linen bed sheet, Twin, Sage",Bed sheets,Linen,Twin,Sage,68.65,38.45,1.49,L2,5,B - bulk rack,Active,1008.0,1344.0,2023-01-02,,0,A,X,207.2,43.0,5.0,0.0,228,1344,246
+BS-028,"Cotton sateen bed sheet, Full, Sage",Bed sheets,Cotton sateen,Full,Sage,58.1,32.06,1.89,L3,4,A - fast pick,Active,7230.0,9640.0,2023-01-02,,0,A,Y,1448.4,419.5,4.0,0.0,7426,0,0
+BS-045,"Cotton sateen bed sheet, Full, Ivory",Bed sheets,Cotton sateen,Full,Ivory,63.36,36.65,1.39,L1,2,B - bulk rack,Active,1572.0,2096.0,2023-01-02,,0,A,X,328.1,80.4,2.0,0.0,900,2096,0
+BS-047,"Cotton sateen bed sheet, King, Charcoal",Bed sheets,Cotton sateen,King,Charcoal,42.21,25.39,2.6,L3,5,B - bulk rack,Active,1656.0,2208.0,2023-01-02,,0,A,Y,379.2,132.2,5.0,0.0,161,4416,936
+BS-048,"Linen bed sheet, Queen, Navy",Bed sheets,Linen,Queen,Navy,71.03,39.88,1.31,L4,8,A - fast pick,Active,2808.0,3744.0,2023-01-02,,0,A,Y,568.1,179.4,8.68,1.07,1258,3744,0
+BS-068,"Poly-cotton bed sheet, Full, Sage",Bed sheets,Poly-cotton,Full,Sage,36.0,21.75,1.9,L2,4,B - bulk rack,Active,1956.0,2608.0,2023-01-02,,0,A,X,386.1,101.3,4.0,0.0,2426,0,0
+BS-071,"Linen bed sheet, Twin, Stone",Bed sheets,Linen,Twin,Stone,50.64,28.83,1.67,L2,4,A - fast pick,Active,9126.0,12168.0,2023-01-02,,0,A,X,1883.7,302.4,4.0,0.0,6888,12168,0
+BS-081,"Poly-cotton bed sheet, Full, Ivory",Bed sheets,Poly-cotton,Full,Ivory,56.85,34.31,1.9,L2,5,A - fast pick,Active,2652.0,3536.0,2023-01-02,,0,A,X,551.2,109.7,5.0,0.0,2753,0,0
+BS-084,"Cotton sateen bed sheet, King, Indigo",Bed sheets,Cotton sateen,King,Indigo,37.34,22.75,2.44,L2,5,B - bulk rack,Active,1692.0,2256.0,2023-01-02,,0,A,X,342.8,81.2,5.0,0.0,4,2256,0
+BS-087,"Cotton percale bed sheet, Twin, Blush",Bed sheets,Cotton percale,Twin,Blush,31.89,19.33,1.45,L3,5,B - bulk rack,Active,2046.0,2728.0,2023-01-02,,0,A,X,427.0,83.5,5.0,0.0,1373,2728,0
+BS-088,"Cotton percale bed sheet, Full, Ivory",Bed sheets,Cotton percale,Full,Ivory,40.81,23.15,1.84,L2,5,A - fast pick,Active,3834.0,5112.0,2023-01-02,,0,A,Y,789.0,176.8,5.0,0.0,3003,5112,0
+BS-094,"Linen bed sheet, Full, Charcoal",Bed sheets,Linen,Full,Charcoal,54.4,32.41,1.41,L3,4,A - fast pick,Active,3126.0,4168.0,2023-01-02,,0,A,Y,658.6,234.2,4.0,0.0,4465,0,0
+BS-105,"Cotton percale bed sheet, King, Sage",Bed sheets,Cotton percale,King,Sage,31.54,18.34,2.0,L3,5,A - fast pick,Active,17214.0,22952.0,2023-01-02,,0,A,X,3762.3,841.9,5.0,0.0,16532,22952,0
+BS-106,"Cotton sateen bed sheet, King, Charcoal",Bed sheets,Cotton sateen,King,Charcoal,63.83,37.96,2.19,L3,6,A - fast pick,Active,3930.0,5240.0,2023-01-02,,0,A,Y,830.3,293.7,6.0,0.0,81,5240,457
+BS-110,"Cotton sateen bed sheet, Twin, Blush",Bed sheets,Cotton sateen,Twin,Blush,61.97,35.31,1.51,L3,5,A - fast pick,Active,3402.0,4536.0,2023-01-02,,0,A,X,688.4,134.7,5.0,0.0,806,4536,0
+BS-128,"Cotton percale bed sheet, Twin, Sage",Bed sheets,Cotton percale,Twin,Sage,40.32,22.23,1.59,L1,2,B - bulk rack,Active,1506.0,2008.0,2023-01-02,,0,A,X,309.2,74.2,2.0,0.0,1086,2008,0
+BS-131,"Poly-cotton bed sheet, King, Ivory",Bed sheets,Poly-cotton,King,Ivory,48.49,26.74,1.96,L2,3,A - fast pick,Active,4170.0,5560.0,2024-04-01,,0,A,Y,795.5,222.5,3.0,0.0,3409,5560,0
+BS-140,"Poly-cotton bed sheet, Full, Charcoal",Bed sheets,Poly-cotton,Full,Charcoal,52.66,29.35,1.74,L1,2,B - bulk rack,Active,1554.0,2072.0,2023-01-02,,0,A,Y,330.3,57.1,2.0,0.0,2232,0,0
+BS-147,"Poly-cotton bed sheet, King, Navy",Bed sheets,Poly-cotton,King,Navy,57.34,34.63,2.79,L1,2,A - fast pick,Active,9054.0,12072.0,2023-01-02,,0,A,Y,1878.2,584.8,2.0,0.0,14263,0,0
+CU-055,"Blackout curtain, 52x96, Sage",Curtains,Blackout,52x96,Sage,49.7,29.1,2.71,L1,3,A - fast pick,Active,2349.0,3132.0,2023-01-02,,0,A,Z,414.8,325.1,3.0,0.0,3072,0,0
+CU-134,"Blackout curtain, 52x84, Indigo",Curtains,Blackout,52x84,Indigo,32.4,18.54,2.71,L2,4,A - fast pick,Active,3021.0,4028.0,2023-01-02,,0,A,Z,607.5,311.8,4.0,0.0,4123,0,0
+DC-005,"Linen duvet cover, King, Stone",Duvet covers,Linen,King,Stone,94.83,56.55,3.07,L2,5,B - bulk rack,Active,1638.0,2184.0,2023-01-02,,0,A,Y,353.9,175.3,5.0,0.0,1160,2184,0
+DC-017,"Linen duvet cover, Full, Stone",Duvet covers,Linen,Full,Stone,80.78,43.93,2.02,L1,2,B - bulk rack,Active,1656.0,2208.0,2023-01-02,,0,A,Y,354.6,148.2,2.0,0.0,1904,0,0
+DC-031,"Linen duvet cover, Full, Charcoal",Duvet covers,Linen,Full,Charcoal,97.74,57.12,2.1,L3,6,B - bulk rack,Active,1422.0,1896.0,2023-01-02,,0,A,Y,301.5,148.8,6.0,0.0,35,3792,695
+DC-036,"Linen duvet cover, King, Blush",Duvet covers,Linen,King,Blush,70.17,39.84,2.59,L2,5,B - bulk rack,Active,1290.0,1720.0,2023-01-02,,0,A,Y,247.8,95.4,5.0,0.0,29,1720,0
+DC-057,"Cotton sateen duvet cover, Queen, Navy",Duvet covers,Cotton sateen,Queen,Navy,68.44,41.28,1.6,L1,2,B - bulk rack,Active,1776.0,2368.0,2023-01-02,,0,A,Y,368.9,118.6,2.0,0.0,2767,0,0
+DC-065,"Cotton percale duvet cover, Queen, Indigo",Duvet covers,Cotton percale,Queen,Indigo,80.56,46.29,2.03,L1,4,A - fast pick,Active,7380.0,9840.0,2023-01-02,,0,A,Y,1515.8,586.5,4.0,0.0,3954,9840,0
+DC-069,"Cotton sateen duvet cover, Full, Navy",Duvet covers,Cotton sateen,Full,Navy,75.7,43.91,1.71,L4,7,B - bulk rack,Active,2106.0,2808.0,2023-01-02,,0,A,Y,440.5,116.7,7.68,1.07,79,2808,520
+DC-089,"Cotton percale duvet cover, Full, Blush",Duvet covers,Cotton percale,Full,Blush,66.42,38.69,2.18,L3,4,A - fast pick,Active,2712.0,3616.0,2024-04-01,,0,A,Y,562.4,157.1,4.0,0.0,2015,3616,0
+DC-104,"Cotton sateen duvet cover, Queen, Sage",Duvet covers,Cotton sateen,Queen,Sage,69.05,37.19,1.62,L2,5,A - fast pick,Active,3252.0,4336.0,2023-01-02,,0,A,Y,715.3,254.3,5.0,0.0,1744,4336,0
+DC-112,"Cotton sateen duvet cover, Full, Navy",Duvet covers,Cotton sateen,Full,Navy,54.03,31.88,2.12,L2,4,A - fast pick,Active,3276.0,4368.0,2024-04-01,,0,A,Y,639.2,217.5,4.0,0.0,1661,4368,0
+DC-116,"Cotton sateen duvet cover, Queen, Blush",Duvet covers,Cotton sateen,Queen,Blush,50.55,29.06,1.88,L2,3,B - bulk rack,Active,2028.0,2704.0,2023-01-02,,0,A,Y,414.4,158.3,3.0,0.0,2316,0,0
+DC-119,"Linen duvet cover, Full, Stone",Duvet covers,Linen,Full,Stone,49.88,27.69,1.92,L2,4,A - fast pick,Active,4932.0,6576.0,2023-01-02,,0,A,Y,1010.3,402.0,4.0,0.0,3234,6576,0
+DC-122,"Cotton sateen duvet cover, King, Navy",Duvet covers,Cotton sateen,King,Navy,35.17,21.02,2.48,L3,5,A - fast pick,Active,3456.0,4608.0,2023-01-02,,0,A,Y,691.4,238.4,5.0,0.0,1283,4608,0
+KL-138,"Linen kitchen linen, Set of 3, Blush",Kitchen linen,Linen,Set of 3,Blush,9.86,4.8,0.27,L1,4,A - fast pick,Active,6618.0,8824.0,2023-01-02,,0,A,Y,1248.3,430.6,4.0,0.0,1981,8824,0
+TW-046,"Organic terry towel, Bath sheet, Stone",Towels,Organic terry,Bath sheet,Stone,27.36,14.33,1.13,L1,4,A - fast pick,Active,9510.0,12680.0,2023-01-02,,0,A,X,1809.3,470.0,4.0,0.0,2986,12680,0
+TW-100,"Organic terry towel, Bath, Indigo",Towels,Organic terry,Bath,Indigo,26.9,13.47,0.84,L3,6,A - fast pick,Active,2604.0,3472.0,2023-01-02,,0,A,X,532.2,114.0,6.0,0.0,1144,3472,0
+TW-102,"Terry towel, Bath, Navy",Towels,Terry,Bath,Navy,20.21,9.99,0.71,L1,2,A - fast pick,Active,3204.0,4272.0,2023-01-02,,0,A,X,670.8,109.1,2.0,0.0,3469,0,0
+BR-002,"Waffle bathrobe, L/XL, Navy",Bathrobes,Waffle,L/XL,Navy,41.25,22.58,1.11,L2,4,C - mezzanine,Active,465.0,620.0,2023-01-02,,0,B,Z,109.7,60.9,4.0,0.0,29,1240,236
+BR-027,"Terry bathrobe, L/XL, Stone",Bathrobes,Terry,L/XL,Stone,41.02,23.77,1.52,L2,5,C - mezzanine,Active,402.0,536.0,2023-01-02,,0,B,Y,97.3,67.5,5.0,0.0,102,536,0
+BR-077,"Terry bathrobe, L/XL, Stone",Bathrobes,Terry,L/XL,Stone,41.49,22.34,1.15,L1,3,B - bulk rack,Active,1239.0,1652.0,2023-01-02,,0,B,Z,276.2,165.9,3.0,0.0,956,1652,0
+BR-090,"Terry bathrobe, L/XL, Navy",Bathrobes,Terry,L/XL,Navy,26.41,14.0,1.57,L3,6,B - bulk rack,Active,1740.0,2320.0,2023-01-02,,0,B,Y,356.5,209.1,6.0,0.0,1223,2320,0
+BR-133,"Waffle bathrobe, S/M, Sage",Bathrobes,Waffle,S/M,Sage,34.43,19.37,1.17,L3,5,B - bulk rack,Active,1044.0,1392.0,2023-01-02,,0,B,Z,224.4,111.6,5.0,0.0,1470,0,0
+BS-024,"Cotton percale bed sheet, Twin, Navy",Bed sheets,Cotton percale,Twin,Navy,55.83,31.89,1.97,L2,4,C - mezzanine,Active,462.0,616.0,2023-01-02,,0,B,X,95.5,23.0,4.0,0.0,486,0,0
+BS-044,"Poly-cotton bed sheet, Twin, Stone",Bed sheets,Poly-cotton,Twin,Stone,47.57,28.89,1.64,L3,6,B - bulk rack,Active,1122.0,1496.0,2023-01-02,,0,B,Y,220.2,55.9,6.0,0.0,433,1496,0
+BS-050,"Cotton sateen bed sheet, Twin, White",Bed sheets,Cotton sateen,Twin,White,45.52,25.1,1.41,L3,5,B - bulk rack,Active,1182.0,1576.0,2024-04-01,,0,B,X,243.8,47.6,5.0,0.0,45,1576,0
+BS-075,"Cotton sateen bed sheet, Full, Sage",Bed sheets,Cotton sateen,Full,Sage,57.5,35.12,1.77,L3,6,B - bulk rack,Active,762.0,1016.0,2023-01-02,,0,B,Y,147.8,41.8,6.0,0.0,91,1016,0
+BS-099,"Poly-cotton bed sheet, Full, Stone",Bed sheets,Poly-cotton,Full,Stone,32.63,18.84,1.82,L4,8,B - bulk rack,Active,1254.0,1672.0,2023-01-02,,0,B,Y,255.0,69.3,8.68,1.07,110,3344,634
+BS-103,"Poly-cotton bed sheet, Queen, Blush",Bed sheets,Poly-cotton,Queen,Blush,30.12,18.22,1.8,L2,5,B - bulk rack,Active,1266.0,1688.0,2023-01-02,,0,B,Y,256.7,85.4,5.0,0.0,1390,0,0
+BS-120,"Poly-cotton bed sheet, Twin, Blush",Bed sheets,Poly-cotton,Twin,Blush,59.38,32.92,1.61,L1,3,C - mezzanine,Active,306.0,408.0,2023-01-02,,0,B,Y,58.1,20.5,3.0,0.0,144,408,0
+BS-125,"Cotton percale bed sheet, Queen, Stone",Bed sheets,Cotton percale,Queen,Stone,44.43,25.21,1.42,L3,5,B - bulk rack,Active,1020.0,1360.0,2023-01-02,,0,B,Y,217.3,82.5,5.0,0.0,130,1360,0
+BS-137,"Cotton percale bed sheet, Twin, Stone",Bed sheets,Cotton percale,Twin,Stone,35.6,20.94,1.7,L2,5,B - bulk rack,Active,588.0,784.0,2023-01-02,,0,B,Y,114.6,29.8,5.0,0.0,200,784,0
+BS-139,"Cotton sateen bed sheet, Queen, Indigo",Bed sheets,Cotton sateen,Queen,Indigo,31.04,18.87,1.51,L4,7,B - bulk rack,Active,1224.0,1632.0,2023-01-02,,0,B,X,251.5,62.2,7.68,1.07,2,3264,474
+CU-006,"Poly-cotton curtain, 52x84, White",Curtains,Poly-cotton,52x84,White,39.75,21.13,2.34,L2,4,B - bulk rack,Active,978.0,1304.0,2023-01-02,,0,B,Z,239.9,175.5,4.0,0.0,1062,0,0
+CU-012,"Blackout curtain, 52x84, Stone",Curtains,Blackout,52x84,Stone,44.31,24.93,2.65,L1,3,B - bulk rack,Active,651.0,868.0,2023-01-02,,0,B,Z,132.3,87.5,3.0,0.0,1009,0,0
+CU-020,"Linen curtain, 52x96, White",Curtains,Linen,52x96,White,61.95,33.68,2.41,L1,3,C - mezzanine,Active,444.0,592.0,2023-01-02,,0,B,Y,80.6,37.4,3.0,0.0,366,592,0
+CU-041,"Poly-cotton curtain, 52x84, Sage",Curtains,Poly-cotton,52x84,Sage,50.91,27.74,2.23,L2,3,C - mezzanine,Active,399.0,532.0,2023-01-02,,0,B,Z,77.5,64.5,3.0,0.0,523,0,0
+CU-053,"Linen curtain, 52x84, Indigo",Curtains,Linen,52x84,Indigo,28.6,15.17,2.14,L2,5,B - bulk rack,Active,945.0,1260.0,2023-01-02,,0,B,Z,175.4,118.4,5.0,0.0,1252,0,0
+CU-072,"Poly-cotton curtain, 52x84, Stone",Curtains,Poly-cotton,52x84,Stone,50.33,28.27,2.04,L3,5,C - mezzanine,Active,390.0,520.0,2023-01-02,,0,B,Z,83.0,76.8,5.0,0.0,301,520,0
+CU-109,"Blackout curtain, 52x84, Sage",Curtains,Blackout,52x84,Sage,36.1,20.83,2.61,L3,4,B - bulk rack,Active,1107.0,1476.0,2023-01-02,,0,B,Y,224.7,86.5,4.0,0.0,480,1476,0
+CU-114,"Linen curtain, 52x84, White",Curtains,Linen,52x84,White,53.82,28.68,2.25,L2,4,C - mezzanine,Active,321.0,428.0,2023-01-02,,0,B,Z,68.3,43.7,4.0,0.0,120,428,0
+CU-149,"Poly-cotton curtain, 52x84, Sage",Curtains,Poly-cotton,52x84,Sage,44.71,26.42,2.57,L2,5,C - mezzanine,Active,513.0,684.0,2023-01-02,,0,B,Z,86.4,52.4,5.0,0.0,784,0,0
+DC-038,"Cotton sateen duvet cover, Queen, Navy",Duvet covers,Cotton sateen,Queen,Navy,59.07,34.81,2.12,L3,5,C - mezzanine,Active,336.0,448.0,2023-01-02,,0,B,Y,72.5,17.6,5.0,0.0,30,448,0
+DC-042,"Cotton sateen duvet cover, King, Charcoal",Duvet covers,Cotton sateen,King,Charcoal,44.1,24.75,2.89,L1,3,B - bulk rack,Active,1134.0,1512.0,2023-01-02,,0,B,Y,227.6,67.2,3.0,0.0,852,1512,0
+DC-043,"Cotton percale duvet cover, King, Blush",Duvet covers,Cotton percale,King,Blush,72.8,41.09,2.43,L2,3,C - mezzanine,Active,252.0,336.0,2023-01-02,,0,B,Y,52.1,15.0,3.0,0.0,316,0,0
+DC-078,"Cotton percale duvet cover, King, Ivory",Duvet covers,Cotton percale,King,Ivory,41.21,22.98,3.16,L3,5,C - mezzanine,Active,510.0,680.0,2023-01-02,,0,B,Y,114.5,51.3,5.0,0.0,478,680,0
+DC-118,"Cotton percale duvet cover, Queen, Indigo",Duvet covers,Cotton percale,Queen,Indigo,64.55,37.26,2.23,L4,8,C - mezzanine,Active,492.0,656.0,2023-01-02,,0,B,Y,96.4,37.9,8.68,1.07,51,656,0
+DC-121,"Linen duvet cover, Queen, Navy",Duvet covers,Linen,Queen,Navy,58.56,32.16,1.7,L2,5,B - bulk rack,Active,1968.0,2624.0,2024-04-01,,0,B,Y,407.8,116.1,5.0,0.0,2160,0,0
+DC-123,"Linen duvet cover, Queen, Charcoal",Duvet covers,Linen,Queen,Charcoal,47.24,27.87,1.68,L3,4,B - bulk rack,Active,942.0,1256.0,2023-01-02,,0,B,Y,204.9,53.5,4.0,0.0,1179,0,0
+DC-144,"Cotton percale duvet cover, Queen, Charcoal",Duvet covers,Cotton percale,Queen,Charcoal,61.07,33.66,2.02,L2,5,B - bulk rack,Active,936.0,1248.0,2023-01-02,,0,B,X,215.5,74.1,5.0,0.0,308,1248,0
+DC-145,"Cotton percale duvet cover, King, Navy",Duvet covers,Cotton percale,King,Navy,42.3,23.75,2.61,L4,6,B - bulk rack,Active,1476.0,1968.0,2024-04-01,,0,B,Y,294.2,124.8,6.68,1.07,829,1968,0
+KL-016,"Linen kitchen linen, Set of 3, Charcoal",Kitchen linen,Linen,Set of 3,Charcoal,13.43,6.44,0.27,L2,5,B - bulk rack,Active,1398.0,1864.0,2023-01-02,,0,B,Y,277.9,78.2,5.0,0.0,1785,0,0
+KL-030,"Cotton kitchen linen, Set of 6, Blush",Kitchen linen,Cotton,Set of 6,Blush,9.83,4.65,0.25,L2,3,A - fast pick,Active,12558.0,16744.0,2024-04-01,,0,B,Y,2351.0,679.6,3.0,0.0,19999,0,0
+KL-062,"Cotton kitchen linen, Set of 6, Indigo",Kitchen linen,Cotton,Set of 6,Indigo,10.09,4.94,0.25,L3,5,A - fast pick,Active,3966.0,5288.0,2023-01-02,,0,B,Y,760.7,245.4,5.0,0.0,2017,5288,0
+TW-008,"Organic terry towel, Bath sheet, Stone",Towels,Organic terry,Bath sheet,Stone,14.46,7.14,1.16,L2,3,B - bulk rack,Active,1356.0,1808.0,2023-01-02,,0,B,Y,254.8,80.1,3.0,0.0,2219,0,0
+TW-019,"Terry towel, Bath sheet, Navy",Towels,Terry,Bath sheet,Navy,21.24,11.36,0.96,L4,7,B - bulk rack,Active,1194.0,1592.0,2023-01-02,,0,B,X,239.9,41.8,7.68,1.07,919,1592,0
+TW-025,"Terry towel, Hand, Indigo",Towels,Terry,Hand,Indigo,19.64,10.41,0.73,L4,7,B - bulk rack,Active,1272.0,1696.0,2023-01-02,,0,B,X,250.6,47.3,7.68,1.07,965,1696,0
+TW-034,"Organic terry towel, Hand, Charcoal",Towels,Organic terry,Hand,Charcoal,15.41,8.21,0.64,L4,6,B - bulk rack,Active,1152.0,1536.0,2023-01-02,,0,B,X,243.8,53.4,6.68,1.07,556,1536,0
+TW-054,"Organic terry towel, Bath, Blush",Towels,Organic terry,Bath,Blush,18.66,9.22,0.59,L1,4,B - bulk rack,Active,954.0,1272.0,2023-01-02,,0,B,X,190.6,32.3,4.0,0.0,1297,0,0
+TW-067,"Organic terry towel, Bath, Ivory",Towels,Organic terry,Bath,Ivory,26.23,13.11,0.68,L4,8,B - bulk rack,Active,738.0,984.0,2023-01-02,,0,B,Y,147.7,40.2,8.68,1.07,80,984,0
+TW-095,"Terry towel, Hand, Blush",Towels,Terry,Hand,Blush,21.25,10.87,0.76,L1,3,B - bulk rack,Active,1158.0,1544.0,2023-01-02,,0,B,X,242.9,62.3,3.0,0.0,1278,0,0
+BR-052,"Waffle bathrobe, L/XL, Blush",Bathrobes,Waffle,L/XL,Blush,26.37,13.74,1.09,L3,5,C - mezzanine,Active,270.0,360.0,2023-01-02,,0,C,Z,59.0,37.3,5.0,0.0,209,360,0
+BR-058,"Waffle bathrobe, S/M, Charcoal",Bathrobes,Waffle,S/M,Charcoal,29.31,16.54,1.44,L1,4,C - mezzanine,Active,189.0,252.0,2023-01-02,,0,C,Z,37.2,20.9,4.0,0.0,122,252,0
+BR-060,"Terry bathrobe, L/XL, Ivory",Bathrobes,Terry,L/XL,Ivory,35.67,19.6,1.14,L1,4,B - bulk rack,Active,1116.0,1488.0,2024-04-01,,1,C,Z,231.9,125.8,4.0,0.0,134,1488,0
+BR-146,"Waffle bathrobe, S/M, Navy",Bathrobes,Waffle,S/M,Navy,26.28,14.26,1.28,L1,4,C - mezzanine,Active,513.0,684.0,2023-01-02,,0,C,Z,108.9,62.9,4.0,0.0,197,684,0
+BR-148,"Waffle bathrobe, L/XL, Ivory",Bathrobes,Waffle,L/XL,Ivory,44.98,24.72,1.06,L4,6,C - mezzanine,Active,156.0,208.0,2023-01-02,,0,C,Y,30.8,13.8,6.68,1.07,67,208,0
+BS-039,"Poly-cotton bed sheet, Full, White",Bed sheets,Poly-cotton,Full,White,51.94,31.4,1.87,L2,5,C - mezzanine,Active,216.0,288.0,2023-01-02,,0,C,X,43.0,8.4,5.0,0.0,35,288,0
+BS-066,"Cotton percale bed sheet, Twin, Navy",Bed sheets,Cotton percale,Twin,Navy,49.32,29.22,1.86,L2,5,C - mezzanine,Active,240.0,320.0,2023-01-02,,0,C,Y,49.7,14.2,5.0,0.0,64,320,0
+BS-070,"Cotton percale bed sheet, King, Ivory",Bed sheets,Cotton percale,King,Ivory,50.1,29.19,2.53,L3,6,C - mezzanine,Active,408.0,544.0,2024-04-01,,0,C,X,86.1,21.9,6.0,0.0,512,0,0
+BS-073,"Poly-cotton bed sheet, Queen, Blush",Bed sheets,Poly-cotton,Queen,Blush,37.67,23.14,1.78,L3,5,C - mezzanine,Active,198.0,264.0,2023-01-02,,0,C,X,40.7,11.1,5.0,0.0,32,264,0
+BS-108,"Cotton sateen bed sheet, King, Navy",Bed sheets,Cotton sateen,King,Navy,30.09,17.31,1.96,L3,4,C - mezzanine,Active,306.0,408.0,2023-01-02,,0,C,Y,62.9,19.2,4.0,0.0,160,408,0
+CU-026,"Poly-cotton curtain, 52x84, White",Curtains,Poly-cotton,52x84,White,27.29,15.13,2.09,L2,4,C - mezzanine,Active,309.0,412.0,2023-01-02,,0,C,Z,66.4,37.4,4.0,0.0,143,412,0
+CU-061,"Blackout curtain, 52x96, Blush",Curtains,Blackout,52x96,Blush,47.24,27.26,2.75,L2,3,C - mezzanine,Active,312.0,416.0,2023-01-02,,0,C,Z,64.2,45.7,3.0,0.0,479,0,0
+CU-079,"Poly-cotton curtain, 52x84, Indigo",Curtains,Poly-cotton,52x84,Indigo,33.81,18.54,2.3,L3,6,C - mezzanine,Active,303.0,404.0,2023-01-02,,0,C,Y,56.9,31.3,6.0,0.0,12,404,0
+CU-080,"Blackout curtain, 52x84, Blush",Curtains,Blackout,52x84,Blush,26.91,15.15,2.24,L4,6,C - mezzanine,Active,543.0,724.0,2023-01-02,,0,C,Y,112.2,51.1,6.68,1.07,461,724,0
+CU-082,"Poly-cotton curtain, 52x96, Stone",Curtains,Poly-cotton,52x96,Stone,29.24,15.77,2.63,L4,7,C - mezzanine,Active,171.0,228.0,2023-01-02,,0,C,Z,32.3,23.1,7.68,1.07,22,228,0
+CU-091,"Linen curtain, 52x84, White",Curtains,Linen,52x84,White,31.56,18.65,1.97,L2,3,C - mezzanine,Active,525.0,700.0,2023-01-02,,0,C,Z,121.0,69.9,3.0,0.0,781,0,0
+CU-092,"Blackout curtain, 52x96, Blush",Curtains,Blackout,52x96,Blush,35.48,20.05,1.8,L4,7,B - bulk rack,Active,1200.0,1600.0,2024-04-01,,0,C,Z,240.9,156.3,7.68,1.07,806,1600,0
+CU-115,"Linen curtain, 52x96, Sage",Curtains,Linen,52x96,Sage,41.33,24.28,2.27,L1,2,C - mezzanine,Active,252.0,336.0,2023-01-02,,0,C,Z,46.5,26.4,2.0,0.0,519,0,0
+CU-150,"Poly-cotton curtain, 52x84, Blush",Curtains,Poly-cotton,52x84,Blush,47.74,27.72,1.96,L1,4,C - mezzanine,Active,264.0,352.0,2023-01-02,,0,C,Z,50.6,39.8,4.0,0.0,395,0,0
+DC-035,"Cotton percale duvet cover, King, Blush",Duvet covers,Cotton percale,King,Blush,39.83,23.09,2.51,L1,3,C - mezzanine,Active,228.0,304.0,2023-01-02,,0,C,Y,45.0,14.3,3.0,0.0,110,304,0
+KL-004,"Cotton kitchen linen, Set of 3, Navy",Kitchen linen,Cotton,Set of 3,Navy,8.4,4.39,0.34,L3,4,B - bulk rack,Active,1188.0,1584.0,2023-01-02,,0,C,Y,241.8,69.0,4.0,0.0,61,1584,0
+KL-014,"Linen kitchen linen, Set of 6, Sage",Kitchen linen,Linen,Set of 6,Sage,10.27,5.4,0.3,L4,8,C - mezzanine,Active,354.0,472.0,2023-01-02,,0,C,Y,72.5,25.0,8.68,1.07,10,472,0
+KL-022,"Linen kitchen linen, Set of 6, White",Kitchen linen,Linen,Set of 6,White,9.78,4.72,0.32,L2,4,C - mezzanine,Active,384.0,512.0,2023-01-02,,0,C,Y,78.9,27.1,4.0,0.0,356,512,0
+KL-040,"Cotton kitchen linen, Set of 6, Navy",Kitchen linen,Cotton,Set of 6,Navy,6.41,3.34,0.32,L2,5,C - mezzanine,Active,504.0,672.0,2023-01-02,,0,C,Y,102.2,35.7,5.0,0.0,575,0,0
+KL-085,"Linen kitchen linen, Set of 6, Sage",Kitchen linen,Linen,Set of 6,Sage,11.49,5.45,0.31,L1,4,C - mezzanine,Active,414.0,552.0,2023-01-02,,0,C,Y,91.0,29.7,4.0,0.0,280,552,0
+KL-097,"Linen kitchen linen, Set of 3, Charcoal",Kitchen linen,Linen,Set of 3,Charcoal,10.31,4.86,0.37,L3,4,B - bulk rack,Active,684.0,912.0,2024-04-01,,0,C,Y,141.1,62.2,4.0,0.0,467,912,0
+KL-113,"Cotton kitchen linen, Set of 3, Stone",Kitchen linen,Cotton,Set of 3,Stone,4.89,2.35,0.29,L1,4,C - mezzanine,Active,156.0,208.0,2023-01-02,,0,C,Y,29.8,10.2,4.0,0.0,88,208,0
+KL-124,"Linen kitchen linen, Set of 3, White",Kitchen linen,Linen,Set of 3,White,8.67,4.11,0.29,L4,7,C - mezzanine,Active,516.0,688.0,2023-01-02,,0,C,Y,91.7,25.7,7.68,1.07,73,688,0
+KL-126,"Cotton kitchen linen, Set of 6, Stone",Kitchen linen,Cotton,Set of 6,Stone,8.19,4.15,0.3,L2,5,B - bulk rack,Active,702.0,936.0,2023-01-02,,0,C,Y,140.6,34.5,5.0,0.0,231,936,0
+KL-132,"Linen kitchen linen, Set of 3, Charcoal",Kitchen linen,Linen,Set of 3,Charcoal,11.09,5.69,0.35,L2,3,B - bulk rack,Active,1458.0,1944.0,2023-01-02,,0,C,Y,309.1,114.0,3.0,0.0,1028,1944,0
+KL-142,"Linen kitchen linen, Set of 6, Stone",Kitchen linen,Linen,Set of 6,Stone,9.26,4.45,0.28,L1,2,B - bulk rack,Active,1476.0,1968.0,2023-01-02,,0,C,Y,296.9,88.9,2.0,0.0,2257,0,0
+KL-143,"Linen kitchen linen, Set of 3, Stone",Kitchen linen,Linen,Set of 3,Stone,9.6,4.67,0.32,L4,7,A - fast pick,Active,4230.0,5640.0,2024-04-01,,0,C,X,868.3,233.5,7.68,1.07,4656,0,0
+TW-003,"Terry towel, Hand, Navy",Towels,Terry,Hand,Navy,8.96,4.92,0.6,L4,8,C - mezzanine,Active,492.0,656.0,2023-01-02,,0,C,X,107.5,24.0,8.68,1.07,58,1312,261
+TW-010,"Terry towel, Bath sheet, Ivory",Towels,Terry,Bath sheet,Ivory,12.16,6.12,0.8,L3,4,B - bulk rack,Active,888.0,1184.0,2023-01-02,,0,C,X,192.7,41.6,4.0,0.0,479,1184,0
+TW-011,"Terry towel, Hand, Navy",Towels,Terry,Hand,Navy,10.84,5.38,0.77,L4,8,B - bulk rack,Active,1680.0,2240.0,2023-01-02,,0,C,Y,341.7,85.7,8.68,1.07,1448,2240,0
+TW-013,"Organic terry towel, Bath, Sage",Towels,Organic terry,Bath,Sage,12.53,6.53,0.76,L4,7,C - mezzanine,Active,222.0,296.0,2023-01-02,,0,C,Y,44.1,12.9,7.68,1.07,140,296,0
+TW-015,"Terry towel, Hand, Ivory",Towels,Terry,Hand,Ivory,19.94,9.96,0.64,L3,5,B - bulk rack,Active,738.0,984.0,2023-01-02,,0,C,X,149.9,28.6,5.0,0.0,105,984,0
+TW-032,"Organic terry towel, Bath, Indigo",Towels,Organic terry,Bath,Indigo,9.8,5.01,0.83,L4,7,B - bulk rack,Active,1002.0,1336.0,2023-01-02,,0,C,Y,199.8,52.4,7.68,1.07,15,1336,223
+TW-033,"Terry towel, Bath, White",Towels,Terry,Bath,White,20.51,11.08,0.58,L3,4,C - mezzanine,Active,564.0,752.0,2023-01-02,,0,C,Y,115.2,33.8,4.0,0.0,400,752,0
+TW-049,"Organic terry towel, Bath, Indigo",Towels,Organic terry,Bath,Indigo,9.03,4.9,0.83,L3,6,B - bulk rack,Active,600.0,800.0,2023-01-02,,0,C,X,128.7,36.7,6.0,0.0,346,800,0
+TW-051,"Organic terry towel, Bath, Blush",Towels,Organic terry,Bath,Blush,25.25,13.81,0.66,L1,2,B - bulk rack,Active,594.0,792.0,2024-04-01,,0,C,X,126.4,34.2,2.0,0.0,896,0,0
+TW-056,"Organic terry towel, Bath, White",Towels,Organic terry,Bath,White,8.71,4.77,0.75,L4,7,B - bulk rack,Active,1158.0,1544.0,2023-01-02,,0,C,X,235.6,40.0,7.68,1.07,726,1544,0
+TW-059,"Organic terry towel, Bath sheet, Indigo",Towels,Organic terry,Bath sheet,Indigo,16.09,8.66,1.05,L2,4,C - mezzanine,Active,462.0,616.0,2023-01-02,,0,C,X,87.2,17.4,4.0,0.0,287,616,0
+TW-063,"Organic terry towel, Hand, White",Towels,Organic terry,Hand,White,20.69,10.13,0.62,L1,4,C - mezzanine,Active,552.0,736.0,2023-01-02,,0,C,Y,114.3,25.2,4.0,0.0,433,736,0
+TW-064,"Terry towel, Bath sheet, Sage",Towels,Terry,Bath sheet,Sage,20.76,11.37,1.12,L2,4,C - mezzanine,Active,516.0,688.0,2023-01-02,,0,C,X,108.5,21.6,4.0,0.0,438,688,0
+TW-086,"Terry towel, Hand, Navy",Towels,Terry,Hand,Navy,6.53,3.28,0.57,L2,5,B - bulk rack,Active,1248.0,1664.0,2023-01-02,,0,C,X,257.2,66.1,5.0,0.0,685,1664,0
+TW-093,"Terry towel, Hand, Blush",Towels,Terry,Hand,Blush,16.53,8.3,0.7,L2,5,C - mezzanine,Active,96.0,128.0,2023-01-02,,0,C,X,19.9,4.3,5.0,0.0,42,128,0
+TW-098,"Terry towel, Bath, Charcoal",Towels,Terry,Bath,Charcoal,17.38,9.43,0.67,L1,4,B - bulk rack,Active,768.0,1024.0,2023-01-02,,0,C,X,158.9,29.7,4.0,0.0,737,1024,0
+TW-101,"Terry towel, Bath, Navy",Towels,Terry,Bath,Navy,8.49,4.35,0.74,L2,4,B - bulk rack,Active,1650.0,2200.0,2024-04-01,,1,C,X,319.3,47.7,4.0,0.0,984,2200,0
+TW-117,"Organic terry towel, Bath, Ivory",Towels,Organic terry,Bath,Ivory,13.09,6.7,0.73,L2,4,C - mezzanine,Active,564.0,752.0,2024-04-01,,1,C,X,120.5,24.3,4.0,0.0,421,752,0
+TW-129,"Terry towel, Hand, Charcoal",Towels,Terry,Hand,Charcoal,7.55,3.87,0.86,L3,5,B - bulk rack,Active,1170.0,1560.0,2023-01-02,,0,C,X,235.9,53.8,5.0,0.0,371,1560,0
+TW-136,"Organic terry towel, Bath sheet, Sage",Towels,Organic terry,Bath sheet,Sage,14.04,6.86,0.94,L4,7,B - bulk rack,Active,1290.0,1720.0,2023-01-02,,0,C,X,258.9,71.7,7.68,1.07,1242,1720,0

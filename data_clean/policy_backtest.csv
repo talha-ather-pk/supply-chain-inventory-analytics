@@ -1,0 +1,3 @@
+policy,fill_rate_pct,weeks_short_pct,lost_units,lost_margin_usd,avg_stock_value_usd,carrying_cost_usd
+Current rule,98.07,10.0,53130,591319,4511408,992510
+Recommended,99.41,3.6,20007,240084,4866898,1070717

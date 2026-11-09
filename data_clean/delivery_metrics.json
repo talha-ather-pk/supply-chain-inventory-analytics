@@ -1,0 +1,10 @@
+{
+  "on_time_pct": 77.9,
+  "transit_model_r2": 0.831,
+  "effects_within_half_day": 6,
+  "effects": 6,
+  "meridian_saving_per_year_usd": 58942,
+  "meridian_chargebacks_per_year_usd": 183361,
+  "meridian_chargebacks_if_blue_anchor_usd": 55004,
+  "peak_buffer_days": 3.5
+}
