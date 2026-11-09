@@ -9,6 +9,8 @@ and where the margin leaks between the gross margin and the bottom line**.
 
 **Summary page:** [`site/index.html`](site/index.html)
 
+**Hire me:** [Upwork profile](https://www.upwork.com/freelancers/~01da74f8f9f4611503) · Talha Ather, data analyst and ACCA student
+
 ![Power BI: Overview page](images/dashboard_overview.png)
 
 > **About the data.** The dataset is **synthetic**: 150 SKUs, 90 customers and 69,471 order lines over Jan 2023 – Dec 2025,
