@@ -4,34 +4,30 @@ The dashboard is generated, not hand-built: [`scripts/build_pbip.py`](../scripts
 Project (TMDL semantic model + PBIR report) from the tables in `data_clean/powerbi/`. Open `Larkspur.pbip` in Power BI
 Desktop and click Refresh.
 
-## Look: "Mill floor", a light industrial identity
+## Look: "Larkspur Home Textiles", a warm light identity
 
 Larkspur Home Textiles is fictional (synthetic data): it has no logo, website or official colours, so this is a
-**proposed** identity built for its industry (textile manufacturing), audience (operations and supply-chain teams in
-weekly reviews, often projected or printed) and data (many green / amber / red status signals). Light mode keeps those
-signals legible on a projector and on paper.
+**proposed** identity for a home-textile maker: warm, tactile neutrals and a terracotta accent, with an industrial
+blue-grey for the operations side. The theme ships as `theme/Larkspur_Textiles.json`.
 
 | Role | HEX | |
 |---|---|---|
-| Primary (main data series) | `#2B5876` | industrial steel blue |
-| Secondary | `#5E6B73` | steel grey |
-| Accent (navigation, markers only) | `#D9622B` | thread orange; never used in charts, so it cannot be read as "watch" |
-| Page background | `#F4F1EA` | greige, the colour of undyed cotton |
-| Cards, charts, tables | `#FFFFFF` | hairline border `#E2DDD2` |
-| Top navigation band | `#22313A` | charcoal steel; inactive tabs `#B8C2C8`, active tab white with an orange underline |
-| Text | `#1E2A30` / `#5E6B73` / `#8A949A` | primary / secondary / muted |
-| On target / watch / off target | `#2E8B57` / `#C99A06` / `#B83A30` | |
-| Chart sequence | `#2B5876` `#7FA7C2` `#3E8E7E` `#5E6B73` `#B7A98B` `#9C6B98` | |
-| Table shading (target) | `#DCEFE3` / `#F6EBC8` / `#F4D9D5` | light tints of the status colours |
+| Primary / accent | `#D96B43` | terracotta: main data series, active tab, markers |
+| Secondary | `#3B6E8C` | industrial blue-grey: second series; neutral bars next to a red flag, so terracotta never sits beside "off target" red |
+| Page background | `#F9F8F6` | warm off-white |
+| Cards, charts, tables | `#FFFFFF` | 1 px border `#E5E0DA`, 4 px radius; visual headers hidden |
+| Top navigation band | `#2C2A29` | deep charcoal; inactive tabs `#CFC6BD`, active tab white with a terracotta underline |
+| Text | `#2C2A29` / `#8C7A6B` | primary / secondary (warm taupe) |
+| On target / watch / off target | `#2E7D32` / `#D9A036` / `#C62828` | |
+| Chart sequence | `#D96B43` `#3B6E8C` `#5C8A72` `#D9A036` `#8C7A6B` `#685375` `#C45242` `#438C85` | |
+| Table shading (target) | `#E3F1E4` / `#F8ECD2` / `#F6DADA` | light tints of the status colours |
 
 * **Layout:** a top navigation band (logo, page tabs, reporting date) instead of a sidebar; the page title, the filter
   context and the three synced slicers with a reset button share the row below; content uses the full width.
-* **KPI tiles:** white card, a 3 px top edge in the tile's status colour (driven by the same measure as its status
-  line), the value in DIN-style numerals (DIN, falling back to Bahnschrift and Segoe UI) and a monthly trend line for
-  measures that move over time. Fixed whole-company results carry a WHOLE BOOK tag instead.
-* **Logo:** an original mark for the fictional company: three orange warp threads crossed by a white weft, with the
-  name in DIN-style capitals.
-* Segoe UI for text; Semibold for titles.
+* **KPI tiles:** white card, a 3 px top edge in the tile's status colour (driven by the same measure as its status line),
+  the value in Segoe UI Semibold and a monthly trend line for measures that move over time. Fixed whole-company results
+  carry a WHOLE BOOK tag instead.
+* **Logo:** an original mark for the fictional company: three terracotta warp threads crossed by a white weft.
 
 ## Data model
 

@@ -43,7 +43,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#1E2A30'"
+                      "Value": "'#2C2A29'"
                     }
                   }
                 }
@@ -59,7 +59,7 @@
             "fontFamily": {
               "expr": {
                 "Literal": {
-                  "Value": "'DIN, Bahnschrift, ''Segoe UI Semibold'', sans-serif'"
+                  "Value": "'Segoe UI Semibold'"
                 }
               }
             },

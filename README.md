@@ -129,12 +129,12 @@ one row checked by hand.
 
 ## Power BI dashboard
 
-Seven pages in a light **"Mill floor"** industrial design made for this company: a greige canvas (the colour of
-undyed cotton), white cards, industrial steel-blue data, a charcoal top navigation band and a thread-orange accent used
-only for navigation. KPI tiles carry a status-coloured top edge (green / amber / red against operating targets), DIN-style
-numbers and a monthly trend line; synced Year / Category / Production line filters sit beside the page title with a
-one-click reset; an SKU tooltip and an **SKU Detail** drill-through. Larkspur is fictional, so the palette is a proposed
-identity, not an official brand. Details: [`powerbi/DESIGN.md`](powerbi/DESIGN.md).
+Seven pages in a light **"Larkspur Home Textiles"** design made for this company: a warm off-white canvas, white
+cards, terracotta as the lead colour, industrial blue-grey as the second, deep charcoal text and top navigation band, and
+warm taupe for secondary text. KPI tiles carry a status-coloured top edge (green / amber / red against operating targets)
+and a monthly trend line; synced Year / Category / Production line filters sit beside the page title with a one-click
+reset; an SKU tooltip and an **SKU Detail** drill-through. Larkspur is fictional, so the palette is a proposed identity,
+not an official brand. Details: [`powerbi/DESIGN.md`](powerbi/DESIGN.md).
 
 | Overview | Delivery |
 |---|---|

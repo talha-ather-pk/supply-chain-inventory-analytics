@@ -28,36 +28,36 @@ DATA_FOLDER = str(ROOT / "data_clean" / "powerbi") + "\\"
 BASE_THEME = "CY26SU04"
 THEME_SRC = Path(r"C:\Program Files\Microsoft Power BI Desktop\bin\WebView2Resources"
                  r"\minerva\sharedresources\BaseThemes") / f"{BASE_THEME}.json"
-CUSTOM_THEME = "Larkspur_Indigo.json"
+CUSTOM_THEME = "Larkspur_Textiles.json"
 SCHEMA = "https://developer.microsoft.com/json-schemas/fabric"
 V_VISUAL, V_PAGE, V_REPORT = "2.4.0", "2.0.0", "3.0.0"
 
 # =========================================================================
 # Design system
 # =========================================================================
-# "Mill floor" light industrial palette (proposed for the fictional Larkspur; there is no official brand):
-# greige canvas (undyed cotton), white cards, charcoal-steel navigation band, industrial steel blue for data and a
-# thread-orange accent used ONLY in navigation and markers, so it never competes with the amber "watch" signal.
-NAVY = "#22313A"        # top navigation band (charcoal steel)
-NAVY_2 = "#2E414C"      # band highlights
-INK = "#1E2A30"         # primary text
-SLATE = "#5E6B73"       # secondary text (steel grey)
-SLATE_2 = "#8A949A"     # muted text
-MIST = "#B8C2C8"        # inactive tab text on the band
-LINE = "#E2DDD2"        # hairlines and card borders
-CANVAS = "#F4F1EA"      # page background (greige)
+# "Larkspur Home Textiles Operations" palette (the user's theme; Larkspur is fictional, so it is a proposed identity):
+# warm off-white canvas, white cards with warm hairlines, terracotta as the lead accent and data colour, industrial
+# blue-grey second, deep charcoal text and navigation band, warm taupe for secondary text.
+NAVY = "#2C2A29"        # top navigation band (deep charcoal)
+NAVY_2 = "#3A3735"
+INK = "#2C2A29"         # primary text
+SLATE = "#8C7A6B"       # secondary text (warm taupe)
+SLATE_2 = "#A89A8E"     # muted text
+MIST = "#CFC6BD"        # inactive tab text on the band
+LINE = "#E5E0DA"        # hairlines and card borders
+CANVAS = "#F9F8F6"      # page background (warm off-white)
 SURFACE = "#FFFFFF"     # cards, charts, tables
-SURFACE_2 = "#F8F6F1"   # table headers, alternate rows
+SURFACE_2 = "#F4F1ED"   # table headers, alternate rows
 WHITE = "#FFFFFF"
-GOLD = "#D9622B"        # accent: thread orange (navigation and markers only)
-CYAN = "#7FA7C2"        # light steel (second series)
-PRIMARY = "#2B5876"     # industrial steel blue (main data series)
-COMPARE = "#B9C3C9"     # comparison series (light grey)
-GOOD, WARN, BAD, NEUTRAL = "#2E8B57", "#C99A06", "#B83A30", "#8A949A"
-AMBER = "#C99A06"
-LILAC = "#9C6B98"
-GREIGE_DARK = "#B7A98B"
-DATA_COLORS = [PRIMARY, CYAN, "#3E8E7E", SLATE, GREIGE_DARK, LILAC, "#D4C6A6", "#4F7C99"]
+GOLD = "#D96B43"        # accent: terracotta (active tab, markers)
+CYAN = "#3B6E8C"        # industrial blue-grey (second series, neutral bars next to a red flag)
+PRIMARY = "#D96B43"     # terracotta (main data series)
+COMPARE = "#C9BFB5"     # comparison series (warm grey)
+GOOD, WARN, BAD, NEUTRAL = "#2E7D32", "#D9A036", "#C62828", "#A89A8E"
+AMBER = "#D9A036"
+LILAC = "#685375"
+GREIGE_DARK = "#8C7A6B"
+DATA_COLORS = ["#D96B43", "#3B6E8C", "#5C8A72", "#D9A036", "#8C7A6B", "#685375", "#C45242", "#438C85"]
 SERIF = "Segoe UI Semibold"
 FONT, FONT_SB, FONT_LIGHT = "Segoe UI", "Segoe UI Semibold", "Segoe UI Light"
 
@@ -373,8 +373,8 @@ m("On-time Color", f'VAR v = [On-time %] RETURN IF ( v >= 0.9, "{GOOD}", IF ( v 
   hidden=True)
 m("Short Color", f'VAR v = [Weeks Short %] RETURN IF ( v <= 0.05, "{GOOD}", IF ( v <= 0.10, "{WARN}", "{BAD}" ) )', None,
   "8 Formatting", hidden=True)
-m("Defect Color", f'IF ( [Defect Rate] > 0.02, "{BAD}", "{PRIMARY}" )', None, "8 Formatting", hidden=True)
-m("PO Color", f'IF ( [PO Late %] > 0.1, "{BAD}", "{PRIMARY}" )', None, "8 Formatting", hidden=True)
+m("Defect Color", f'IF ( [Defect Rate] > 0.02, "{BAD}", "{CYAN}" )', None, "8 Formatting", hidden=True)
+m("PO Color", f'IF ( [PO Late %] > 0.1, "{BAD}", "{CYAN}" )', None, "8 Formatting", hidden=True)
 m("Accuracy Color", f'VAR v = [Count Accuracy] RETURN IF ( v >= 0.95, "{GOOD}", IF ( v >= 0.9, "{WARN}", "{BAD}" ) )', None,
   "8 Formatting", hidden=True)
 m("Reorder Color", f'SWITCH ( SELECTEDVALUE ( dim_sku[reorder_status] ), "Reorder now", "{BAD}", "Watch", "{WARN}", "OK", "{GOOD}", '
@@ -383,12 +383,12 @@ m("Change Color", f'IF ( [ROP Change %] > 0, "{WARN}", "{CYAN}" )', None, "8 For
 m("What-if Color", f'IF ( SELECTEDVALUE ( delivery_whatif[order] ) = 1, "{COMPARE}", "{PRIMARY}" )', None, "8 Formatting", hidden=True)
 m("Match Color", f'IF ( [DQ Match] = "✓", "{GOOD}", "{BAD}" )', None, "8 Formatting", hidden=True)
 m("Fix Color", f'IF ( SELECTEDVALUE ( dq_log[issue] ) IN {REMOVED}, "{BAD}", "{WARN}" )', None, "8 Formatting", hidden=True)
-m("Heat On-time", f'VAR v = [On-time %] RETURN IF ( ISBLANK ( v ), BLANK (), IF ( v >= 0.9, "#DCEFE3", IF ( v >= 0.8, "#F6EBC8", '
-  f'"#F4D9D5" ) ) )', None, "8 Formatting", hidden=True)
-m("Heat Fill", f'VAR v = [Fill Rate] RETURN IF ( ISBLANK ( v ), BLANK (), IF ( v >= 0.985, "#DCEFE3", IF ( v >= 0.97, "#F6EBC8", '
-  f'"#F4D9D5" ) ) )', None, "8 Formatting", hidden=True)
+m("Heat On-time", f'VAR v = [On-time %] RETURN IF ( ISBLANK ( v ), BLANK (), IF ( v >= 0.9, "#E3F1E4", IF ( v >= 0.8, "#F8ECD2", '
+  f'"#F6DADA" ) ) )', None, "8 Formatting", hidden=True)
+m("Heat Fill", f'VAR v = [Fill Rate] RETURN IF ( ISBLANK ( v ), BLANK (), IF ( v >= 0.985, "#E3F1E4", IF ( v >= 0.97, "#F8ECD2", '
+  f'"#F6DADA" ) ) )', None, "8 Formatting", hidden=True)
 m("Heat Stock", f'VAR v = DIVIDE ( [Avg Stock Value], CALCULATE ( [Avg Stock Value], ALLSELECTED ( dim_sku ) ) ) RETURN '
-  f'IF ( ISBLANK ( v ), BLANK (), IF ( v >= 0.2, "#B9CCDB", IF ( v >= 0.08, "#DCE6EE", "#F1F5F8" ) ) )', None, "8 Formatting",
+  f'IF ( ISBLANK ( v ), BLANK (), IF ( v >= 0.2, "#F2C9B8", IF ( v >= 0.08, "#F8E1D7", "#FCF2EE" ) ) )', None, "8 Formatting",
   hidden=True)
 
 
@@ -1269,8 +1269,8 @@ POLISH[("quality", "fabric")] = {**NO_AXIS, "categoryAxis": [{"properties": {"fo
 BAND_H, KPI_Y, KPI_H, CONTENT_Y = 56, 112, 100, 222
 NX0, NX1 = 24, 1256                      # content area of this design
 OLD = (200, 1264, 192, 704)              # the coordinates the page layouts were drawn in
-NUM_FONT = "DIN, Bahnschrift, 'Segoe UI Semibold', sans-serif"   # engineering-style numerals, safe fallbacks
-GRID_L = "#ECE7DC"
+NUM_FONT = "Segoe UI Semibold"          # the theme's Segoe UI for KPI values
+GRID_L = "#EEEAE5"
 
 
 def sc(c):
@@ -1278,7 +1278,7 @@ def sc(c):
 
 
 THEME = {
-    "name": "Larkspur Mill Floor",
+    "name": "Larkspur Home Textiles Operations",
     "dataColors": DATA_COLORS,
     "foreground": INK, "foregroundNeutralSecondary": SLATE, "foregroundNeutralTertiary": SLATE_2,
     "background": SURFACE, "backgroundLight": SURFACE_2, "backgroundNeutral": LINE,
@@ -1294,7 +1294,7 @@ THEME = {
     "visualStyles": {
         "*": {"*": {
             "background": [{"show": True, "color": sc(SURFACE), "transparency": 0}],
-            "border": [{"show": True, "color": sc(LINE), "radius": 6, "width": 1}],
+            "border": [{"show": True, "color": sc(LINE), "radius": 4, "width": 1}],
             "dropShadow": [{"show": False}],
             "padding": [{"top": 12, "bottom": 10, "left": 14, "right": 14}],
             "title": [{"show": True, "fontColor": sc(INK), "fontSize": 11, "fontFamily": FONT_SB, "titleWrap": True}],
@@ -1307,14 +1307,14 @@ THEME = {
             "labels": [{"color": sc(INK), "fontSize": 9}],
             "lineStyles": [{"strokeWidth": 2.5}],
             "visualTooltip": [{"titleFontColor": sc(SLATE), "valueFontColor": sc(INK), "background": sc(SURFACE)}],
-            "visualHeader": [{"background": sc(SURFACE), "border": sc(LINE), "foreground": sc(SLATE), "transparency": 0}],
+            "visualHeader": [{"show": False}],
             "outspacePane": [{"backgroundColor": sc(SURFACE), "foregroundColor": sc(INK), "transparency": 0,
                               "border": True, "borderColor": sc(LINE)}],
             "filterCard": [{"$id": "Applied", "backgroundColor": sc(SURFACE_2), "foregroundColor": sc(INK), "transparency": 0},
                            {"$id": "Available", "backgroundColor": sc(SURFACE), "foregroundColor": sc(INK), "transparency": 0}],
         }},
         "page": {"*": {"background": [{"color": sc(CANVAS), "transparency": 0}],
-                       "outspace": [{"color": sc("#E6E1D6"), "transparency": 0}]}},
+                       "outspace": [{"color": sc("#EFECE8"), "transparency": 0}]}},
         "card": {"*": {"labels": [{"color": sc(INK), "fontSize": 24, "fontFamily": NUM_FONT}],
                        "categoryLabels": [{"show": False}],
                        "title": [{"alignment": "center", "fontSize": 9, "fontColor": sc(SLATE), "fontFamily": FONT_SB}]}},
@@ -1372,7 +1372,7 @@ def sidebar(p, active):            # name kept: every page calls it first; draws
     for i in range(3):
         p.add(f"logo_warp{i}", 24 + i * 6, 15, 3, 26, panel(GOLD))
     p.add("logo_weft", 20, 26, 22, 3, panel(WHITE))
-    p.add("logo_name", 52, 10, 170, 24, fonted(textbox([[("LARKSPUR", 15, WHITE, True)]]), NUM_FONT))
+    p.add("logo_name", 52, 6, 190, 30, fonted(textbox([[("LARKSPUR", 15, WHITE, True)]]), NUM_FONT))
     p.add("logo_sub", 52, 32, 190, 16, textbox([[("HOME TEXTILES · OPERATIONS", 6.5, MIST, True)]]))
     x = 262
     for key, label in NAV:
@@ -1710,7 +1710,7 @@ def page_leaks():
         "waterfallChart", {"Category": [(col("leaks", "item"), "Item")], "Y": [(mea("Leak Bridge"), "Amount")]},
         title="Gross margin to contribution", subtitle="2025, or the year picked in the filter · whole company",
         sort=[(col("leaks", "item"), "Ascending")],
-        objects={"sentimentColors": [{"properties": {"increaseFill": solid(PRIMARY), "decreaseFill": solid(BAD),
+        objects={"sentimentColors": [{"properties": {"increaseFill": solid(CYAN), "decreaseFill": solid(BAD),
                                                       "totalFill": solid(NAVY)}}],
                  "labels": labels(True, labelDisplayUnits=1000000, labelPrecision=lit_int(2)),
                  "categoryAxis": [{"properties": {"fontSize": lit(8)}}],

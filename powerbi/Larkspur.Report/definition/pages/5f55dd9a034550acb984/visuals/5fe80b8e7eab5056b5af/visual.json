@@ -3,10 +3,10 @@
   "name": "5fe80b8e7eab5056b5af",
   "position": {
     "x": 52,
-    "y": 10,
+    "y": 6,
     "z": 500,
-    "height": 24,
-    "width": 170,
+    "height": 30,
+    "width": 190,
     "tabOrder": 500
   },
   "visual": {
@@ -25,7 +25,7 @@
                     "textStyle": {
                       "fontSize": "15pt",
                       "color": "#FFFFFF",
-                      "fontFamily": "DIN, Bahnschrift, 'Segoe UI Semibold', sans-serif",
+                      "fontFamily": "Segoe UI Semibold",
                       "fontWeight": "bold"
                     }
                   }

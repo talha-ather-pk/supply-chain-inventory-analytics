@@ -24,7 +24,7 @@
                     "value": "Open SKU detail  ›",
                     "textStyle": {
                       "fontSize": "8pt",
-                      "color": "#2B5876",
+                      "color": "#D96B43",
                       "fontFamily": "Segoe UI Semibold",
                       "fontWeight": "bold"
                     }
@@ -83,7 +83,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#2B5876'"
+                      "Value": "'#D96B43'"
                     }
                   }
                 }

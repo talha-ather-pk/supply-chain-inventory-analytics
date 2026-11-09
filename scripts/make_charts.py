@@ -17,12 +17,12 @@ ROOT = Path(__file__).resolve().parents[1]
 P, C = ROOT / "data_clean" / "powerbi", ROOT / "data_clean"
 IMG, SITE = ROOT / "images", ROOT / "site" / "img"
 IMG.mkdir(exist_ok=True); SITE.mkdir(parents=True, exist_ok=True)
-# the dashboard's "Mill floor" palette: steel blue data, steel grey text, green / amber / red status
-INDIGO, PRIMARY, COMPARE, GOOD, WARN, BAD, SLATE, SKY = ("#22313A", "#2B5876", "#B9C3C9", "#2E8B57", "#C99A06", "#B83A30",
-                                                         "#5E6B73", "#22313A")
+# the dashboard's palette: terracotta lead, industrial blue-grey, warm taupe text, green / amber / red status
+INDIGO, PRIMARY, COMPARE, GOOD, WARN, BAD, SLATE, SKY = ("#2C2A29", "#D96B43", "#C9BFB5", "#2E7D32", "#D9A036", "#C62828",
+                                                         "#8C7A6B", "#3B6E8C")
 plt.rcParams.update({"font.family": "Segoe UI", "font.size": 10, "axes.spines.top": False, "axes.spines.right": False,
                      "axes.titleweight": "bold", "axes.titlesize": 12, "axes.titlelocation": "left",
-                     "axes.edgecolor": "#E2DDD2"})
+                     "axes.edgecolor": "#E5E0DA"})
 pct = PercentFormatter(1.0, decimals=0)
 
 
@@ -85,13 +85,13 @@ vals = lk.amount.to_numpy() / 1e6
 start = np.concatenate([[0], np.cumsum(vals)[:-1]])
 fig, ax = plt.subplots(figsize=(9, 4))
 for i, (s0, v, name) in enumerate(zip(start, vals, lk.item)):
-    ax.bar(i, v, bottom=s0 if i else 0, color=PRIMARY if v > 0 else BAD)
+    ax.bar(i, v, bottom=s0 if i else 0, color=SKY if v > 0 else BAD)
     if i:
         ax.text(i, s0 + v - 0.15, f"{v:+.2f}", ha="center", va="top", fontsize=8.5, color=BAD)
     else:
         ax.text(i, v + 0.15, f"{v:.1f}", ha="center", fontsize=8.5)
 total = vals.sum()
-ax.bar(len(vals), total, color=SKY); ax.text(len(vals), total + 0.15, f"{total:.1f}", ha="center", fontsize=8.5)
+ax.bar(len(vals), total, color=INDIGO); ax.text(len(vals), total + 0.15, f"{total:.1f}", ha="center", fontsize=8.5)
 ax.set_xticks(range(len(vals) + 1), [n.replace(" ", "\n", 1) for n in lk.item] + ["Contri-\nbution"], fontsize=8.5)
 ax.set_ylabel("$M"); ax.set_ylim(22, vals[0] * 1.04)
 ax.set_title(r"2025: gross margin to contribution (\$M, axis starts at \$22M)")
@@ -103,7 +103,7 @@ d = R[R.reason.str.startswith("Defect")].groupby("production_line").size()
 n = O[O.status == "Shipped"].merge(sku[["sku", "production_line"]], on="sku").groupby("production_line").size()
 rate = (d / n).sort_index()
 fig, ax = plt.subplots(figsize=(9, 3.4))
-ax.bar(rate.index, rate.values, color=[BAD if v > 0.02 else PRIMARY for v in rate.values], width=0.55)
+ax.bar(rate.index, rate.values, color=[BAD if v > 0.02 else SKY for v in rate.values], width=0.55)
 for i, v in enumerate(rate.values):
     ax.text(i, v + 0.0007, f"{v:.2%}", ha="center", fontsize=9)
 ax.yaxis.set_major_formatter(PercentFormatter(1.0, decimals=1))

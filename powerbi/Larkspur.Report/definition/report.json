@@ -11,7 +11,7 @@
       "type": "SharedResources"
     },
     "customTheme": {
-      "name": "Larkspur_Indigo.json",
+      "name": "Larkspur_Textiles.json",
       "reportVersionAtImport": {
         "visual": "2.4.0",
         "report": "3.0.0",
@@ -37,8 +37,8 @@
       "type": "RegisteredResources",
       "items": [
         {
-          "name": "Larkspur_Indigo.json",
-          "path": "Larkspur_Indigo.json",
+          "name": "Larkspur_Textiles.json",
+          "path": "Larkspur_Textiles.json",
           "type": "CustomTheme"
         }
       ]

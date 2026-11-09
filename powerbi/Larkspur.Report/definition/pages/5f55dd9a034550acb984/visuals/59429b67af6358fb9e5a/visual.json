@@ -116,7 +116,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#7FA7C2'"
+                      "Value": "'#3B6E8C'"
                     }
                   }
                 }

@@ -27,7 +27,7 @@ from openpyxl.worksheet.table import Table, TableStyleInfo
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "excel"; OUT.mkdir(exist_ok=True)
-INDIGO, INK, SLATE, PALE = "22313A", "1E2A30", "5E6B73", "F4F1EA"   # the dashboard's "Mill floor" palette
+INDIGO, INK, SLATE, PALE = "2C2A29", "2C2A29", "8C7A6B", "F9F8F6"   # the dashboard's palette
 RED, AMBER, GREEN = "F8D7D5", "FCE9C6", "D8F0E3"
 H_FILL = PatternFill("solid", fgColor=INDIGO)
 IN_FONT = Font(color="1D4ED8")                      # inputs in blue, the usual modelling convention
@@ -129,7 +129,7 @@ ws.conditional_formatting.add(rng_, CellIsRule(operator="equal", formula=['"WATC
 ws.conditional_formatting.add(rng_, CellIsRule(operator="equal", formula=['"OK"'], fill=PatternFill(bgColor=GREEN),
                                                 font=Font(color="067647")))
 ws.conditional_formatting.add(f"T{HR + 1}:T{last_row}", DataBarRule(start_type="num", start_value=0, end_type="num", end_value=12,
-                                                                     color="2B5876"))
+                                                                     color="D96B43"))
 ws.conditional_formatting.add(f"A{HR + 1}:A{last_row}", FormulaRule(formula=[f'$U{HR + 1}="REORDER NOW"'], font=Font(bold=True)))
 ws.freeze_panes = ws.cell(HR + 1, 3)
 ws.sheet_view.zoomScale = 90
@@ -168,7 +168,7 @@ ch.x_axis.delete = False; ch.y_axis.delete = False
 ch.legend.position = "t"; ch.legend.overlay = False; ch.y_axis.majorGridlines = None
 ch.add_data(Reference(sm, min_col=2, max_col=4, min_row=hl, max_row=hl + 4), titles_from_data=True)
 ch.set_categories(Reference(sm, min_col=1, min_row=hl + 1, max_row=hl + 4))
-for s_, col in zip(ch.series, ["B83A30", "C99A06", "2E8B57"]):
+for s_, col in zip(ch.series, ["C62828", "D9A036", "2E7D32"]):
     s_.graphicalProperties.solidFill = col; s_.graphicalProperties.line.solidFill = col
 sm.add_chart(ch, "G4")
 for col_, wdt in zip("ABCDE", [18, 13, 22, 10, 22]):

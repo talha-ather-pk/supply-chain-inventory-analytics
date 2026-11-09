@@ -626,67 +626,67 @@ table _Measures
 		displayFolder: 9 Helpers
 		lineageTag: a52d8cbf-9ab3-5b93-8297-cce02522c611
 
-	measure 'On-time Color' = VAR v = [On-time %] RETURN IF ( v >= 0.9, "#2E8B57", IF ( v >= 0.8, "#C99A06", "#B83A30" ) )
+	measure 'On-time Color' = VAR v = [On-time %] RETURN IF ( v >= 0.9, "#2E7D32", IF ( v >= 0.8, "#D9A036", "#C62828" ) )
 		isHidden
 		displayFolder: 8 Formatting
 		lineageTag: 33d5d047-2db7-5fe2-a8d5-c372a2979f9f
 
-	measure 'Short Color' = VAR v = [Weeks Short %] RETURN IF ( v <= 0.05, "#2E8B57", IF ( v <= 0.10, "#C99A06", "#B83A30" ) )
+	measure 'Short Color' = VAR v = [Weeks Short %] RETURN IF ( v <= 0.05, "#2E7D32", IF ( v <= 0.10, "#D9A036", "#C62828" ) )
 		isHidden
 		displayFolder: 8 Formatting
 		lineageTag: b3378dab-e4bd-58fb-bc9d-0a8372b851be
 
-	measure 'Defect Color' = IF ( [Defect Rate] > 0.02, "#B83A30", "#2B5876" )
+	measure 'Defect Color' = IF ( [Defect Rate] > 0.02, "#C62828", "#3B6E8C" )
 		isHidden
 		displayFolder: 8 Formatting
 		lineageTag: 8d8031a8-e626-5a15-9ed8-c6c84fc5b0c1
 
-	measure 'PO Color' = IF ( [PO Late %] > 0.1, "#B83A30", "#2B5876" )
+	measure 'PO Color' = IF ( [PO Late %] > 0.1, "#C62828", "#3B6E8C" )
 		isHidden
 		displayFolder: 8 Formatting
 		lineageTag: 2426c278-58b4-5e07-9cbc-cf80db3495fa
 
-	measure 'Accuracy Color' = VAR v = [Count Accuracy] RETURN IF ( v >= 0.95, "#2E8B57", IF ( v >= 0.9, "#C99A06", "#B83A30" ) )
+	measure 'Accuracy Color' = VAR v = [Count Accuracy] RETURN IF ( v >= 0.95, "#2E7D32", IF ( v >= 0.9, "#D9A036", "#C62828" ) )
 		isHidden
 		displayFolder: 8 Formatting
 		lineageTag: ddd8a980-6fe8-5fb7-8f85-b5ac0086bb7d
 
-	measure 'Reorder Color' = SWITCH ( SELECTEDVALUE ( dim_sku[reorder_status] ), "Reorder now", "#B83A30", "Watch", "#C99A06", "OK", "#2E8B57", "#5E6B73" )
+	measure 'Reorder Color' = SWITCH ( SELECTEDVALUE ( dim_sku[reorder_status] ), "Reorder now", "#C62828", "Watch", "#D9A036", "OK", "#2E7D32", "#8C7A6B" )
 		isHidden
 		displayFolder: 8 Formatting
 		lineageTag: af878833-caf9-5d38-b62b-c561606afa62
 
-	measure 'Change Color' = IF ( [ROP Change %] > 0, "#C99A06", "#7FA7C2" )
+	measure 'Change Color' = IF ( [ROP Change %] > 0, "#D9A036", "#3B6E8C" )
 		isHidden
 		displayFolder: 8 Formatting
 		lineageTag: 2863a221-e05f-5148-9649-2a90e46a9a68
 
-	measure 'What-if Color' = IF ( SELECTEDVALUE ( delivery_whatif[order] ) = 1, "#B9C3C9", "#2B5876" )
+	measure 'What-if Color' = IF ( SELECTEDVALUE ( delivery_whatif[order] ) = 1, "#C9BFB5", "#D96B43" )
 		isHidden
 		displayFolder: 8 Formatting
 		lineageTag: 83bf3056-9f2f-54ee-baf7-9166773f8fe6
 
-	measure 'Match Color' = IF ( [DQ Match] = "✓", "#2E8B57", "#B83A30" )
+	measure 'Match Color' = IF ( [DQ Match] = "✓", "#2E7D32", "#C62828" )
 		isHidden
 		displayFolder: 8 Formatting
 		lineageTag: 4d78379d-bd8f-5461-b6c6-a77d56a91133
 
-	measure 'Fix Color' = IF ( SELECTEDVALUE ( dq_log[issue] ) IN { "Exact duplicate lines (re-run export)", "Test lines from ERP go-live", "Credit notes booked as negative lines", "Count keyed in but not finished" }, "#B83A30", "#C99A06" )
+	measure 'Fix Color' = IF ( SELECTEDVALUE ( dq_log[issue] ) IN { "Exact duplicate lines (re-run export)", "Test lines from ERP go-live", "Credit notes booked as negative lines", "Count keyed in but not finished" }, "#C62828", "#D9A036" )
 		isHidden
 		displayFolder: 8 Formatting
 		lineageTag: 4f0bcc93-b909-579d-b5a4-80e056975441
 
-	measure 'Heat On-time' = VAR v = [On-time %] RETURN IF ( ISBLANK ( v ), BLANK (), IF ( v >= 0.9, "#DCEFE3", IF ( v >= 0.8, "#F6EBC8", "#F4D9D5" ) ) )
+	measure 'Heat On-time' = VAR v = [On-time %] RETURN IF ( ISBLANK ( v ), BLANK (), IF ( v >= 0.9, "#E3F1E4", IF ( v >= 0.8, "#F8ECD2", "#F6DADA" ) ) )
 		isHidden
 		displayFolder: 8 Formatting
 		lineageTag: d3347f4f-ab99-5312-ba3d-83b9b5cd5d3e
 
-	measure 'Heat Fill' = VAR v = [Fill Rate] RETURN IF ( ISBLANK ( v ), BLANK (), IF ( v >= 0.985, "#DCEFE3", IF ( v >= 0.97, "#F6EBC8", "#F4D9D5" ) ) )
+	measure 'Heat Fill' = VAR v = [Fill Rate] RETURN IF ( ISBLANK ( v ), BLANK (), IF ( v >= 0.985, "#E3F1E4", IF ( v >= 0.97, "#F8ECD2", "#F6DADA" ) ) )
 		isHidden
 		displayFolder: 8 Formatting
 		lineageTag: adbacbd7-8c94-5f0b-908d-5f8799652ca3
 
-	measure 'Heat Stock' = VAR v = DIVIDE ( [Avg Stock Value], CALCULATE ( [Avg Stock Value], ALLSELECTED ( dim_sku ) ) ) RETURN IF ( ISBLANK ( v ), BLANK (), IF ( v >= 0.2, "#B9CCDB", IF ( v >= 0.08, "#DCE6EE", "#F1F5F8" ) ) )
+	measure 'Heat Stock' = VAR v = DIVIDE ( [Avg Stock Value], CALCULATE ( [Avg Stock Value], ALLSELECTED ( dim_sku ) ) ) RETURN IF ( ISBLANK ( v ), BLANK (), IF ( v >= 0.2, "#F2C9B8", IF ( v >= 0.08, "#F8E1D7", "#FCF2EE" ) ) )
 		isHidden
 		displayFolder: 8 Formatting
 		lineageTag: a5c4930b-1c09-51e9-a3de-45f12b9112ca
@@ -696,7 +696,7 @@ table _Measures
 		displayFolder: 9 Helpers
 		lineageTag: 849300ff-6452-5dbb-aa9c-f00bd525def1
 
-	measure 'RAG OnTime Color' = VAR v = [On-time %] RETURN IF ( v >= 0.95, "#2E8B57", IF ( v >= 0.85, "#C99A06", "#B83A30" ) )
+	measure 'RAG OnTime Color' = VAR v = [On-time %] RETURN IF ( v >= 0.95, "#2E7D32", IF ( v >= 0.85, "#D9A036", "#C62828" ) )
 		isHidden
 		displayFolder: 8 Formatting
 		lineageTag: 45ce9a15-12de-52c4-96e6-bc1a9c476f1b
@@ -706,7 +706,7 @@ table _Measures
 		displayFolder: 9 Helpers
 		lineageTag: 8f454a8d-c0e6-5271-87e6-d72fc4b52852
 
-	measure 'RAG OTIF Color' = VAR v = [OTIF %] RETURN IF ( v >= 0.95, "#2E8B57", IF ( v >= 0.85, "#C99A06", "#B83A30" ) )
+	measure 'RAG OTIF Color' = VAR v = [OTIF %] RETURN IF ( v >= 0.95, "#2E7D32", IF ( v >= 0.85, "#D9A036", "#C62828" ) )
 		isHidden
 		displayFolder: 8 Formatting
 		lineageTag: a7e246cb-307a-5902-a34c-38ea3ae6950c
@@ -716,7 +716,7 @@ table _Measures
 		displayFolder: 9 Helpers
 		lineageTag: 1280321d-d449-54f6-a29e-19ffeb0a94ea
 
-	measure 'RAG Fill Color' = VAR v = [Fill Rate] RETURN IF ( v >= 0.985, "#2E8B57", IF ( v >= 0.97, "#C99A06", "#B83A30" ) )
+	measure 'RAG Fill Color' = VAR v = [Fill Rate] RETURN IF ( v >= 0.985, "#2E7D32", IF ( v >= 0.97, "#D9A036", "#C62828" ) )
 		isHidden
 		displayFolder: 8 Formatting
 		lineageTag: 21a94c53-7caa-57d3-af92-e67d285b8fed
@@ -726,7 +726,7 @@ table _Measures
 		displayFolder: 9 Helpers
 		lineageTag: 0e294179-507a-575f-b1c8-24bf067c4688
 
-	measure 'RAG Short Color' = VAR v = [Weeks Short %] RETURN IF ( v <= 0.05, "#2E8B57", IF ( v <= 0.10, "#C99A06", "#B83A30" ) )
+	measure 'RAG Short Color' = VAR v = [Weeks Short %] RETURN IF ( v <= 0.05, "#2E7D32", IF ( v <= 0.10, "#D9A036", "#C62828" ) )
 		isHidden
 		displayFolder: 8 Formatting
 		lineageTag: c26e0807-85dc-5504-8e20-8251d1d59374
@@ -736,7 +736,7 @@ table _Measures
 		displayFolder: 9 Helpers
 		lineageTag: 016677fe-3408-519c-9d63-0bf39526e7be
 
-	measure 'RAG Accuracy Color' = VAR v = [Count Accuracy] RETURN IF ( v >= 0.95, "#2E8B57", IF ( v >= 0.9, "#C99A06", "#B83A30" ) )
+	measure 'RAG Accuracy Color' = VAR v = [Count Accuracy] RETURN IF ( v >= 0.95, "#2E7D32", IF ( v >= 0.9, "#D9A036", "#C62828" ) )
 		isHidden
 		displayFolder: 8 Formatting
 		lineageTag: 0c518896-98d0-5f30-8f95-09dd711a0b39
@@ -746,7 +746,7 @@ table _Measures
 		displayFolder: 9 Helpers
 		lineageTag: eb846ec3-4dad-54fb-a368-84104ca65903
 
-	measure 'RAG Defect Color' = VAR v = [Defect Rate] RETURN IF ( v <= 0.01, "#2E8B57", IF ( v <= 0.02, "#C99A06", "#B83A30" ) )
+	measure 'RAG Defect Color' = VAR v = [Defect Rate] RETURN IF ( v <= 0.01, "#2E7D32", IF ( v <= 0.02, "#D9A036", "#C62828" ) )
 		isHidden
 		displayFolder: 8 Formatting
 		lineageTag: 3648e82f-d9ca-5740-a504-d6d3cd42d310
@@ -756,7 +756,7 @@ table _Measures
 		displayFolder: 9 Helpers
 		lineageTag: b9756fee-952e-5f51-9f5f-8d00189f1cd5
 
-	measure 'RAG POLate Color' = VAR v = [PO Late %] RETURN IF ( v <= 0.05, "#2E8B57", IF ( v <= 0.10, "#C99A06", "#B83A30" ) )
+	measure 'RAG POLate Color' = VAR v = [PO Late %] RETURN IF ( v <= 0.05, "#2E7D32", IF ( v <= 0.10, "#D9A036", "#C62828" ) )
 		isHidden
 		displayFolder: 8 Formatting
 		lineageTag: 322a5d27-3eef-562f-8e46-2ddace906da2
@@ -766,7 +766,7 @@ table _Measures
 		displayFolder: 9 Helpers
 		lineageTag: 22ecd213-e680-55f9-a975-9c425ef08f56
 
-	measure 'RAG Reorder Color' = VAR v = [SKUs Reorder Now] RETURN IF ( v <= 10, "#2E8B57", IF ( v <= 20, "#C99A06", "#B83A30" ) )
+	measure 'RAG Reorder Color' = VAR v = [SKUs Reorder Now] RETURN IF ( v <= 10, "#2E7D32", IF ( v <= 20, "#D9A036", "#C62828" ) )
 		isHidden
 		displayFolder: 8 Formatting
 		lineageTag: ba6c8905-1e68-5b3c-97cb-e22d018508f2
