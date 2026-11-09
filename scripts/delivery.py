@@ -32,12 +32,12 @@ X["peak"] = S.peak
 lr = LinearRegression().fit(X, S.transit_days)
 est = dict(zip(X.columns, lr.coef_))
 sea_base = truth["sea_base"]; customs = truth["customs"]
-rows = [("Meridian Freight vs Blue Anchor", est["carrier_Meridian Freight"], truth["carrier_extra_days"]["Sea"]["Meridian Freight"]),
-        ("Coral Shipping vs Blue Anchor", est["carrier_Coral Shipping"], truth["carrier_extra_days"]["Sea"]["Coral Shipping"]),
-        ("Oct-Dec departure (port congestion)", est["peak"], truth["peak_sea_oct_dec"])]
+rows = [("Meridian vs Blue Anchor", est["carrier_Meridian Freight"], truth["carrier_extra_days"]["Sea"]["Meridian Freight"]),
+        ("Coral vs Blue Anchor", est["carrier_Coral Shipping"], truth["carrier_extra_days"]["Sea"]["Coral Shipping"]),
+        ("Oct-Dec departure", est["peak"], truth["peak_sea_oct_dec"])]
 for m in ["UK", "EU", "GCC"]:
     true_m = (sea_base[m] + customs[m]) - (sea_base["USA"] + customs["USA"])
-    rows.append((f"{m} vs USA (route + customs)", est[f"market_{m}"], true_m))
+    rows.append((f"{m} vs USA", est[f"market_{m}"], true_m))
 T = pd.DataFrame(rows, columns=["effect", "estimated_days", "true_days"]).round(2)
 T["error_days"] = (T.estimated_days - T.true_days).round(2)
 T.to_csv(CLEAN / "transit_effects.csv", index=False)

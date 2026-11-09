@@ -1,0 +1,788 @@
+table _Measures
+	lineageTag: 1d346dbe-a89c-5d1d-9abc-f34fc3f85847
+
+	measure Revenue = SUM ( fact_order_line[revenue] )
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: 1 Sales
+		lineageTag: 00f5e39f-f578-5aec-ab18-90efbd673858
+
+	measure COGS = SUM ( fact_order_line[cogs] )
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: 1 Sales
+		lineageTag: 3dd434ea-2b2a-5ff1-9df1-4feb6cb67bba
+
+	measure 'Gross Margin' = [Revenue] - [COGS]
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: 1 Sales
+		lineageTag: 15ea62d4-1c35-5a9a-9fa3-d359fdfc4b64
+
+	measure 'Gross Margin %' = DIVIDE ( [Gross Margin], [Revenue] )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 1 Sales
+		lineageTag: 118866b4-0915-5c69-9046-34b5f3d4ad30
+
+	measure 'Order Lines' = COUNTROWS ( fact_order_line )
+		formatString: #,0
+		displayFolder: 1 Sales
+		lineageTag: 213b5678-0314-50d8-b4b1-3afbfc56c1e3
+
+	measure 'Shipped Lines' = CALCULATE ( COUNTROWS ( fact_order_line ), KEEPFILTERS ( fact_order_line[shipped] = 1 ) )
+		formatString: #,0
+		displayFolder: 1 Sales
+		lineageTag: adf65e76-7715-5ade-8b48-c77f86eb6f22
+
+	measure 'Units Ordered' = SUM ( fact_order_line[qty] )
+		formatString: #,0
+		displayFolder: 1 Sales
+		lineageTag: 6054f9c9-abf6-5f45-86f0-8e2ed2c7e00b
+
+	measure 'Lost Margin' = SUM ( fact_order_line[lost_margin] )
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: 1 Sales
+		lineageTag: 6e620e75-a35e-5e5e-8882-e3aabed2eefb
+
+	measure 'Lost Revenue' = SUM ( fact_order_line[lost_revenue] )
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: 1 Sales
+		lineageTag: e04ab2c2-9807-5ece-80cb-874694d844fc
+
+	measure 'Lines Lost %' = DIVIDE ( CALCULATE ( COUNTROWS ( fact_order_line ), KEEPFILTERS ( fact_order_line[status] = "Cancelled - stock-out" ) ), [Order Lines] )
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 1 Sales
+		lineageTag: ad97d4e2-ab19-5777-9a94-9ce591cedaa2
+
+	measure Freight = SUM ( fact_order_line[freight_cost] )
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: 1 Sales
+		lineageTag: 99c43633-fe47-56ae-9316-dbc737e8d801
+
+	measure 'Returns Cost' = SUMX ( fact_return, fact_return[refund_value] + fact_return[return_freight] )
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: 1 Sales
+		lineageTag: f1a0ea6a-45a6-53d7-99c9-bede86d45eb9
+
+	measure Contribution = [Gross Margin] - [Freight] - [Chargebacks] - [Returns Cost]
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: 1 Sales
+		lineageTag: 3b546156-f1bc-51f1-aa38-a6fe0c0a4caa
+
+	measure 'Contribution %' = DIVIDE ( [Contribution], [Revenue] )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 1 Sales
+		lineageTag: 2632b525-b573-5ec8-b20f-94ed21035c4b
+
+	measure 'Service Leaks' = [Chargebacks] + [Expedite Premium] + [Returns Cost]
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: 1 Sales
+		lineageTag: 453803ce-54ee-52de-8d29-1c5e148b5669
+
+	measure 'On-time %' = AVERAGE ( fact_order_line[on_time] )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 2 Delivery
+		lineageTag: bf72d667-077e-54da-8fef-93204059e520
+
+	measure 'Late Lines' = CALCULATE ( COUNTROWS ( fact_order_line ), KEEPFILTERS ( fact_order_line[on_time] = 0 ) )
+		formatString: #,0
+		displayFolder: 2 Delivery
+		lineageTag: 660674af-ae0c-58db-8996-6c58232b3b64
+
+	measure 'OTIF %' = DIVIDE ( CALCULATE ( SUM ( fact_order_line[qty] ), KEEPFILTERS ( fact_order_line[shipped] = 1 ), KEEPFILTERS ( fact_order_line[on_time] = 1 ) ), CALCULATE ( SUM ( fact_order_line[qty] ), KEEPFILTERS ( fact_order_line[status] <> "Open backorder" ) ) )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 2 Delivery
+		lineageTag: 753be5bd-84c9-541c-8c93-e29e16a32be9
+
+	measure 'Avg Days Late' = CALCULATE ( AVERAGE ( fact_order_line[days_late] ), KEEPFILTERS ( fact_order_line[on_time] = 0 ) )
+		formatString: #,0.0
+		displayFolder: 2 Delivery
+		lineageTag: 25643751-f22b-55c8-8b19-484f927f5e62
+
+	measure 'Avg Transit Days' = AVERAGE ( fact_order_line[transit_days] )
+		formatString: #,0.0
+		displayFolder: 2 Delivery
+		lineageTag: ca613455-bb63-5e8d-bb62-2b84f6b4863a
+
+	measure 'Expedite Premium' = SUM ( fact_order_line[expedite_premium] )
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: 2 Delivery
+		lineageTag: c4b4723c-188c-5b56-ad8f-86357da33d47
+
+	measure Chargebacks = SUM ( fact_order_line[chargeback] )
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: 2 Delivery
+		lineageTag: 7cc7f4d0-53ab-5b2c-bc8a-5552116df66f
+
+	measure 'Expedited Lines' = CALCULATE ( COUNTROWS ( fact_order_line ), KEEPFILTERS ( fact_order_line[expedited] = 1 ) )
+		formatString: #,0
+		displayFolder: 2 Delivery
+		lineageTag: 08bc2f37-76e4-50a5-a6ca-7e13eed746c6
+
+	measure 'Waited Share' = CALCULATE ( AVERAGE ( fact_order_line[waited_for_stock] ), KEEPFILTERS ( fact_order_line[shipped] = 1 ) )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 2 Delivery
+		lineageTag: e50e4f2a-3cf0-542e-b318-b858c7b62f91
+
+	measure 'Sea On-time %' = CALCULATE ( [On-time %], KEEPFILTERS ( fact_order_line[ship_mode] = "Sea" ) )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 2 Delivery
+		lineageTag: b8bf600d-cc8c-54ef-8864-dcf266c98790
+
+	measure 'Rate per kg' = MAX ( dim_carrier[usd_per_kg] )
+		formatString: \$0.00
+		displayFolder: 2 Delivery
+		lineageTag: 846c4770-e549-552a-b754-38e9b58988ef
+
+	measure 'Effect Estimated' = SUM ( transit_effects[estimated_days] )
+		formatString: +0.00;-0.00;0.00
+		displayFolder: 2 Delivery
+		lineageTag: 47caec97-193b-55f4-b4ad-9f2229adf217
+
+	measure 'Effect True' = SUM ( transit_effects[true_days] )
+		formatString: +0.0;-0.0;0.0
+		displayFolder: 2 Delivery
+		lineageTag: eebcc964-856f-5651-aa6f-aa7e22734a74
+
+	measure 'Effect Error' = SUM ( transit_effects[error_days] )
+		formatString: +0.00;-0.00;0.00
+		displayFolder: 2 Delivery
+		lineageTag: 27669223-6ab0-543b-beaf-38cf06fa89a7
+
+	measure 'What-if On-time' = DIVIDE ( MAX ( delivery_whatif[on_time] ), 100 )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 2 Delivery
+		lineageTag: 27664984-e5dd-5ec6-8df4-a577ce7dcbe8
+
+	measure 'What-if Gain' = MAX ( delivery_whatif[gain_pts] )
+		formatString: +0.0" pts";-0.0" pts";0.0" pts"
+		displayFolder: 2 Delivery
+		lineageTag: f801078f-5beb-515d-a0d7-d09ba5066867
+
+	measure 'Demand Units' = SUM ( fact_inventory[demand_units] )
+		formatString: #,0
+		displayFolder: 3 Inventory
+		lineageTag: e5d10934-5efe-5636-99c9-4d42e0009ef9
+
+	measure 'Shipped Units' = SUM ( fact_inventory[shipped_units] )
+		formatString: #,0
+		displayFolder: 3 Inventory
+		lineageTag: 85c54ce1-7ffb-52ca-816c-357a60c3f489
+
+	measure 'Lost Units' = SUM ( fact_inventory[lost_units] )
+		formatString: #,0
+		displayFolder: 3 Inventory
+		lineageTag: ec7e8e91-5698-5aa3-8e9f-76e819904b09
+
+	measure 'On Hand Units' = SUM ( fact_inventory[on_hand_units] )
+		formatString: #,0
+		displayFolder: 3 Inventory
+		lineageTag: d0fc0b86-fa3f-57ac-943f-cf44ffc2a943
+
+	measure 'Fill Rate' = DIVIDE ( [Shipped Units], [Demand Units] )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 3 Inventory
+		lineageTag: a38dc8a7-ccdc-5c7b-a077-5be0152085ba
+
+	measure 'Lost Demand %' = DIVIDE ( [Lost Units], [Demand Units] )
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 3 Inventory
+		lineageTag: eab1de78-06b3-509f-9abe-59df49b0c2d0
+
+	measure 'Weeks Short %' = AVERAGE ( fact_inventory[short_week] )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 3 Inventory
+		lineageTag: c7a0132e-307a-5537-8eee-27587aaafa6c
+
+	measure 'Avg Stock Value' = AVERAGEX ( VALUES ( fact_inventory[week_start] ), CALCULATE ( SUM ( fact_inventory[stock_value] ) ) )
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: 3 Inventory
+		lineageTag: eafcf15e-5579-5d62-9fce-1c9314187331
+
+	measure 'Weeks of Cover' = DIVIDE ( SUM ( fact_inventory[on_hand_units] ), SUM ( fact_inventory[demand_units] ) )
+		formatString: #,0.0
+		displayFolder: 3 Inventory
+		lineageTag: 083583f6-3f74-57da-a889-dcb48deb2a0a
+
+	measure 'Carrying Cost' = [Avg Stock Value] * 0.22
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: 3 Inventory
+		lineageTag: c3e9b3f2-8f82-55f6-82de-ab937b7985bf
+
+	measure SKUs = COUNTROWS ( dim_sku )
+		formatString: #,0
+		displayFolder: 3 Inventory
+		lineageTag: 52bd28c9-b252-5347-ba6e-6e140198df4e
+
+	measure 'SKUs Reorder Now' = CALCULATE ( COUNTROWS ( dim_sku ), KEEPFILTERS ( dim_sku[reorder_status] = "Reorder now" ) )
+		formatString: #,0
+		displayFolder: 3 Inventory
+		lineageTag: 43609490-75c2-5f21-af8d-fc478981af6f
+
+	measure 'Avg Lead Time' = AVERAGE ( dim_sku[lead_time_wk] )
+		formatString: #,0.0
+		displayFolder: 3 Inventory
+		lineageTag: 0b91454c-735c-5a5d-a3f0-ccb48a7d27e2
+
+	measure 'ROP Current' = SUM ( dim_sku[rop_current] )
+		formatString: #,0
+		displayFolder: 4 Policy
+		lineageTag: 087bcb37-453a-5dec-90d1-57c3fe011f24
+
+	measure 'ROP Recommended' = SUM ( dim_sku[rop_recommended] )
+		formatString: #,0
+		displayFolder: 4 Policy
+		lineageTag: 838d118e-8a32-5394-9832-77c360308db9
+
+	measure 'ROP Change %' = DIVIDE ( [ROP Recommended], [ROP Current] ) - 1
+		formatString: +0%;-0%;0%
+		displayFolder: 4 Policy
+		lineageTag: efce703a-dd1a-5b27-8b9b-274209359ab4
+
+	measure 'Safety Stock' = SUM ( dim_sku[safety_stock] )
+		formatString: #,0
+		displayFolder: 4 Policy
+		lineageTag: 8c680753-2fa0-5077-a524-746a560a6b2d
+
+	measure 'Policy Fill' = DIVIDE ( MAX ( policy_backtest[fill_rate_pct] ), 100 )
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 4 Policy
+		lineageTag: 287aadfa-0e84-5b07-81fe-de4a67a96153
+
+	measure 'Policy Weeks Short' = DIVIDE ( MAX ( policy_backtest[weeks_short_pct] ), 100 )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 4 Policy
+		lineageTag: a895aab4-7153-545a-9ef4-96fc41ea5e6f
+
+	measure 'Policy Lost Margin' = SUM ( policy_backtest[lost_margin_usd] )
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: 4 Policy
+		lineageTag: 22a0ee58-b75e-54c6-ada8-6c5308a7f918
+
+	measure 'Policy Stock Value' = SUM ( policy_backtest[avg_stock_value_usd] )
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: 4 Policy
+		lineageTag: 77c3026d-e719-5342-aae9-9fe1cc499f0b
+
+	measure 'Line Fill' = DIVIDE ( MAX ( policy_by_line[fill_rate_pct] ), 100 )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 4 Policy
+		lineageTag: d2c42515-c2a0-5f46-9a13-477c46486f73
+
+	measure 'Line Weeks Short' = DIVIDE ( MAX ( policy_by_line[weeks_short_pct] ), 100 )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 4 Policy
+		lineageTag: e4f8d003-0407-50d6-8358-553d600c6ea2
+
+	measure 'Replay Stock Value' = SUM ( policy_weekly[stock_value] )
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: 4 Policy
+		lineageTag: 50a4fd4f-6b1f-52af-b920-dab4f2d9ba79
+
+	measure 'Fill Current' = CALCULATE ( MAX ( findings[value] ), findings[key] = "fill_current" )
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 4 Policy
+		lineageTag: 35f20c99-20a3-5fcb-9165-673cad7aace4
+
+	measure 'Fill Recommended' = CALCULATE ( MAX ( findings[value] ), findings[key] = "fill_recommended" )
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 4 Policy
+		lineageTag: 0fe91e95-d87c-5553-91d0-d38c43cc0d50
+
+	measure 'Lost Margin Saved' = CALCULATE ( MAX ( findings[value] ), findings[key] = "lost_margin_saved" )
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: 4 Policy
+		lineageTag: 3009c8f0-b48e-5f1d-9dd2-3d348bca1c11
+
+	measure 'Stock Change' = CALCULATE ( MAX ( findings[value] ), findings[key] = "stock_change" )
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: 4 Policy
+		lineageTag: b0b349c2-2bec-5dac-85c9-c280d7d52a0e
+
+	measure 'Carrying Change' = CALCULATE ( MAX ( findings[value] ), findings[key] = "carrying_change" )
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: 4 Policy
+		lineageTag: 5cd63353-ea22-5f01-b8e5-305d847a68c0
+
+	measure 'Net Policy Gain' = [Lost Margin Saved] - [Carrying Change]
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: 4 Policy
+		lineageTag: e63cab75-f0c6-5413-ab2d-d23fbfbbd621
+
+	measure 'Leak Year' = IF ( ISFILTERED ( dim_week[year] ) && HASONEVALUE ( dim_week[year] ), VALUES ( dim_week[year] ), 2025 )
+		formatString: 0
+		isHidden
+		displayFolder: 9 Helpers
+		lineageTag: 0bd146c8-e924-5bf0-8b11-5b448adf968d
+
+	measure 'Leak Bridge' = VAR y = [Leak Year] RETURN CALCULATE ( SUM ( leaks[amount] ), leaks[year] = y, leaks[kind] IN { "bridge", "cost" } )
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: 5 Leaks
+		lineageTag: 9cf41e2e-994f-599d-813b-b3cd8074277e
+
+	measure 'Avoidable Leaks' = VAR y = [Leak Year] RETURN - CALCULATE ( SUM ( leaks[amount] ), leaks[year] = y, leaks[item] IN { "Expedite premium", "Late chargebacks", "Returns", "Obsolete stock" } )
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: 5 Leaks
+		lineageTag: 8c758519-aa59-5ebe-9b9b-93a587b38809
+
+	measure 'Leak Revenue' = VAR y = [Leak Year] RETURN CALCULATE ( SUM ( leaks[amount] ), leaks[year] = y, leaks[item] = "Revenue" )
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: 5 Leaks
+		lineageTag: ef7beada-5cf7-5b66-9747-fb1d18bb2211
+
+	measure 'Leak Gross Margin' = VAR y = [Leak Year] RETURN CALCULATE ( SUM ( leaks[amount] ), leaks[year] = y, leaks[item] IN { "Revenue", "Cost of goods" } )
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: 5 Leaks
+		lineageTag: f34af518-4fe1-5617-9aaa-681b063964f9
+
+	measure 'Avoidable Leaks %' = DIVIDE ( [Avoidable Leaks], [Leak Revenue] )
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 5 Leaks
+		lineageTag: 039a0d71-592f-5ac6-ae20-0e186f8e83cf
+
+	measure 'Leak Carrying' = VAR y = [Leak Year] RETURN - CALCULATE ( SUM ( leaks[amount] ), leaks[year] = y, leaks[item] = "Inventory carrying" )
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: 5 Leaks
+		lineageTag: bbba46a8-52aa-5b34-a98e-37e1fec22282
+
+	measure 'Leak Lost Margin' = VAR y = [Leak Year] RETURN CALCULATE ( SUM ( leaks[amount] ), leaks[year] = y, leaks[kind] = "memo" )
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: 5 Leaks
+		lineageTag: cdedd54f-8584-55e4-8587-40f771b38186
+
+	measure 'Leak Contribution' = VAR y = [Leak Year] RETURN CALCULATE ( SUM ( leaks[amount] ), leaks[year] = y, leaks[kind] IN { "bridge", "cost" } )
+		formatString: \$#,0;(\$#,0);\$#,0
+		displayFolder: 5 Leaks
+		lineageTag: a9427d10-0749-5a9e-8612-afa6742b32e5
+
+	measure 'Return Lines' = COUNTROWS ( fact_return )
+		formatString: #,0
+		displayFolder: 6 Quality
+		lineageTag: 126b566c-e3f8-5114-8018-cfe06dd76eb6
+
+	measure 'Defect Returns' = CALCULATE ( COUNTROWS ( fact_return ), KEEPFILTERS ( fact_return[reason] = "Defect - shade / stitching" ) )
+		formatString: #,0
+		displayFolder: 6 Quality
+		lineageTag: 46cf4427-b2e0-575a-bf94-77133d01009e
+
+	measure 'Defect Rate' = DIVIDE ( [Defect Returns], [Shipped Lines] )
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 6 Quality
+		lineageTag: c63f1e4c-b7d4-5b4c-a014-568f0ebcc603
+
+	measure 'Return Rate' = DIVIDE ( [Return Lines], [Shipped Lines] )
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 6 Quality
+		lineageTag: baf1122f-d7ab-51fc-a5e0-be29b2d6ffe9
+
+	measure 'Count Accuracy' = AVERAGE ( fact_count[accurate] )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 6 Quality
+		lineageTag: 07b80bae-14ec-5626-a71c-cbbd1e5eb910
+
+	measure Counts = COUNTROWS ( fact_count )
+		formatString: #,0
+		displayFolder: 6 Quality
+		lineageTag: 92af20c7-2989-5f6d-845b-967288528b88
+
+	measure 'PO Late %' = AVERAGE ( fact_po[late] )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 6 Quality
+		lineageTag: afa9762a-e818-5956-862a-c58ba5ae9d9d
+
+	measure POs = COUNTROWS ( fact_po )
+		formatString: #,0
+		displayFolder: 6 Quality
+		lineageTag: 35c60c76-b120-5b7c-bf1d-0ce9791d50f5
+
+	measure 'Avg PO Delay' = CALCULATE ( AVERAGE ( fact_po[days_late] ), KEEPFILTERS ( fact_po[late] = 1 ) )
+		formatString: #,0.0
+		displayFolder: 6 Quality
+		lineageTag: fa71db1f-61d0-5bf4-b024-bfc08f40d3aa
+
+	measure 'DQ Rows' = SUM ( dq_log[rows_affected] )
+		formatString: #,0
+		displayFolder: 6 Data quality
+		lineageTag: c343aba8-5c39-5860-abbe-6ba9b94c3460
+
+	measure 'DQ Injected' = SUM ( dq_log[injected] )
+		formatString: #,0
+		displayFolder: 6 Data quality
+		lineageTag: fd2f75ca-3574-5058-b47d-1c088514d377
+
+	measure 'DQ Match' = IF ( ISBLANK ( [DQ Injected] ), BLANK (), IF ( [DQ Rows] = [DQ Injected], "✓", "✗" ) )
+		displayFolder: 6 Data quality
+		lineageTag: cfd344f8-1dd1-59d7-adff-02b1cdd56d0b
+
+	measure Fixes = CALCULATE ( [DQ Rows], NOT ISBLANK ( dq_log[injected] ) )
+		formatString: #,0
+		displayFolder: 6 Data quality
+		lineageTag: affc4377-8068-5330-890b-45656cf1b5ac
+
+	measure 'Rows Removed' = CALCULATE ( [Fixes], dq_log[issue] IN { "Exact duplicate lines (re-run export)", "Test lines from ERP go-live", "Credit notes booked as negative lines", "Count keyed in but not finished" } )
+		formatString: #,0
+		displayFolder: 6 Data quality
+		lineageTag: ef922fc3-c287-5048-9063-3af3daeef4d1
+
+	measure 'Field Fixes' = CALCULATE ( [Fixes], NOT dq_log[issue] IN { "Exact duplicate lines (re-run export)", "Test lines from ERP go-live", "Credit notes booked as negative lines", "Count keyed in but not finished" } )
+		formatString: #,0
+		displayFolder: 6 Data quality
+		lineageTag: 02cf26a7-8b41-530a-b60d-5f45f3f365ed
+
+	measure 'Lines Received' = CALCULATE ( [DQ Rows], dq_log[table_name] = "order_lines", dq_log[issue] = "Rows received" )
+		formatString: #,0
+		displayFolder: 6 Data quality
+		lineageTag: fdc785a6-4a57-5e86-8dd4-27332b4c4903
+
+	measure 'Clean Lines' = CALCULATE ( [DQ Rows], dq_log[issue] = "Clean order lines" )
+		formatString: #,0
+		displayFolder: 6 Data quality
+		lineageTag: 37890f63-24ab-58aa-a285-8268ee3488d1
+
+	measure 'Checks Matched' = VAR t = FILTER ( dq_log, NOT ISBLANK ( dq_log[injected] ) ) RETURN COUNTROWS ( FILTER ( t, dq_log[rows_affected] = dq_log[injected] ) ) & " of " & COUNTROWS ( t ) & " fixes = injected count"
+		displayFolder: 6 Data quality
+		lineageTag: 10abf642-61b4-5d37-88f6-fe277b0a8ae9
+
+	measure 'Filter Context' = IF ( ISFILTERED ( dim_week[year] ), CONCATENATEX ( VALUES ( dim_week[year] ), dim_week[year], ", ", dim_week[year], ASC ), "Jan 2023 – Dec 2025" ) & "   ·   " & IF ( ISFILTERED ( dim_sku[category] ), CONCATENATEX ( VALUES ( dim_sku[category] ), dim_sku[category], ", ", dim_sku[category], ASC ), "All categories" ) & "   ·   " & IF ( ISFILTERED ( dim_sku[production_line] ), CONCATENATEX ( VALUES ( dim_sku[production_line] ), dim_sku[production_line], ", ", dim_sku[production_line], ASC ), "All production lines" ) & "   ·   stock position 31 Dec 2025"
+		displayFolder: 7 Dynamic text
+		lineageTag: f80fe018-0b6e-55dc-9602-dd704c045c08
+
+	measure 'Blank Text' = ""
+		isHidden
+		displayFolder: 9 Helpers
+		lineageTag: 977d624d-4400-5f89-84b7-b2e231416119
+
+	measure 'Title SKU' = SELECTEDVALUE ( dim_sku[sku_label] ) & "  ·  class " & SELECTEDVALUE ( dim_sku[class] ) & "  ·  line " & SELECTEDVALUE ( dim_sku[production_line] )
+		displayFolder: 7 Dynamic text
+		lineageTag: b7b8252f-ac3b-5dcb-b0a8-758e36fd7d6f
+
+	measure 'Title Tip SKU' = SELECTEDVALUE ( dim_sku[sku_label] )
+		displayFolder: 7 Dynamic text
+		lineageTag: 337ba101-fc84-5f5a-b72d-e63edde306e2
+
+	measure 'Note SKU Line' = "Line " & SELECTEDVALUE ( dim_sku[production_line] ) & " · " & FORMAT ( [Avg Lead Time], "0" ) & "-week lead time · class " & SELECTEDVALUE ( dim_sku[class] )
+		displayFolder: 7 Dynamic text
+		lineageTag: b6704b41-6014-5edd-9ffb-51bf7aba5b66
+
+	measure 'Note Revenue' = FORMAT ( [Gross Margin %], "0.0%" ) & " gross margin"
+		isHidden
+		displayFolder: 9 Helpers
+		lineageTag: fcfa0918-82bd-5caf-9ed7-97b6be2042bf
+
+	measure 'Note Lost' = FORMAT ( [Lines Lost %], "0.0%" ) & " of lines cancelled for lack of stock"
+		isHidden
+		displayFolder: 9 Helpers
+		lineageTag: 6c2cd1b6-9bc6-552a-b851-f0f48050f24b
+
+	measure 'Note Leaks' = FORMAT ( DIVIDE ( [Service Leaks], [Revenue] ), "0.00%" ) & " of revenue"
+		isHidden
+		displayFolder: 9 Helpers
+		lineageTag: 935c5460-28fb-559d-baef-9d56519deef1
+
+	measure 'Note Days Late' = FORMAT ( [Late Lines], "#,0" ) & " late lines"
+		isHidden
+		displayFolder: 9 Helpers
+		lineageTag: 164eb51c-aa7f-571e-894b-dd5e73845886
+
+	measure 'Note Chargebacks' = FORMAT ( DIVIDE ( [Chargebacks], [Revenue] ), "0.00%" ) & " of revenue"
+		isHidden
+		displayFolder: 9 Helpers
+		lineageTag: 44316759-4f8e-5541-a0fa-c7cbbaabbef7
+
+	measure 'Note Expedite' = FORMAT ( [Expedited Lines], "#,0" ) & " lines switched sea → air"
+		isHidden
+		displayFolder: 9 Helpers
+		lineageTag: 124a174c-9c14-5c5e-b8a1-7df3b7525eed
+
+	measure 'Note Stock' = "Carrying " & FORMAT ( [Carrying Cost] / 1e6, "$#,0.00" ) & "M a year"
+		isHidden
+		displayFolder: 9 Helpers
+		lineageTag: df1f899b-bb56-51ed-bf0d-e86cb6c2b989
+
+	measure 'Note Cover' = FORMAT ( [Avg Lead Time], "0.0" ) & "-week average lead time"
+		isHidden
+		displayFolder: 9 Helpers
+		lineageTag: 1d4bccd6-295f-53ce-a901-65bf87214188
+
+	measure 'Note Lost Inv' = FORMAT ( [Lost Demand %], "0.00%" ) & " of demand lost"
+		isHidden
+		displayFolder: 9 Helpers
+		lineageTag: 3ff91450-5dd9-5d5a-82c6-2a4de020308b
+
+	measure 'Note Fill Rec' = "Current rule " & FORMAT ( [Fill Current], "0.00%" ) & " · 2025 replay"
+		isHidden
+		displayFolder: 9 Helpers
+		lineageTag: db88e97c-c809-517a-b5a0-2cc7ed964897
+
+	measure 'Note Saved' = "Margin kept that stock-outs lost"
+		isHidden
+		displayFolder: 9 Helpers
+		lineageTag: 54e283e6-c730-542e-a537-894eaf539c49
+
+	measure 'Note Stock Change' = "Carrying cost " & FORMAT ( [Carrying Change] / 1e3, "+$#,0;-$#,0" ) & "k a year"
+		isHidden
+		displayFolder: 9 Helpers
+		lineageTag: f0c19ba6-6f87-52b2-9749-dd550b125e9d
+
+	measure 'Note Net' = "Saved margin minus extra carrying cost"
+		isHidden
+		displayFolder: 9 Helpers
+		lineageTag: 0e9c3b12-d0e0-544a-85dc-56324e5cf387
+
+	measure 'Note Reorder' = FORMAT ( [SKUs], "#,0" ) & " SKUs · stock at 31 Dec 2025"
+		isHidden
+		displayFolder: 9 Helpers
+		lineageTag: 66de9328-8587-5422-95a7-ac1928bedbab
+
+	measure 'Note Leak Year' = "Year " & [Leak Year] & " · all categories"
+		isHidden
+		displayFolder: 9 Helpers
+		lineageTag: 8a65f56e-c911-5ff3-99e4-9a56500bb4e7
+
+	measure 'Note Leak GM' = FORMAT ( DIVIDE ( [Leak Gross Margin], [Leak Revenue] ), "0.0%" ) & " of revenue · year " & [Leak Year]
+		isHidden
+		displayFolder: 9 Helpers
+		lineageTag: d4440b0e-3404-5ff5-bbb1-cb6978e9d118
+
+	measure 'Note Leak Pct' = "Avoidable with better operations"
+		isHidden
+		displayFolder: 9 Helpers
+		lineageTag: d866e1f1-aa2d-5746-be20-404c16c4ab0c
+
+	measure 'Note Carry' = "22% a year on average stock"
+		isHidden
+		displayFolder: 9 Helpers
+		lineageTag: 318c5d78-0b87-518e-9c06-26073db17b00
+
+	measure 'Note Leak Lost' = "Opportunity cost, not in the P&L"
+		isHidden
+		displayFolder: 9 Helpers
+		lineageTag: 3f72f2bd-375b-5db9-996e-147f868e3ecf
+
+	measure 'Note Defect' = FORMAT ( [Defect Returns], "#,0" ) & " defect returns"
+		isHidden
+		displayFolder: 9 Helpers
+		lineageTag: 9b9f0d44-5ca5-5f60-88f3-cc28cbc40c48
+
+	measure 'Note Return' = FORMAT ( [Return Lines], "#,0" ) & " returns · " & FORMAT ( [Returns Cost] / 1e3, "$#,0" ) & "k"
+		isHidden
+		displayFolder: 9 Helpers
+		lineageTag: 70fd0cea-eaa2-57f5-a7a9-21c6cb285088
+
+	measure 'Note PO' = FORMAT ( [POs], "#,0" ) & " production orders · " & FORMAT ( [Avg PO Delay], "0" ) & " days late when late"
+		isHidden
+		displayFolder: 9 Helpers
+		lineageTag: cbca4789-6e31-5e1d-a119-f1b765c00586
+
+	measure 'Note Counts' = FORMAT ( [Counts], "#,0" ) & " counts · ±2% tolerance"
+		isHidden
+		displayFolder: 9 Helpers
+		lineageTag: ed7d6489-9b8f-55c8-87eb-9ec85b8b2f71
+
+	measure 'Note Returns Cost' = "Refunds and return freight"
+		isHidden
+		displayFolder: 9 Helpers
+		lineageTag: 395030ac-c427-5f6e-9ef6-d2666287e857
+
+	measure 'Note Lines' = "Order-line extract, 2023-25"
+		isHidden
+		displayFolder: 9 Helpers
+		lineageTag: 580da69b-5a2d-5b1b-83ef-c5369a5e703d
+
+	measure 'Note Removed' = "Duplicates, tests, credit notes"
+		isHidden
+		displayFolder: 9 Helpers
+		lineageTag: 1833cfcb-2366-5e00-95e5-cc909012cb73
+
+	measure 'Note Fixes' = "Dates, modes, ids, PODs"
+		isHidden
+		displayFolder: 9 Helpers
+		lineageTag: 5f9b861b-48b5-5a2a-89a7-1c643a90b395
+
+	measure 'Note Clean' = "One row per order line"
+		isHidden
+		displayFolder: 9 Helpers
+		lineageTag: 46bfcb40-d141-5143-ad78-7e068f487956
+
+	measure 'Note Checks' = [Checks Matched]
+		isHidden
+		displayFolder: 9 Helpers
+		lineageTag: 83994fa9-a261-5b95-aa67-71877d5c42e0
+
+	measure 'Note SKU Rev' = FORMAT ( [Shipped Lines], "#,0" ) & " lines · " & FORMAT ( [Gross Margin %], "0.0%" ) & " margin"
+		isHidden
+		displayFolder: 9 Helpers
+		lineageTag: acfb9ade-6b48-53da-bf4d-e551907949f6
+
+	measure 'Note SKU ROP' = "Recommended " & FORMAT ( [ROP Recommended], "#,0" ) & " (" & FORMAT ( [ROP Change %], "+0%;-0%" ) & ")"
+		isHidden
+		displayFolder: 9 Helpers
+		lineageTag: 581530f6-aa8c-5f3f-b6e0-78d3bd1b9452
+
+	measure 'Note SKU Short' = FORMAT ( [Lost Units], "#,0" ) & " units lost"
+		isHidden
+		displayFolder: 9 Helpers
+		lineageTag: 5924b5bb-ae80-5da4-ad93-9b1910050e89
+
+	measure 'Note SKU Cover' = "Average on hand ÷ weekly demand"
+		isHidden
+		displayFolder: 9 Helpers
+		lineageTag: a52d8cbf-9ab3-5b93-8297-cce02522c611
+
+	measure 'On-time Color' = VAR v = [On-time %] RETURN IF ( v >= 0.9, "#3BB98B", IF ( v >= 0.8, "#F2B84B", "#F2706B" ) )
+		isHidden
+		displayFolder: 8 Formatting
+		lineageTag: 33d5d047-2db7-5fe2-a8d5-c372a2979f9f
+
+	measure 'Short Color' = VAR v = [Weeks Short %] RETURN IF ( v <= 0.05, "#3BB98B", IF ( v <= 0.10, "#F2B84B", "#F2706B" ) )
+		isHidden
+		displayFolder: 8 Formatting
+		lineageTag: b3378dab-e4bd-58fb-bc9d-0a8372b851be
+
+	measure 'Defect Color' = IF ( [Defect Rate] > 0.02, "#F2706B", "#6574F5" )
+		isHidden
+		displayFolder: 8 Formatting
+		lineageTag: 8d8031a8-e626-5a15-9ed8-c6c84fc5b0c1
+
+	measure 'PO Color' = IF ( [PO Late %] > 0.1, "#F2706B", "#6574F5" )
+		isHidden
+		displayFolder: 8 Formatting
+		lineageTag: 2426c278-58b4-5e07-9cbc-cf80db3495fa
+
+	measure 'Accuracy Color' = VAR v = [Count Accuracy] RETURN IF ( v >= 0.95, "#3BB98B", IF ( v >= 0.9, "#F2B84B", "#F2706B" ) )
+		isHidden
+		displayFolder: 8 Formatting
+		lineageTag: ddd8a980-6fe8-5fb7-8f85-b5ac0086bb7d
+
+	measure 'Reorder Color' = SWITCH ( SELECTEDVALUE ( dim_sku[reorder_status] ), "Reorder now", "#F2706B", "Watch", "#F2B84B", "OK", "#3BB98B", "#A4ABCC" )
+		isHidden
+		displayFolder: 8 Formatting
+		lineageTag: af878833-caf9-5d38-b62b-c561606afa62
+
+	measure 'Change Color' = IF ( [ROP Change %] > 0, "#F2B84B", "#5BC8EC" )
+		isHidden
+		displayFolder: 8 Formatting
+		lineageTag: 2863a221-e05f-5148-9649-2a90e46a9a68
+
+	measure 'What-if Color' = IF ( SELECTEDVALUE ( delivery_whatif[order] ) = 1, "#3D4675", "#6574F5" )
+		isHidden
+		displayFolder: 8 Formatting
+		lineageTag: 83bf3056-9f2f-54ee-baf7-9166773f8fe6
+
+	measure 'Match Color' = IF ( [DQ Match] = "✓", "#3BB98B", "#F2706B" )
+		isHidden
+		displayFolder: 8 Formatting
+		lineageTag: 4d78379d-bd8f-5461-b6c6-a77d56a91133
+
+	measure 'Fix Color' = IF ( SELECTEDVALUE ( dq_log[issue] ) IN { "Exact duplicate lines (re-run export)", "Test lines from ERP go-live", "Credit notes booked as negative lines", "Count keyed in but not finished" }, "#F2706B", "#F2B84B" )
+		isHidden
+		displayFolder: 8 Formatting
+		lineageTag: 4f0bcc93-b909-579d-b5a4-80e056975441
+
+	measure 'Heat On-time' = VAR v = [On-time %] RETURN IF ( ISBLANK ( v ), BLANK (), IF ( v >= 0.9, "#163B33", IF ( v >= 0.8, "#4A3A1A", "#4A2228" ) ) )
+		isHidden
+		displayFolder: 8 Formatting
+		lineageTag: d3347f4f-ab99-5312-ba3d-83b9b5cd5d3e
+
+	measure 'Heat Fill' = VAR v = [Fill Rate] RETURN IF ( ISBLANK ( v ), BLANK (), IF ( v >= 0.985, "#163B33", IF ( v >= 0.97, "#4A3A1A", "#4A2228" ) ) )
+		isHidden
+		displayFolder: 8 Formatting
+		lineageTag: adbacbd7-8c94-5f0b-908d-5f8799652ca3
+
+	measure 'Heat Stock' = VAR v = DIVIDE ( [Avg Stock Value], CALCULATE ( [Avg Stock Value], ALLSELECTED ( dim_sku ) ) ) RETURN IF ( ISBLANK ( v ), BLANK (), IF ( v >= 0.2, "#3B3F86", IF ( v >= 0.08, "#262B5E", "#171C3F" ) ) )
+		isHidden
+		displayFolder: 8 Formatting
+		lineageTag: a5c4930b-1c09-51e9-a3de-45f12b9112ca
+
+	measure 'RAG OnTime' = VAR v = [On-time %] RETURN IF ( ISBLANK ( v ), BLANK (), "●  " & IF ( v >= 0.95, "On target · 95%", IF ( v >= 0.85, "Watch · target 95%", "Off target · 95%" ) ) )
+		isHidden
+		displayFolder: 9 Helpers
+		lineageTag: 849300ff-6452-5dbb-aa9c-f00bd525def1
+
+	measure 'RAG OnTime Color' = VAR v = [On-time %] RETURN IF ( v >= 0.95, "#3BB98B", IF ( v >= 0.85, "#F2B84B", "#F2706B" ) )
+		isHidden
+		displayFolder: 8 Formatting
+		lineageTag: 45ce9a15-12de-52c4-96e6-bc1a9c476f1b
+
+	measure 'RAG OTIF' = VAR v = [OTIF %] RETURN IF ( ISBLANK ( v ), BLANK (), "●  " & IF ( v >= 0.95, "On target · 95%", IF ( v >= 0.85, "Watch · target 95%", "Off target · 95%" ) ) )
+		isHidden
+		displayFolder: 9 Helpers
+		lineageTag: 8f454a8d-c0e6-5271-87e6-d72fc4b52852
+
+	measure 'RAG OTIF Color' = VAR v = [OTIF %] RETURN IF ( v >= 0.95, "#3BB98B", IF ( v >= 0.85, "#F2B84B", "#F2706B" ) )
+		isHidden
+		displayFolder: 8 Formatting
+		lineageTag: a7e246cb-307a-5902-a34c-38ea3ae6950c
+
+	measure 'RAG Fill' = VAR v = [Fill Rate] RETURN IF ( ISBLANK ( v ), BLANK (), "●  " & IF ( v >= 0.985, "On target · 98.5%", IF ( v >= 0.97, "Watch · target 98.5%", "Off target · 98.5%" ) ) )
+		isHidden
+		displayFolder: 9 Helpers
+		lineageTag: 1280321d-d449-54f6-a29e-19ffeb0a94ea
+
+	measure 'RAG Fill Color' = VAR v = [Fill Rate] RETURN IF ( v >= 0.985, "#3BB98B", IF ( v >= 0.97, "#F2B84B", "#F2706B" ) )
+		isHidden
+		displayFolder: 8 Formatting
+		lineageTag: 21a94c53-7caa-57d3-af92-e67d285b8fed
+
+	measure 'RAG Short' = VAR v = [Weeks Short %] RETURN IF ( ISBLANK ( v ), BLANK (), "●  " & IF ( v <= 0.05, "On target · ≤ 5%", IF ( v <= 0.10, "Watch · target ≤ 5%", "Off target · ≤ 5%" ) ) )
+		isHidden
+		displayFolder: 9 Helpers
+		lineageTag: 0e294179-507a-575f-b1c8-24bf067c4688
+
+	measure 'RAG Short Color' = VAR v = [Weeks Short %] RETURN IF ( v <= 0.05, "#3BB98B", IF ( v <= 0.10, "#F2B84B", "#F2706B" ) )
+		isHidden
+		displayFolder: 8 Formatting
+		lineageTag: c26e0807-85dc-5504-8e20-8251d1d59374
+
+	measure 'RAG Accuracy' = VAR v = [Count Accuracy] RETURN IF ( ISBLANK ( v ), BLANK (), "●  " & IF ( v >= 0.95, "On target · 95%", IF ( v >= 0.9, "Watch · target 95%", "Off target · 95%" ) ) )
+		isHidden
+		displayFolder: 9 Helpers
+		lineageTag: 016677fe-3408-519c-9d63-0bf39526e7be
+
+	measure 'RAG Accuracy Color' = VAR v = [Count Accuracy] RETURN IF ( v >= 0.95, "#3BB98B", IF ( v >= 0.9, "#F2B84B", "#F2706B" ) )
+		isHidden
+		displayFolder: 8 Formatting
+		lineageTag: 0c518896-98d0-5f30-8f95-09dd711a0b39
+
+	measure 'RAG Defect' = VAR v = [Defect Rate] RETURN IF ( ISBLANK ( v ), BLANK (), "●  " & IF ( v <= 0.01, "On target · ≤ 1%", IF ( v <= 0.02, "Watch · target ≤ 1%", "Off target · ≤ 1%" ) ) )
+		isHidden
+		displayFolder: 9 Helpers
+		lineageTag: eb846ec3-4dad-54fb-a368-84104ca65903
+
+	measure 'RAG Defect Color' = VAR v = [Defect Rate] RETURN IF ( v <= 0.01, "#3BB98B", IF ( v <= 0.02, "#F2B84B", "#F2706B" ) )
+		isHidden
+		displayFolder: 8 Formatting
+		lineageTag: 3648e82f-d9ca-5740-a504-d6d3cd42d310
+
+	measure 'RAG POLate' = VAR v = [PO Late %] RETURN IF ( ISBLANK ( v ), BLANK (), "●  " & IF ( v <= 0.05, "On target · ≤ 5%", IF ( v <= 0.10, "Watch · target ≤ 5%", "Off target · ≤ 5%" ) ) )
+		isHidden
+		displayFolder: 9 Helpers
+		lineageTag: b9756fee-952e-5f51-9f5f-8d00189f1cd5
+
+	measure 'RAG POLate Color' = VAR v = [PO Late %] RETURN IF ( v <= 0.05, "#3BB98B", IF ( v <= 0.10, "#F2B84B", "#F2706B" ) )
+		isHidden
+		displayFolder: 8 Formatting
+		lineageTag: 322a5d27-3eef-562f-8e46-2ddace906da2
+
+	measure 'RAG Reorder' = VAR v = [SKUs Reorder Now] RETURN IF ( ISBLANK ( v ), BLANK (), "●  " & IF ( v <= 10, "Manageable", IF ( v <= 20, "Busy week", "Order backlog" ) ) )
+		isHidden
+		displayFolder: 9 Helpers
+		lineageTag: 22ecd213-e680-55f9-a975-9c425ef08f56
+
+	measure 'RAG Reorder Color' = VAR v = [SKUs Reorder Now] RETURN IF ( v <= 10, "#3BB98B", IF ( v <= 20, "#F2B84B", "#F2706B" ) )
+		isHidden
+		displayFolder: 8 Formatting
+		lineageTag: ba6c8905-1e68-5b3c-97cb-e22d018508f2
+
+	column Value
+		dataType: string
+		isHidden
+		lineageTag: db9d81cd-3833-5fe5-a3d0-1eb12ec61e19
+		summarizeBy: none
+		sourceColumn: Value
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _Measures = m
+		mode: import
+		source =
+				#table(type table [Value = text], {})
+
+	annotation PBI_ResultType = Table

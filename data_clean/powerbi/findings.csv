@@ -1,0 +1,18 @@
+key,value,finding
+whatif_all_on_time,0.9470000000000001,On time if all three delivery fixes were made
+whatif_meridian_gain,0.077,On-time gain from moving Meridian volume
+whatif_peak_gain,0.084,On-time gain from quoting peak congestion
+meridian_saving,58942.0,Freight Meridian saves a year
+meridian_chargebacks,183361.0,Chargebacks on Meridian lines a year
+meridian_chargebacks_if,55004.0,...if those lines had Blue Anchor's transit
+transit_r2,0.831,Transit model R squared
+effects_matched,6.0,Transit effects within half a day of the truth
+fill_current,0.9806999999999999,"2025 fill rate, current rule (replay)"
+fill_recommended,0.9941,"2025 fill rate, recommended reorder points"
+fill_actual,0.9781,2025 fill rate actually recorded
+lost_margin_saved,351235.0,"Margin no longer lost to stock-outs, 2025"
+stock_change,355490.0,Change in average stock value
+carrying_change,78207.0,Change in carrying cost (22% a year)
+skus_in_policy,140.0,SKUs the policy covers
+avoidable_leaks_2025,1616490.0,Avoidable leaks 2025
+avoidable_leaks_pct,0.0176,"Avoidable leaks, share of revenue"

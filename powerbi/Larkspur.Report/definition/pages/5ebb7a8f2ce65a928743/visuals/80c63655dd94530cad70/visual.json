@@ -1,0 +1,259 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "80c63655dd94530cad70",
+  "position": {
+    "x": 200,
+    "y": 466,
+    "z": 5900,
+    "height": 238,
+    "width": 520,
+    "tabOrder": 5900
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_po"
+                    }
+                  },
+                  "Property": "po_id"
+                }
+              },
+              "queryRef": "fact_po.po_id",
+              "nativeQueryRef": "po_id",
+              "displayName": "Production order"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_po"
+                    }
+                  },
+                  "Property": "due_date"
+                }
+              },
+              "queryRef": "fact_po.due_date",
+              "nativeQueryRef": "due_date",
+              "displayName": "Due"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_po"
+                    }
+                  },
+                  "Property": "received_date"
+                }
+              },
+              "queryRef": "fact_po.received_date",
+              "nativeQueryRef": "received_date",
+              "displayName": "Received"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_po"
+                    }
+                  },
+                  "Property": "qty"
+                }
+              },
+              "queryRef": "fact_po.qty",
+              "nativeQueryRef": "qty",
+              "displayName": "Units"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_po"
+                    }
+                  },
+                  "Property": "days_late"
+                }
+              },
+              "queryRef": "fact_po.days_late",
+              "nativeQueryRef": "days_late",
+              "displayName": "Days late"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fact_po"
+                  }
+                },
+                "Property": "due_date"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": false
+      }
+    },
+    "objects": {
+      "total": [
+        {
+          "properties": {
+            "totals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "wordWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "108.6D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "fact_po.po_id"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "91.9D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "fact_po.due_date"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "91.9D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "fact_po.received_date"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "91.9D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "fact_po.qty"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "91.9D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "fact_po.days_late"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Production orders'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Replenishment from the weaving and stitching lines'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Supply chain and inventory analytics: Larkspur Home Textiles</title>
+<meta name="description" content="Operations analytics on synthetic data for a home-textile exporter: OTIF and carrier analysis, ABC-XYZ reorder points with a 2025 backtest, a profit-leak waterfall, an Excel reorder template and a Power BI dashboard.">
+<style>
+:root{--bg:#f6f5f2;--surface:#fcfcfb;--border:#e4e2dc;--text:#0b0b0b;--text-2:#52514e;--muted:#7a7974;--pos:#2a78d6;--warn:#d9822b}
+@media (prefers-color-scheme: dark){:root{--bg:#121211;--surface:#1a1a19;--border:#2e2e2b;--text:#f0efec;--text-2:#c3c2b7;--muted:#8f8e86;--pos:#5598e7;--warn:#e9a15a} figure img{background:#fff}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+main{max-width:1040px;margin:0 auto;padding:48px 24px 72px}
+.eyebrow{font-size:13px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;margin:0 0 8px}
+h1{font-size:34px;line-height:1.15;margin:0 0 12px;letter-spacing:-.01em}
+h2{font-size:22px;margin:48px 0 6px}
+.lede{color:var(--text-2);max-width:760px;margin:0 0 18px;font-size:16.5px}
+.sub{color:var(--text-2);margin:0 0 16px;max-width:780px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0;margin:0 0 28px}
+.tags li{font-size:12.5px;color:var(--text-2);border:1px solid var(--border);border-radius:999px;padding:3px 10px;background:var(--surface)}
+.note{font-size:13.5px;color:var(--text-2);background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--warn);border-radius:8px;padding:10px 14px;max-width:780px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:24px 0 8px}
+.kpi{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px 16px}
+.kpi .l{font-size:12.5px;color:var(--muted)}
+.kpi .v{font-size:26px;font-weight:650;margin-top:2px;font-variant-numeric:tabular-nums}
+.kpi .d{font-size:12.5px;color:var(--text-2)}
+ol.findings{padding-left:22px;max-width:840px}
+ol.findings li{margin:0 0 10px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:760px){.grid2{grid-template-columns:1fr} h1{font-size:28px}}
+figure{margin:0 0 16px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:10px}
+figure img{width:100%;height:auto;display:block;border-radius:4px}
+figcaption{font-size:12.5px;color:var(--muted);margin-top:6px}
+table{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums;background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:16px}
+th,td{padding:8px 12px;border-bottom:1px solid var(--border);text-align:right}
+th:first-child,td:first-child{text-align:left}
+th{font-size:12.5px;color:var(--muted);font-weight:600}
+tr:last-child td{border-bottom:0}
+.hi td{font-weight:650}
+footer{margin-top:56px;color:var(--muted);font-size:13px;border-top:1px solid var(--border);padding-top:16px}
+a{color:var(--pos)}
+</style>
+</head>
+<body>
+<main>
+  <p class="eyebrow">Operations analytics · Python · SQL · Excel · Power BI</p>
+  <h1>Late deliveries, stock-outs and profit leaks at a textile exporter</h1>
+  <p class="lede">Larkspur Home Textiles ships bedding, towels and curtains to 90 retailers in five markets. I cleaned the ERP extracts into SQLite, answered the operations questions in SQL, modelled what makes deliveries late, replaced a one-size reorder rule with reorder points by ABC-XYZ class and tested it on a year it never saw, traced the margin from gross margin to contribution, and built a live Excel reorder template and a Power BI dashboard.</p>
+  <ul class="tags"><li>Python · pandas · SciPy · scikit-learn</li><li>SQL (SQLite)</li><li>OTIF · carrier analysis</li><li>ABC-XYZ · safety stock · reorder points</li><li>Simulation backtest</li><li>Excel template</li><li>Power BI · DAX</li></ul>
+  <p class="note"><b>Synthetic data.</b> 150 SKUs, 90 customers and 69,471 order lines (2023 – 2025) from a documented generator. A week-by-week inventory simulation runs the company's reorder rule, so stock-outs come out of the operation itself; transit and defect effects are known, so every estimate is checked against the truth.</p>
+
+  <div class="kpis">
+    <div class="kpi"><div class="l">Revenue 2023 – 2025</div><div class="v">$255.0M</div><div class="d">34.6% gross margin</div></div>
+    <div class="kpi"><div class="l">Delivered on time</div><div class="v">77.9%</div><div class="d">target 95% · OTIF 75.1% of units</div></div>
+    <div class="kpi"><div class="l">On time with the fixes</div><div class="v">94.7%</div><div class="d">carrier, peak-season quotes, stock</div></div>
+    <div class="kpi"><div class="l">Fill rate, 2025 replay</div><div class="v">99.41%</div><div class="d">from 98.07% with new reorder points</div></div>
+    <div class="kpi"><div class="l">Avoidable leaks, 2025</div><div class="v">$1.62M</div><div class="d">1.8% of revenue</div></div>
+  </div>
+
+  <h2>Findings</h2>
+  <ol class="findings">
+    <li><b>The cheapest sea carrier is the most expensive.</b> Meridian Freight ($0.29/kg vs $0.36) is on time for 50% of lines against 84% for Blue Anchor. It saves about $59k a year in freight, but its lines draw $183k a year in late-delivery chargebacks (they would draw $55k with Blue Anchor's transit times).</li>
+    <li><b>Sea quotes ignore peak season.</b> Sea freight is on time 87% of the year and 40% from October to December, when port congestion adds 3.5 days. With these two fixes, and no line waiting for stock, on time would rise from 77.9% to 94.7%.</li>
+    <li><b>One reorder rule does not fit every lead time.</b> Reordering at 6 weeks of demand for every SKU leaves line L4 (7-week lead time, a supplier that is late a third of the time) short of stock in 27% of weeks, while line L1 (3 weeks) sits on 5.7 weeks of cover.</li>
+    <li><b>Line L3's defect returns are four times the others'</b> (3.55% of shipped lines vs ~0.9%): shade matching and stitching. Returns cost $0.90M in 2025.</li>
+    <li><b>Stock records in the mezzanine store are 88% accurate</b>, against 99% in the fast-pick zone.</li>
+  </ol>
+  <figure><img src="img/chart_carriers.png" alt="On time by carrier with the price per kg" loading="lazy"></figure>
+  <figure><img src="img/chart_sea_season.png" alt="Sea freight on time by month" loading="lazy"></figure>
+
+  <h2>A better reorder rule, tested on a year it never saw</h2>
+  <p class="sub">Reorder point = average weekly demand × lead time + safety stock, with safety stock from demand and lead-time variability and a service level by ABC-XYZ class (A 98%, B 95%, C 90%). Set on 2023 – 24 data, then 2025 was replayed under both rules with the same demand and the same supplier delays. The replay of the current rule reproduces 2025's actual fill rate (98.07% vs 97.81%).</p>
+  <table>
+    <thead><tr><th>2025 replay</th><th>Current rule</th><th>Recommended</th></tr></thead>
+    <tbody>
+      <tr><td>Fill rate (units)</td><td>98.07%</td><td>99.41%</td></tr>
+      <tr><td>Line L4 fill rate</td><td>89.8%</td><td>98.9%</td></tr>
+      <tr><td>SKU-weeks short of stock</td><td>10.0%</td><td>3.6%</td></tr>
+      <tr><td>Margin lost to stock-outs</td><td>$591k</td><td>$240k</td></tr>
+      <tr><td>Average stock value</td><td>$4.51M</td><td>$4.87M</td></tr>
+      <tr class="hi"><td>Net effect a year (saved margin − extra carrying cost)</td><td></td><td>+$273k</td></tr>
+    </tbody>
+  </table>
+  <figure><img src="img/chart_policy.png" alt="Weeks short of stock by production line under both rules" loading="lazy"></figure>
+
+  <h2>Where the margin goes</h2>
+  <figure><img src="img/chart_leaks.png" alt="2025 waterfall from gross margin to contribution" loading="lazy"></figure>
+  <figure><img src="img/chart_defects.png" alt="Defect returns by production line" loading="lazy"></figure>
+
+  <h2>Excel reorder-alert template</h2>
+  <p class="sub">One row per active SKU with live formulas for safety stock, reorder point, inventory position, status and suggested order. Service levels sit on a Settings sheet, so a planner can change a target or paste next week's stock and every alert recalculates. At 31 Dec 2025: 26 SKUs to reorder now ($2.04M), 12 of them on line L4.</p>
+  <figure><img src="img/excel_summary.png" alt="Excel template summary sheet" loading="lazy"></figure>
+  <figure><img src="img/excel_stock.png" alt="Excel template stock sheet with status formatting" loading="lazy"></figure>
+
+  <h2>Power BI dashboard</h2>
+  <div class="grid2">
+    <figure><img src="img/dashboard_overview.png" alt="Power BI Overview page" loading="lazy"><figcaption>Overview</figcaption></figure>
+    <figure><img src="img/dashboard_delivery.png" alt="Power BI Delivery page" loading="lazy"><figcaption>Delivery</figcaption></figure>
+    <figure><img src="img/dashboard_inventory.png" alt="Power BI Inventory Health page" loading="lazy"><figcaption>Inventory Health</figcaption></figure>
+    <figure><img src="img/dashboard_policy.png" alt="Power BI Reorder Policy page" loading="lazy"><figcaption>Reorder Policy</figcaption></figure>
+    <figure><img src="img/dashboard_leaks.png" alt="Power BI Profit Leaks page" loading="lazy"><figcaption>Profit Leaks</figcaption></figure>
+    <figure><img src="img/dashboard_quality.png" alt="Power BI Quality and Suppliers page" loading="lazy"><figcaption>Quality &amp; Suppliers</figcaption></figure>
+    <figure><img src="img/dashboard_dq.png" alt="Power BI Data Quality page" loading="lazy"><figcaption>Data Quality</figcaption></figure>
+    <figure><img src="img/dashboard_sku.png" alt="Power BI SKU Detail drill-through page" loading="lazy"><figcaption>SKU Detail drill-through</figcaption></figure>
+  </div>
+
+  <footer>Talha Ather · ACCA · Data analyst · SQL, Python, Excel, Power BI, operations · <a href="https://github.com/talha-ather-pk/supply-chain-inventory-analytics">Source code on GitHub</a></footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Larkspur"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "fc35f726-d3b3-5b26-8f20-eb133e372493"
+  }
+}

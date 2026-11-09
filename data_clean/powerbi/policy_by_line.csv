@@ -1,0 +1,9 @@
+policy,production_line,fill_rate_pct,weeks_short_pct,avg_stock_value_usd
+Current rule,L1,99.54,0.8,1832526
+Current rule,L2,99.35,4.0,1366253
+Current rule,L3,98.35,7.6,1163372
+Current rule,L4,89.82,37.7,149258
+Recommended,L1,99.53,0.9,1557281
+Recommended,L2,99.66,2.6,1467647
+Recommended,L3,99.21,3.2,1426344
+Recommended,L4,98.94,10.2,415626

@@ -1,0 +1,42 @@
+table dim_carrier
+	lineageTag: c007322b-e341-5e0b-ace6-4f2abe302365
+
+	column ship_mode
+		dataType: string
+		lineageTag: 420d50ed-6849-5518-817e-f489f992b0fc
+		summarizeBy: none
+		sourceColumn: ship_mode
+
+		annotation SummarizationSetBy = User
+
+	column carrier
+		dataType: string
+		isKey
+		lineageTag: 5122f646-f786-5aec-9b98-956ac9e229e6
+		summarizeBy: none
+		sourceColumn: carrier
+
+		annotation SummarizationSetBy = User
+
+	column usd_per_kg
+		dataType: double
+		isHidden
+		lineageTag: eec57b9d-28fd-5e8c-8513-ee491493bd25
+		summarizeBy: none
+		sourceColumn: usd_per_kg
+
+		annotation SummarizationSetBy = User
+
+	partition dim_carrier = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "dim_carrier.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Kept = Table.SelectColumns(Promoted, {"ship_mode", "carrier", "usd_per_kg"}),
+				    Blanks = Table.TransformColumns(Kept, {}, each if _ = "" then null else _),
+				    Typed = Table.TransformColumnTypes(Blanks, {{"ship_mode", type text}, {"carrier", type text}, {"usd_per_kg", type number}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

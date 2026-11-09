@@ -1,0 +1,124 @@
+table fact_inventory
+	lineageTag: b447f2dc-12de-55a5-9802-268a9ce25824
+
+	column week_start
+		dataType: dateTime
+		isHidden
+		formatString: dd mmm yyyy
+		lineageTag: 82e69e8c-3db4-5a8c-8200-4e5718646b44
+		summarizeBy: none
+		sourceColumn: week_start
+
+		annotation SummarizationSetBy = User
+
+	column sku
+		dataType: string
+		isHidden
+		lineageTag: d08fa224-f166-5658-93fe-a420320ceb84
+		summarizeBy: none
+		sourceColumn: sku
+
+		annotation SummarizationSetBy = User
+
+	column demand_units
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 6107adb6-3a47-572f-ba5f-e8001c79c468
+		summarizeBy: none
+		sourceColumn: demand_units
+
+		annotation SummarizationSetBy = User
+
+	column shipped_units
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 7823a9bb-403e-5ce0-8321-7ae1084d692a
+		summarizeBy: none
+		sourceColumn: shipped_units
+
+		annotation SummarizationSetBy = User
+
+	column lost_units
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 0d5ba526-e479-57ba-aad4-fba51004ca5a
+		summarizeBy: none
+		sourceColumn: lost_units
+
+		annotation SummarizationSetBy = User
+
+	column received_units
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 24641995-e4a6-5d99-bcd0-57d8edbf3364
+		summarizeBy: none
+		sourceColumn: received_units
+
+		annotation SummarizationSetBy = User
+
+	column on_hand_units
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 1b6bd47a-d988-5771-ad0a-1228df1f296f
+		summarizeBy: none
+		sourceColumn: on_hand_units
+
+		annotation SummarizationSetBy = User
+
+	column backlog_units
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 4f8f848d-4606-51d7-9956-c17377687d40
+		summarizeBy: none
+		sourceColumn: backlog_units
+
+		annotation SummarizationSetBy = User
+
+	column on_order_units
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 546c450d-2cd8-577c-b3ac-cb83c461f2aa
+		summarizeBy: none
+		sourceColumn: on_order_units
+
+		annotation SummarizationSetBy = User
+
+	column stock_value
+		dataType: double
+		isHidden
+		lineageTag: 6638b85e-bee4-5f4a-a0e4-d9e398396f11
+		summarizeBy: none
+		sourceColumn: stock_value
+
+		annotation SummarizationSetBy = User
+
+	column short_week
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 1e2238da-5069-516a-bbd5-4f712ae632fe
+		summarizeBy: none
+		sourceColumn: short_week
+
+		annotation SummarizationSetBy = User
+
+	partition fact_inventory = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "fact_inventory.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Kept = Table.SelectColumns(Promoted, {"week_start", "sku", "demand_units", "shipped_units", "lost_units", "received_units", "on_hand_units", "backlog_units", "on_order_units", "stock_value", "short_week"}),
+				    Blanks = Table.TransformColumns(Kept, {}, each if _ = "" then null else _),
+				    Typed = Table.TransformColumnTypes(Blanks, {{"week_start", type date}, {"sku", type text}, {"demand_units", Int64.Type}, {"shipped_units", Int64.Type}, {"lost_units", Int64.Type}, {"received_units", Int64.Type}, {"on_hand_units", Int64.Type}, {"backlog_units", Int64.Type}, {"on_order_units", Int64.Type}, {"stock_value", type number}, {"short_week", Int64.Type}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

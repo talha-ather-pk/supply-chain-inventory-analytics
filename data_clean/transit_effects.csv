@@ -1,7 +1,7 @@
 effect,estimated_days,true_days,error_days
-Meridian Freight vs Blue Anchor,3.02,3.0,0.02
-Coral Shipping vs Blue Anchor,0.51,0.5,0.01
-Oct-Dec departure (port congestion),3.49,3.5,-0.01
-UK vs USA (route + customs),-2.66,-2.7,0.04
-EU vs USA (route + customs),-4.4,-4.4,0.0
-GCC vs USA (route + customs),-11.99,-12.0,0.01
+Meridian vs Blue Anchor,3.02,3.0,0.02
+Coral vs Blue Anchor,0.51,0.5,0.01
+Oct-Dec departure,3.49,3.5,-0.01
+UK vs USA,-2.66,-2.7,0.04
+EU vs USA,-4.4,-4.4,0.0
+GCC vs USA,-11.99,-12.0,0.01

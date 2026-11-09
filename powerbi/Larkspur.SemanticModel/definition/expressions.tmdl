@@ -1,0 +1,4 @@
+expression DataFolder = "C:\Users\DELL\upwork-profile\data-portfolio\data-portfolio\06-supply-chain-inventory\data_clean\powerbi\" meta [IsParameterQuery = true, Type = "Text", IsParameterQueryRequired = true]
+	lineageTag: 91fa4da9-336e-5021-908f-7d88bf242abb
+
+	annotation PBI_ResultType = Text

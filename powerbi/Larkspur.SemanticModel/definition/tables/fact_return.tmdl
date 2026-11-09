@@ -1,0 +1,111 @@
+table fact_return
+	lineageTag: 59c978ff-5d65-5253-98d3-eb55c548607a
+
+	column return_id
+		dataType: string
+		isHidden
+		lineageTag: f3c63673-1398-5dd9-a2dd-679ba9181947
+		summarizeBy: none
+		sourceColumn: return_id
+
+		annotation SummarizationSetBy = User
+
+	column order_id
+		dataType: string
+		isHidden
+		lineageTag: 55f6f6c6-8f2c-5ce2-81ee-d17ae1afce57
+		summarizeBy: none
+		sourceColumn: order_id
+
+		annotation SummarizationSetBy = User
+
+	column sku
+		dataType: string
+		isHidden
+		lineageTag: 083efc79-b260-5fac-b865-6491b7fc24ff
+		summarizeBy: none
+		sourceColumn: sku
+
+		annotation SummarizationSetBy = User
+
+	column return_week
+		dataType: dateTime
+		isHidden
+		formatString: dd mmm yyyy
+		lineageTag: 99b12169-34ee-5207-8b2a-edeac3cd7114
+		summarizeBy: none
+		sourceColumn: return_week
+
+		annotation SummarizationSetBy = User
+
+	column return_date
+		dataType: dateTime
+		isHidden
+		formatString: dd mmm yyyy
+		lineageTag: 8440f92e-cbb1-5e40-afd3-f86ebc10d4c8
+		summarizeBy: none
+		sourceColumn: return_date
+
+		annotation SummarizationSetBy = User
+
+	column reason
+		dataType: string
+		sortByColumn: reason_order
+		lineageTag: b0f6c736-6021-597f-ad74-dd163d4555e6
+		summarizeBy: none
+		sourceColumn: reason
+
+		annotation SummarizationSetBy = User
+
+	column return_qty
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 4d83fbb6-769e-50ee-aa24-62c99b3af874
+		summarizeBy: none
+		sourceColumn: return_qty
+
+		annotation SummarizationSetBy = User
+
+	column refund_value
+		dataType: double
+		isHidden
+		lineageTag: 04f5f3e1-6b61-5eb6-9eb0-7db83a4e48d5
+		summarizeBy: none
+		sourceColumn: refund_value
+
+		annotation SummarizationSetBy = User
+
+	column return_freight
+		dataType: double
+		isHidden
+		lineageTag: 6feb25d5-3f09-51b7-bcfe-a9dcd639bd65
+		summarizeBy: none
+		sourceColumn: return_freight
+
+		annotation SummarizationSetBy = User
+
+	column reason_order
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 5324759c-b16c-5365-b630-ea5a6b3b723b
+		summarizeBy: none
+		sourceColumn: reason_order
+
+		annotation SummarizationSetBy = User
+
+	partition fact_return = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "fact_return.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Kept = Table.SelectColumns(Promoted, {"return_id", "order_id", "sku", "return_week", "return_date", "reason", "return_qty", "refund_value", "return_freight"}),
+				    Blanks = Table.TransformColumns(Kept, {}, each if _ = "" then null else _),
+				    Typed = Table.TransformColumnTypes(Blanks, {{"return_id", type text}, {"order_id", type text}, {"sku", type text}, {"return_week", type date}, {"return_date", type date}, {"reason", type text}, {"return_qty", Int64.Type}, {"refund_value", type number}, {"return_freight", type number}}, "en-US"),
+				    Ord_reason_order = Table.AddColumn(Typed, "reason_order", each if [reason] = null then null else List.PositionOf({"Defect - shade / stitching", "Damaged in transit", "Wrong item shipped"}, [reason]) + 1, Int64.Type)
+				in
+				    Ord_reason_order
+
+	annotation PBI_ResultType = Table

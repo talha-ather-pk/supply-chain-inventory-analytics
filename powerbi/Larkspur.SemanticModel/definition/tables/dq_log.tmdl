@@ -1,0 +1,70 @@
+table dq_log
+	lineageTag: 84bee0cd-a25d-5f1d-bceb-b4cd63fd883e
+
+	column step
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: d26723c5-2049-5d72-b1d5-e8b2d034e36c
+		summarizeBy: none
+		sourceColumn: step
+
+		annotation SummarizationSetBy = User
+
+	column table_name
+		dataType: string
+		lineageTag: 4ab15e6a-1d29-572c-9d0c-09a4c41c5e55
+		summarizeBy: none
+		sourceColumn: table_name
+
+		annotation SummarizationSetBy = User
+
+	column issue
+		dataType: string
+		sortByColumn: step
+		lineageTag: 9a4725a6-34fd-58f6-85b5-22eaa5e8eb9b
+		summarizeBy: none
+		sourceColumn: issue
+
+		annotation SummarizationSetBy = User
+
+	column rows_affected
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 61c85f69-e056-5ec1-b684-36c283a1e269
+		summarizeBy: none
+		sourceColumn: rows_affected
+
+		annotation SummarizationSetBy = User
+
+	column action
+		dataType: string
+		lineageTag: 9873b62f-2de4-5ba7-80f4-92b2064973e8
+		summarizeBy: none
+		sourceColumn: action
+
+		annotation SummarizationSetBy = User
+
+	column injected
+		dataType: double
+		isHidden
+		lineageTag: cb224779-5814-5248-9bd0-a3504f9cbcaf
+		summarizeBy: none
+		sourceColumn: injected
+
+		annotation SummarizationSetBy = User
+
+	partition dq_log = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "dq_log.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Kept = Table.SelectColumns(Promoted, {"step", "table_name", "issue", "rows_affected", "action", "injected"}),
+				    Blanks = Table.TransformColumns(Kept, {}, each if _ = "" then null else _),
+				    Typed = Table.TransformColumnTypes(Blanks, {{"step", Int64.Type}, {"table_name", type text}, {"issue", type text}, {"rows_affected", Int64.Type}, {"action", type text}, {"injected", type number}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

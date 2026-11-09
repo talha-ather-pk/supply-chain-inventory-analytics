@@ -1,0 +1,31 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	discourageImplicitMeasures
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["DataFolder", "_Measures", "dim_sku", "dim_customer", "dim_week", "dim_carrier", "fact_order_line", "fact_inventory", "fact_return", "fact_count", "fact_po", "policy_backtest", "policy_by_line", "policy_weekly", "leaks", "transit_effects", "delivery_whatif", "dq_log", "findings"]
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+ref table _Measures
+ref table dim_sku
+ref table dim_customer
+ref table dim_week
+ref table dim_carrier
+ref table fact_order_line
+ref table fact_inventory
+ref table fact_return
+ref table fact_count
+ref table fact_po
+ref table policy_backtest
+ref table policy_by_line
+ref table policy_weekly
+ref table leaks
+ref table transit_effects
+ref table delivery_whatif
+ref table dq_log
+ref table findings

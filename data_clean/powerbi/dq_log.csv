@@ -1,0 +1,20 @@
+step,table_name,issue,rows_affected,action,injected
+1,products,Rows received,150,loaded,
+2,products,Category spelled several ways,8,mapped to 'Bed sheets',8.0
+3,products,Unit cost missing (new SKUs),3,"category cost ratio x list price, flagged",3.0
+4,customers,Rows received,90,loaded,
+5,order_lines,Rows received,69956,loaded,
+6,order_lines,Exact duplicate lines (re-run export),350,removed,350.0
+7,order_lines,Test lines from ERP go-live,15,removed,15.0
+8,order_lines,Credit notes booked as negative lines,120,moved to credit_notes,120.0
+9,order_lines,Order date as dd/mm/yyyy (GCC EDI feed),6120,parsed with the EDI format,6120.0
+10,order_lines,"Ship mode typed by hand (SEA, Ocean, Truck)",1800,mapped to Sea / Air / Road,1800.0
+11,order_lines,Customer id with stray case or spaces,600,"trimmed, upper-cased",600.0
+12,order_lines,Free samples at zero price,200,"kept, flagged, no revenue",200.0
+13,order_lines,"Delivered, proof of delivery missing",900,"kept, left out of on-time rates",900.0
+14,production_orders,Rows received,3103,loaded,
+15,inventory_weekly,Rows received,23400,loaded,
+16,cycle_counts,Rows received,694,loaded,
+17,cycle_counts,Count keyed in but not finished,40,removed,40.0
+18,returns,Rows received,1493,loaded,
+19,order_lines,Clean order lines,69471,loaded,

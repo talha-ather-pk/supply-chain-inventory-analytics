@@ -1,0 +1,53 @@
+table dim_week
+	lineageTag: 972648c9-490b-5c87-9659-b87aac74e34b
+
+	column week_start
+		dataType: dateTime
+		isKey
+		formatString: dd mmm yyyy
+		lineageTag: 22a340f4-1b7c-56f9-8968-1f104a3eb192
+		summarizeBy: none
+		sourceColumn: week_start
+
+		annotation SummarizationSetBy = User
+
+	column month_date
+		dataType: dateTime
+		formatString: mmm yyyy
+		lineageTag: 4eb7499d-52a0-57ce-b406-bba05b527926
+		summarizeBy: none
+		sourceColumn: month_date
+
+		annotation SummarizationSetBy = User
+
+	column year
+		dataType: int64
+		formatString: 0
+		lineageTag: 76a2d6b9-7071-5b49-9923-af0505010fc0
+		summarizeBy: none
+		sourceColumn: year
+
+		annotation SummarizationSetBy = User
+
+	column quarter
+		dataType: string
+		isHidden
+		lineageTag: 7a1bd1a9-8d35-5b61-bc23-f621ba1564c0
+		summarizeBy: none
+		sourceColumn: quarter
+
+		annotation SummarizationSetBy = User
+
+	partition dim_week = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "dim_week.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Kept = Table.SelectColumns(Promoted, {"week_start", "month_date", "year", "quarter"}),
+				    Blanks = Table.TransformColumns(Kept, {}, each if _ = "" then null else _),
+				    Typed = Table.TransformColumnTypes(Blanks, {{"week_start", type date}, {"month_date", type date}, {"year", Int64.Type}, {"quarter", type text}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table

@@ -1,0 +1,323 @@
+table fact_order_line
+	lineageTag: 53152717-ef34-594f-a163-783435d7b895
+
+	column line_key
+		dataType: string
+		isHidden
+		lineageTag: 530746b3-ea2d-5201-be2a-ae5c03df9f18
+		summarizeBy: none
+		sourceColumn: line_key
+
+		annotation SummarizationSetBy = User
+
+	column order_id
+		dataType: string
+		isHidden
+		lineageTag: cb868138-84bf-5a54-922b-f20dea8fb23c
+		summarizeBy: none
+		sourceColumn: order_id
+
+		annotation SummarizationSetBy = User
+
+	column sku
+		dataType: string
+		isHidden
+		lineageTag: 6de49820-132f-5100-8078-9b58cf3737f9
+		summarizeBy: none
+		sourceColumn: sku
+
+		annotation SummarizationSetBy = User
+
+	column customer_id
+		dataType: string
+		isHidden
+		lineageTag: ff314377-7c67-5f62-a940-53376443e621
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = User
+
+	column order_week
+		dataType: dateTime
+		isHidden
+		formatString: dd mmm yyyy
+		lineageTag: ab5b50e5-252f-5859-925f-b6fb7215f96a
+		summarizeBy: none
+		sourceColumn: order_week
+
+		annotation SummarizationSetBy = User
+
+	column order_date
+		dataType: dateTime
+		isHidden
+		formatString: dd mmm yyyy
+		lineageTag: 7e82c047-31d3-5d09-9989-7b168b874922
+		summarizeBy: none
+		sourceColumn: order_date
+
+		annotation SummarizationSetBy = User
+
+	column promised_date
+		dataType: dateTime
+		isHidden
+		formatString: dd mmm yyyy
+		lineageTag: 0db50226-0a4c-558e-9cf9-b2b5320ac817
+		summarizeBy: none
+		sourceColumn: promised_date
+
+		annotation SummarizationSetBy = User
+
+	column ship_date
+		dataType: dateTime
+		isHidden
+		formatString: dd mmm yyyy
+		lineageTag: 66384b8d-41fa-56b0-b520-fbac1a0c5b69
+		summarizeBy: none
+		sourceColumn: ship_date
+
+		annotation SummarizationSetBy = User
+
+	column delivery_date
+		dataType: dateTime
+		isHidden
+		formatString: dd mmm yyyy
+		lineageTag: 7a58d6fa-5d75-5bc1-bec8-0528728a1be9
+		summarizeBy: none
+		sourceColumn: delivery_date
+
+		annotation SummarizationSetBy = User
+
+	column ship_mode
+		dataType: string
+		lineageTag: d7112669-8d0f-599a-a29c-b4be4bf1171a
+		summarizeBy: none
+		sourceColumn: ship_mode
+
+		annotation SummarizationSetBy = User
+
+	column carrier
+		dataType: string
+		isHidden
+		lineageTag: 8ee9ed84-ea23-53cf-8a52-24300690031a
+		summarizeBy: none
+		sourceColumn: carrier
+
+		annotation SummarizationSetBy = User
+
+	column status
+		dataType: string
+		lineageTag: ea136e20-91f7-5879-9ba9-771cefea4ec0
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = User
+
+	column qty
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: a754ba8a-0c9c-51f6-976a-654780932e21
+		summarizeBy: none
+		sourceColumn: qty
+
+		annotation SummarizationSetBy = User
+
+	column unit_price
+		dataType: double
+		isHidden
+		lineageTag: 36b4ec59-fdad-5210-943e-61f511eae3d3
+		summarizeBy: none
+		sourceColumn: unit_price
+
+		annotation SummarizationSetBy = User
+
+	column revenue
+		dataType: double
+		isHidden
+		lineageTag: d9faf49f-a057-5610-ae10-87a97947471c
+		summarizeBy: none
+		sourceColumn: revenue
+
+		annotation SummarizationSetBy = User
+
+	column cogs
+		dataType: double
+		isHidden
+		lineageTag: 68672510-1c52-573f-8015-8a836df51396
+		summarizeBy: none
+		sourceColumn: cogs
+
+		annotation SummarizationSetBy = User
+
+	column freight_cost
+		dataType: double
+		isHidden
+		lineageTag: 4d67e0f4-54f5-5c46-83f4-c61141ea89c0
+		summarizeBy: none
+		sourceColumn: freight_cost
+
+		annotation SummarizationSetBy = User
+
+	column expedite_premium
+		dataType: double
+		isHidden
+		lineageTag: 3e050a41-9f70-509e-9e7f-dbe295383a5f
+		summarizeBy: none
+		sourceColumn: expedite_premium
+
+		annotation SummarizationSetBy = User
+
+	column chargeback
+		dataType: double
+		isHidden
+		lineageTag: 4917afce-7f5f-50d4-8e09-32c8354561e4
+		summarizeBy: none
+		sourceColumn: chargeback
+
+		annotation SummarizationSetBy = User
+
+	column lost_revenue
+		dataType: double
+		isHidden
+		lineageTag: 4b2eb3e4-0c8f-5f81-bb7a-28d61a61139a
+		summarizeBy: none
+		sourceColumn: lost_revenue
+
+		annotation SummarizationSetBy = User
+
+	column lost_margin
+		dataType: double
+		isHidden
+		lineageTag: 1a8bb845-ce73-57d6-aaab-ed6be8675177
+		summarizeBy: none
+		sourceColumn: lost_margin
+
+		annotation SummarizationSetBy = User
+
+	column on_time
+		dataType: double
+		isHidden
+		lineageTag: 9f1eae74-9970-5e1e-88b3-da706437ef58
+		summarizeBy: none
+		sourceColumn: on_time
+
+		annotation SummarizationSetBy = User
+
+	column days_late
+		dataType: double
+		isHidden
+		lineageTag: 27951957-d548-5842-a70e-ea662509c181
+		summarizeBy: none
+		sourceColumn: days_late
+
+		annotation SummarizationSetBy = User
+
+	column transit_days
+		dataType: double
+		isHidden
+		lineageTag: b1fe297c-70ed-5405-9619-6ae39a301d32
+		summarizeBy: none
+		sourceColumn: transit_days
+
+		annotation SummarizationSetBy = User
+
+	column days_to_ship
+		dataType: double
+		isHidden
+		lineageTag: de3830da-0f4c-528a-9144-2e60e46410da
+		summarizeBy: none
+		sourceColumn: days_to_ship
+
+		annotation SummarizationSetBy = User
+
+	column waited_for_stock
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 07cdd440-9245-586d-bcb9-a96c372457b2
+		summarizeBy: none
+		sourceColumn: waited_for_stock
+
+		annotation SummarizationSetBy = User
+
+	column expedited
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 2a96c490-4f36-5478-81bd-9ec19308a821
+		summarizeBy: none
+		sourceColumn: expedited
+
+		annotation SummarizationSetBy = User
+
+	column is_sample
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 73ea2a1f-0d26-527d-b3d8-8c5dad2dd473
+		summarizeBy: none
+		sourceColumn: is_sample
+
+		annotation SummarizationSetBy = User
+
+	column pod_missing
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 7ebfb05e-06d0-5318-9349-d9cb1721fb56
+		summarizeBy: none
+		sourceColumn: pod_missing
+
+		annotation SummarizationSetBy = User
+
+	column peak_sea
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: b41c6d8f-fdda-5d75-b376-972030282ad4
+		summarizeBy: none
+		sourceColumn: peak_sea
+
+		annotation SummarizationSetBy = User
+
+	column shipped
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 2bcd2baa-849d-52b7-aecf-5aab4fc926b6
+		summarizeBy: none
+		sourceColumn: shipped
+
+		annotation SummarizationSetBy = User
+
+	column season
+		dataType: string
+		lineageTag: 96839664-312b-533a-aba1-918765e6c482
+		summarizeBy: none
+		sourceColumn: season
+
+		annotation SummarizationSetBy = User
+
+	column dispatch
+		dataType: string
+		lineageTag: 9bb6de2b-0909-58fe-9102-458f262a6805
+		summarizeBy: none
+		sourceColumn: dispatch
+
+		annotation SummarizationSetBy = User
+
+	partition fact_order_line = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "fact_order_line.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Kept = Table.SelectColumns(Promoted, {"line_key", "order_id", "sku", "customer_id", "order_week", "order_date", "promised_date", "ship_date", "delivery_date", "ship_mode", "carrier", "status", "qty", "unit_price", "revenue", "cogs", "freight_cost", "expedite_premium", "chargeback", "lost_revenue", "lost_margin", "on_time", "days_late", "transit_days", "days_to_ship", "waited_for_stock", "expedited", "is_sample", "pod_missing", "peak_sea", "shipped"}),
+				    Blanks = Table.TransformColumns(Kept, {}, each if _ = "" then null else _),
+				    Typed = Table.TransformColumnTypes(Blanks, {{"line_key", type text}, {"order_id", type text}, {"sku", type text}, {"customer_id", type text}, {"order_week", type date}, {"order_date", type date}, {"promised_date", type date}, {"ship_date", type date}, {"delivery_date", type date}, {"ship_mode", type text}, {"carrier", type text}, {"status", type text}, {"qty", Int64.Type}, {"unit_price", type number}, {"revenue", type number}, {"cogs", type number}, {"freight_cost", type number}, {"expedite_premium", type number}, {"chargeback", type number}, {"lost_revenue", type number}, {"lost_margin", type number}, {"on_time", type number}, {"days_late", type number}, {"transit_days", type number}, {"days_to_ship", type number}, {"waited_for_stock", Int64.Type}, {"expedited", Int64.Type}, {"is_sample", Int64.Type}, {"pod_missing", Int64.Type}, {"peak_sea", Int64.Type}, {"shipped", Int64.Type}}, "en-US"),
+				    Season = Table.AddColumn(Typed, "season", each if [ship_date] = null then null else if Date.Month([ship_date]) >= 10 then "Oct – Dec" else "Jan – Sep", type text),
+				    Dispatch = Table.AddColumn(Season, "dispatch", each if [waited_for_stock] = 1 then "Waited for stock" else "From stock", type text)
+				in
+				    Dispatch
+
+	annotation PBI_ResultType = Table

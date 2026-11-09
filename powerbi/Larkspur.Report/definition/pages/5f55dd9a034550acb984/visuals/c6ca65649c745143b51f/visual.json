@@ -1,0 +1,225 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "c6ca65649c745143b51f",
+  "position": {
+    "x": 732,
+    "y": 454,
+    "z": 6300,
+    "height": 250,
+    "width": 532,
+    "tabOrder": 6300
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "transit_effects"
+                    }
+                  },
+                  "Property": "effect"
+                }
+              },
+              "queryRef": "transit_effects.effect",
+              "nativeQueryRef": "effect",
+              "displayName": "Extra sea transit days"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Effect Estimated"
+                }
+              },
+              "queryRef": "_Measures.Effect Estimated",
+              "nativeQueryRef": "Effect Estimated",
+              "displayName": "Estimated"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Effect True"
+                }
+              },
+              "queryRef": "_Measures.Effect True",
+              "nativeQueryRef": "Effect True",
+              "displayName": "True"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Effect Error"
+                }
+              },
+              "queryRef": "_Measures.Effect Error",
+              "nativeQueryRef": "Effect Error",
+              "displayName": "Error"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "total": [
+        {
+          "properties": {
+            "totals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "grid": [
+        {
+          "properties": {
+            "rowPadding": {
+              "expr": {
+                "Literal": {
+                  "Value": "3D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "wordWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "137.9D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "transit_effects.effect"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "116.7D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Effect Estimated"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "116.7D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Effect True"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "116.7D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "_Measures.Effect Error"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Transit model vs the generator''s true effects'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "subTitle": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Linear model on 50k sea lines · R² 0.83 · all six within 0.05 days'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

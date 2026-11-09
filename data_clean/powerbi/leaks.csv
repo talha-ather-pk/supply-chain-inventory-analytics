@@ -1,0 +1,31 @@
+year,step,item,kind,amount
+2023,10,Revenue,base,75558754.45
+2023,20,Cost of goods,base,-49416555.82
+2023,25,Gross margin,bridge,26142198.630000003
+2023,30,Outbound freight,cost,-2586733.26
+2023,40,Expedite premium,cost,-55033.56
+2023,50,Late chargebacks,cost,-309181.24
+2023,60,Returns,cost,-596909.72
+2023,70,Inventory carrying,cost,-1068822.17
+2023,80,Obsolete stock,cost,0.0
+2023,990,Memo: margin lost to stock-outs,memo,313204.07
+2024,10,Revenue,base,87695950.59
+2024,20,Cost of goods,base,-57287738.84
+2024,25,Gross margin,bridge,30408211.75
+2024,30,Outbound freight,cost,-2941899.71
+2024,40,Expedite premium,cost,-80346.33
+2024,50,Late chargebacks,cost,-379653.13
+2024,60,Returns,cost,-756077.93
+2024,70,Inventory carrying,cost,-1093184.02
+2024,80,Obsolete stock,cost,0.0
+2024,990,Memo: margin lost to stock-outs,memo,407407.65
+2025,10,Revenue,base,91790151.28
+2025,20,Cost of goods,base,-60049891.5
+2025,25,Gross margin,bridge,31740259.78
+2025,30,Outbound freight,cost,-3195228.18
+2025,40,Expedite premium,cost,-127839.9
+2025,50,Late chargebacks,cost,-374472.12
+2025,60,Returns,cost,-903244.71
+2025,70,Inventory carrying,cost,-1075461.07
+2025,80,Obsolete stock,cost,-210932.86
+2025,990,Memo: margin lost to stock-outs,memo,726107.34

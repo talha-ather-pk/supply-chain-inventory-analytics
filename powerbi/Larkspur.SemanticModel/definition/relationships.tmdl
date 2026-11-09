@@ -1,0 +1,47 @@
+relationship fcdc08e2-2eb3-5814-9c5e-531ed482ee16
+	fromColumn: fact_order_line.sku
+	toColumn: dim_sku.sku
+
+relationship 0e9af78d-dfc8-587b-8cd7-6a19beed95ea
+	fromColumn: fact_order_line.customer_id
+	toColumn: dim_customer.customer_id
+
+relationship a4f736d8-4cc9-5ac2-9e16-6a400120c66e
+	fromColumn: fact_order_line.order_week
+	toColumn: dim_week.week_start
+
+relationship 5c1bd4db-d4d6-54a9-82b0-8ff92f096d38
+	fromColumn: fact_order_line.carrier
+	toColumn: dim_carrier.carrier
+
+relationship 343766cc-0960-5104-9bd7-dc0ae937ce37
+	fromColumn: fact_inventory.sku
+	toColumn: dim_sku.sku
+
+relationship e4adb4a5-334d-5b05-98ec-594d47e0b760
+	fromColumn: fact_inventory.week_start
+	toColumn: dim_week.week_start
+
+relationship b09c1c4c-46a1-54b0-a38f-1142a822bfe9
+	fromColumn: fact_return.sku
+	toColumn: dim_sku.sku
+
+relationship fb11899d-d502-525b-b1f0-bc614a8eaef8
+	fromColumn: fact_return.return_week
+	toColumn: dim_week.week_start
+
+relationship fd6a947c-a9e9-5b3f-a5cd-4f1ad296d217
+	fromColumn: fact_count.sku
+	toColumn: dim_sku.sku
+
+relationship 3b1f6a90-09c5-55d1-982e-ca6b0b2a66d8
+	fromColumn: fact_count.count_week
+	toColumn: dim_week.week_start
+
+relationship 462dbb7d-61f1-5326-87bb-59902b0e0a79
+	fromColumn: fact_po.sku
+	toColumn: dim_sku.sku
+
+relationship 7fca107d-232b-51e1-acb8-15f58c9761b4
+	fromColumn: fact_po.order_week
+	toColumn: dim_week.week_start

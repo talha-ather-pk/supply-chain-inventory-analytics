@@ -1,0 +1,92 @@
+table fact_po
+	lineageTag: 73c4a9a9-1c09-5f62-bcea-237d9713da95
+
+	column po_id
+		dataType: string
+		isHidden
+		lineageTag: 938eeeec-f1cd-51a3-81c9-ab1c96a2d192
+		summarizeBy: none
+		sourceColumn: po_id
+
+		annotation SummarizationSetBy = User
+
+	column sku
+		dataType: string
+		isHidden
+		lineageTag: d339332c-462a-5dbb-9a1b-31bd3d7f2c44
+		summarizeBy: none
+		sourceColumn: sku
+
+		annotation SummarizationSetBy = User
+
+	column order_week
+		dataType: dateTime
+		isHidden
+		formatString: dd mmm yyyy
+		lineageTag: cae691cd-062b-5205-8f13-4ab5af4a64a2
+		summarizeBy: none
+		sourceColumn: order_week
+
+		annotation SummarizationSetBy = User
+
+	column due_date
+		dataType: dateTime
+		isHidden
+		formatString: dd mmm yyyy
+		lineageTag: 315beaf0-6d73-5caa-8865-dc75fa87aa08
+		summarizeBy: none
+		sourceColumn: due_date
+
+		annotation SummarizationSetBy = User
+
+	column received_date
+		dataType: dateTime
+		isHidden
+		formatString: dd mmm yyyy
+		lineageTag: 380ed674-0e75-590a-8d2f-aad33dcd0f66
+		summarizeBy: none
+		sourceColumn: received_date
+
+		annotation SummarizationSetBy = User
+
+	column qty
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 212cf1d7-248c-545a-9550-fe720abbe1a2
+		summarizeBy: none
+		sourceColumn: qty
+
+		annotation SummarizationSetBy = User
+
+	column days_late
+		dataType: double
+		isHidden
+		lineageTag: f8c7e6c5-e25c-5712-95b0-9c018a423f17
+		summarizeBy: none
+		sourceColumn: days_late
+
+		annotation SummarizationSetBy = User
+
+	column late
+		dataType: double
+		isHidden
+		lineageTag: bc77024a-c1b8-509e-8836-f2eb547c76c0
+		summarizeBy: none
+		sourceColumn: late
+
+		annotation SummarizationSetBy = User
+
+	partition fact_po = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "fact_po.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Kept = Table.SelectColumns(Promoted, {"po_id", "sku", "order_week", "due_date", "received_date", "qty", "days_late", "late"}),
+				    Blanks = Table.TransformColumns(Kept, {}, each if _ = "" then null else _),
+				    Typed = Table.TransformColumnTypes(Blanks, {{"po_id", type text}, {"sku", type text}, {"order_week", type date}, {"due_date", type date}, {"received_date", type date}, {"qty", Int64.Type}, {"days_late", type number}, {"late", type number}}, "en-US")
+				in
+				    Typed
+
+	annotation PBI_ResultType = Table
