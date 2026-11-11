@@ -7,7 +7,7 @@ linen, and ships them to 90 retailers in the USA, UK, EU, the Gulf and at home. 
 deliveries are late, why the best sellers run out while slow lines pile up, what one reorder rule for every SKU costs,
 and where the margin leaks between the gross margin and the bottom line**.
 
-**Summary page:** [`site/index.html`](site/index.html)
+**Live summary page:** https://supply-chain-inventory-analytics.vercel.app (source in [`site/index.html`](site/index.html))
 
 **Hire me:** [Upwork profile](https://www.upwork.com/freelancers/~01da74f8f9f4611503) · Talha Ather, data analyst and ACCA student
 
